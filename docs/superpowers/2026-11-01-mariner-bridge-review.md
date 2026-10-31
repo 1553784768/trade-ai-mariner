@@ -40,3 +40,11 @@ The host is `smart-trade-ai/login-demo/`, based on host commit `b59f90c98e4b0f36
 Python dependencies emit two upstream deprecation warnings. During browser teardown Windows Python 3.14 occasionally logs a connection-reset callback after the browser closes; all browser assertions passed. The scripts do not suppress these diagnostics.
 
 No unresolved product questions remain. User subsequently requested a new GitHub project. Authenticated account is `1553784768`; the abbreviated `1553784` returns 404. Publishing is authorized to a new private repository, `1553784768/trade-ai-mariner`. No email or other external messaging was performed.
+
+## Publication correction / 发布入口修正（2026-11-01）
+
+The user confirmed that the mismatch was between GitHub's repository homepage screenshots and the actual application. The repository initially retained the upstream root READMEs, which embedded legacy `docs/screenshot-*.png` images and instructed users to launch root `server.py`. This was a documentation publishing error, not a mismatch in the uploaded application code.
+
+Verified remote main `d5594a96ce25d260f8290a722cf71946b78ba5c9` against local HEAD. Backend entry, Mariner CSS, integration CSS, shell, dependency lockfile and inbox screenshot Git blob hashes matched. The active loopback service runs `login-demo/.venv/Scripts/python -m uvicorn app:app --host 127.0.0.1 --port 8017`; its login response matches the local exported HTML byte for byte.
+
+Both root READMEs now identify the integrated entry point and embed the verified `bridge-*` screenshots, explicitly labelling their fixture data and language. Application code was not changed. Repository visibility is public following the user's explicit request; the earlier private-publication note describes its initial creation only.
