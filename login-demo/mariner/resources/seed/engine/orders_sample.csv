@@ -1,0 +1,9 @@
+order_id,product,hts10,origin,incoterm,channel,importer_of_record,tariff_clause,status,qty,unit_price_usd,purchase_cost_cny_per_unit,other_cost_cny_per_unit,fx_cny_per_usd,intl_freight_usd,insurance_usd,us_side_cost_usd,customs_value_usd,transport_mode,quote_date,load_date,entry_date,delivery_date,baseline_duty_rate_pct,target_margin_pct
+O1,锂电池包(电动工具用),8507.60.00.90,CN,DDP,b2b,seller,none,shipped,500,200,780,20,7.10,3000,150,2500,60000,ocean,2026-07-01,2026-10-20,2026-11-18,2026-11-25,38.4,12
+O2,工业机器人,8479.50.00.00,CN,FOB,b2b,buyer,none,confirmed,10,9000,52000,800,7.10,0,0,0,90000,ocean,2026-06-15,2026-11-20,2026-12-20,2026-12-28,37.5,15
+O3,棉质针织毛衣(亚马逊FBA),6110.20.20,CN,DDP,ecom,seller,none,shipped,3000,22,40,3,7.10,4200,0,6000,24000,ocean,2026-05-10,2026-10-25,2026-11-25,2026-12-05,34.0,20
+O4,塑胶玩具,9503.00.00,CN,DDP,b2b,seller,none,confirmed,2000,15,55,2,7.10,2800,100,1500,20000,ocean,2026-01-15,2026-11-08,2026-12-10,2026-12-18,20.0,10
+O5,微型电机(假设适用301排除),8501.10.40,CN,DDP,b2b,seller,none,shipped,20000,4.5,22,1,7.10,3500,120,2000,64000,ocean,2026-09-01,2026-10-22,2026-11-16,2026-11-22,16.9,8
+O6,塑料收纳件,3926.90.99,CN,FOB,b2b,buyer,share:0.5,confirmed,10000,2.0,10.5,0.5,7.10,0,0,0,20000,ocean,2026-07-10,2026-10-28,2026-12-01,2026-12-08,30.3,12
+O7,塑胶玩具(已入境),9503.00.00,CN,DDP,b2b,seller,none,entered,3000,14,52,2,7.15,3600,0,2000,30000,ocean,2025-11-20,2025-12-20,2026-01-28,2026-02-05,20.0,10
+O8,塑料收纳件(已入境),3926.90.99,CN,DDP,b2b,seller,none,entered,8000,2.8,10.5,0.5,7.15,1800,0,900,16000,ocean,2026-06-20,2026-07-20,2026-07-27,2026-08-03,40.3,12

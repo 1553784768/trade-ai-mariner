@@ -6,11 +6,17 @@ from pathlib import Path
 
 from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
+from spa_files import mount_spa
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
-from starlette.middleware.sessions import SessionMiddleware
+from stable_session import StableSessionMiddleware
 
+from tariff_bridge_api import router as tariff_bridge_router
+from tariff_runtime import TariffRegistry
+from mariner.factory import create_tariff_app
+from mariner.settings import Settings as TariffSettings
+from apscheduler.schedulers.background import BackgroundScheduler
 from auth import authenticate_user, init_db, register_user
 from business_api import router as business_router
 from chat_api import router as chat_router
@@ -25,7 +31,6 @@ from secret_store import SecretStore
 from skill_catalog import SkillCatalog
 
 APP_DIR = Path(__file__).resolve().parent
-STATIC_DIR = APP_DIR / "static"
 ORIGINAL_STATIC_DIR = APP_DIR.parent / "static"
 DEFAULT_DB_PATH = APP_DIR / "data" / "accounts.sqlite3"
 
@@ -44,18 +49,27 @@ def create_app(
     osint_runner=None,
     hermes_runner=None,
     hermes_streamer=None,
+    tariff_settings=None, tariff_data_dir=None, web_dir=None, allowed_origins=None, extra_routers=(),
 ) -> FastAPI:
     resolved_db_path = Path(db_path) if db_path is not None else DEFAULT_DB_PATH
     init_db(resolved_db_path)
+    tariff_settings = tariff_settings or TariffSettings()
 
     @asynccontextmanager
     async def lifespan(application):
         scheduler = asyncio.create_task(scheduler_loop(application))
         application.state.scheduler_task = scheduler
+        tariff_scheduler = BackgroundScheduler(timezone="Asia/Shanghai")
+        if tariff_settings.scheduler_enabled:
+            tariff_scheduler.add_job(application.state.tariff_registry.run_scheduled, "cron", hour=7, minute=30, id="tariff-daily-pipeline", max_instances=1, coalesce=True)
+            tariff_scheduler.start()
         try:
             yield
         finally:
             scheduler.cancel()
+            if tariff_scheduler.running:
+                tariff_scheduler.shutdown()
+            application.state.tariff_registry.close_all()
 
     app = FastAPI(title="Login Demo", lifespan=lifespan)
 
@@ -73,13 +87,23 @@ def create_app(
     app.state.secret_store = SecretStore(resolved_db_path.parent / 'model-encryption.key')
     app.state.skill_catalog = SkillCatalog(skill_dir if skill_dir is not None else APP_DIR.parent / 'skills')
 
-    @app.middleware('http')
-    async def prevent_stale_demo_assets(request: Request, call_next):
-        response = await call_next(request)
-        if request.url.path == '/' or request.url.path.startswith('/static/'):
-            response.headers['Cache-Control'] = 'no-store'
-        return response
+    registry = TariffRegistry(resolved_db_path, tariff_data_dir or resolved_db_path.parent / 'tariff', tariff_settings, app.state.secret_store)
+    app.state.tariff_registry = registry
+    tariff_app = create_tariff_app(registry.resolve)
+    tariff_app.state.db_path = resolved_db_path
+    app.mount('/api/tariff', tariff_app)
+    origins = set(allowed_origins if allowed_origins is not None else os.getenv('TRADE_ALLOWED_ORIGINS', 'http://127.0.0.1:3000,http://localhost:3000').split(','))
 
+    @app.middleware('http')
+    async def check_origin(request: Request, call_next):
+        origin = request.headers.get('origin')
+        if request.url.path.startswith('/api/') and request.method not in ('GET', 'HEAD', 'OPTIONS') and origin:
+            if origin not in origins and origin != f"{request.url.scheme}://{request.headers.get('host', '')}":
+                message = '请求来源不被允许'
+                return JSONResponse({'detail': message, 'error': {'code': 'FORBIDDEN', 'message': message}}, status_code=403)
+        return await call_next(request)
+
+    app.include_router(tariff_bridge_router)
     app.include_router(business_router)
     app.include_router(chat_router)
     app.include_router(orders_router)
@@ -87,23 +111,18 @@ def create_app(
     app.include_router(research_router)
     app.include_router(automation_router)
 
-    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
     app.mount("/original-static", StaticFiles(directory=ORIGINAL_STATIC_DIR), name="original-static")
     app.add_middleware(
-        SessionMiddleware,
+        StableSessionMiddleware,
         secret_key=secret_key or os.getenv("LOGIN_DEMO_SECRET") or secrets.token_urlsafe(32),
         session_cookie="login_demo_session",
         same_site="lax",
         https_only=False,
     )
 
-    @app.get("/")
-    def index() -> FileResponse:
-        return FileResponse(STATIC_DIR / "index.html", headers={'Cache-Control': 'no-store'})
-
-    @app.get("/trade", include_in_schema=False)
-    def trade_workspace() -> FileResponse:
-        return FileResponse(STATIC_DIR / "workspace.html", headers={'Cache-Control': 'no-store'})
+    @app.get('/trade', include_in_schema=False)
+    def trade_workspace():
+        return RedirectResponse('/', 307)
 
     @app.post("/api/register", status_code=status.HTTP_201_CREATED)
     def register(credentials: Credentials, request: Request) -> dict[str, object]:
@@ -153,6 +172,9 @@ def create_app(
         request.session.clear()
         return {"ok": True}
 
+    for router in extra_routers:
+        app.include_router(router)
+    mount_spa(app, web_dir or APP_DIR / "web" / "out")
     return app
 
 

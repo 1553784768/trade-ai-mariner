@@ -1,0 +1,33 @@
+{
+ "_meta": {
+  "role": "chat",
+  "lookup_key": "question after trim and lower-case"
+ },
+ "o5 为什么是红色？": {
+  "lang": "zh",
+  "use_order_data": true,
+  "answer": "O5（微型电机）重算后亏损，所以是红色。它原来适用 301 排除，但排除只覆盖 2026-11-09 及以前入境的货物，O5 预计 2026-11-16 入境，新税率 41.9%，关税增量 +$16,000.00，利润由 $8,473.57 变为 −$7,526.43。",
+  "citations": [
+   "impact:O5",
+   "watch:W_301_EXCLUSION_EXPIRY"
+  ]
+ },
+ "why is o5 red?": {
+  "lang": "en",
+  "use_order_data": true,
+  "answer": "O5 (small electric motors) shows a loss after recalculation, so it is red. It relied on a Section 301 exclusion that only covers goods entered by 2026-11-09, but O5 is expected to enter on 2026-11-16. The new rate is 41.9%, duty rises by +$16,000.00, and profit goes from $8,473.57 to −$7,526.43.",
+  "citations": [
+   "impact:O5",
+   "watch:W_301_EXCLUSION_EXPIRY"
+  ]
+ },
+ "今天有哪些需要关注的政策？": {
+  "lang": "zh",
+  "use_order_data": false,
+  "answer": "最需要关注的是 178 项中国 301 排除将在 2026-11-09 到期，目前未见延期公告。另外，USTR 正就是否继续暂停针对中国海事、物流和造船业的 301 措施征求意见。",
+  "citations": [
+   "watch:W_301_EXCLUSION_EXPIRY",
+   "policy:2026-21755"
+  ]
+ }
+}

@@ -1,0 +1,3569 @@
+[
+ {
+  "id": {
+   "timestamp": 1793041562,
+   "date": 1793041562000
+  },
+  "name": "2026HTSRev22",
+  "description": "2026 HTS Revision 22",
+  "date": "10/26/2026",
+  "time": "03:06:02",
+  "title": "Revision 22 (2026)",
+  "creator": "Philip Stone",
+  "status": "current",
+  "target": "10/30/2026",
+  "releaseStartDate": "10/30/2026",
+  "releaseEndDate": null,
+  "mergedRevisions": [
+   "6adfa54f72a34e4434ed5c2f",
+   "6ae20e0c72a34e4434ed5c51"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1791388513,
+   "date": 1791388513000
+  },
+  "name": "2026HTSRev21",
+  "description": "2026 HTS Revision 21",
+  "date": "10/07/2026",
+  "time": "11:55:13",
+  "title": "Revision 21 (2026)",
+  "creator": "Heidi Yoo",
+  "status": "archive",
+  "target": "10/09/2026",
+  "releaseStartDate": "10/09/2026",
+  "releaseEndDate": "10/30/2026",
+  "mergedRevisions": [
+   "6ac66c7c2bd28da9fcaca847"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1790166779,
+   "date": 1790166779000
+  },
+  "name": "2026HTSRev20",
+  "description": "2026 HTS Revision 20",
+  "date": "09/23/2026",
+  "time": "08:32:59",
+  "title": "Revision 20 (2026)",
+  "creator": "Heidi Yoo",
+  "status": "archive",
+  "target": "09/28/2026",
+  "releaseStartDate": "09/28/2026",
+  "releaseEndDate": "10/09/2026",
+  "mergedRevisions": [
+   "6ab3c7aa5c44c04ee43d5535"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1788967674,
+   "date": 1788967674000
+  },
+  "name": "2026HTSRev19",
+  "description": "2026 HTS Revision 19",
+  "date": "09/09/2026",
+  "time": "11:27:54",
+  "title": "Revision 19 (2026)",
+  "creator": "Heidi Yoo",
+  "status": "archive",
+  "target": "09/15/2026",
+  "releaseStartDate": "09/15/2026",
+  "releaseEndDate": "09/28/2026",
+  "mergedRevisions": [
+   "6aa17bb99c837f5f09233233"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1787849733,
+   "date": 1787849733000
+  },
+  "name": "2026HTSRev18",
+  "description": "2026 HTS Revision 18",
+  "date": "08/27/2026",
+  "time": "12:55:33",
+  "title": "Revision 18 (2026)",
+  "creator": "Heidi Yoo",
+  "status": "archive",
+  "target": "09/02/2026",
+  "releaseStartDate": "09/02/2026",
+  "releaseEndDate": "09/15/2026",
+  "mergedRevisions": [
+   "6a906d8bb1445554544ab39f"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1786730419,
+   "date": 1786730419000
+  },
+  "name": "2026HTSRev17",
+  "description": "2026 HTS Revision 17",
+  "date": "08/14/2026",
+  "time": "02:00:19",
+  "title": "Revision 17 (2026)",
+  "creator": "Heidi Yoo",
+  "status": "archive",
+  "target": "08/24/2026",
+  "releaseStartDate": "08/24/2026",
+  "releaseEndDate": "09/02/2026",
+  "mergedRevisions": [
+   "6a7f59fef18e490a446d774d",
+   "6a83071af18e490a446d7761"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1786456049,
+   "date": 1786456049000
+  },
+  "name": "2026HTSRev16",
+  "description": "2026 HTS Revision 16",
+  "date": "08/11/2026",
+  "time": "09:47:29",
+  "title": "Revision 16 (2026)",
+  "creator": "Heidi Yoo",
+  "status": "archive",
+  "target": "08/14/2026",
+  "releaseStartDate": "08/14/2026",
+  "releaseEndDate": "08/24/2026",
+  "mergedRevisions": [
+   "6a7b29179d7397e0866b3d43"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1785766814,
+   "date": 1785766814000
+  },
+  "name": "2026HTSRev15",
+  "description": "2026 HTS Revision 15",
+  "date": "08/03/2026",
+  "time": "10:20:14",
+  "title": "Revision 15 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "08/03/2026",
+  "releaseStartDate": "08/03/2026",
+  "releaseEndDate": "08/14/2026",
+  "mergedRevisions": [
+   "6a70a44c1a5efa70b9e41e9e"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1785345646,
+   "date": 1785345646000
+  },
+  "name": "2026HTSRev14",
+  "description": "2026 HTS Revision 14",
+  "date": "07/29/2026",
+  "time": "01:20:46",
+  "title": "Revision 14 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "07/31/2026",
+  "releaseStartDate": "07/31/2026",
+  "releaseEndDate": "08/03/2026",
+  "mergedRevisions": [
+   "6a6a37ab9504e229c85f3ef5"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1784749979,
+   "date": 1784749979000
+  },
+  "name": "2026HTSRev13",
+  "description": "2026 HTS Revision 13 ",
+  "date": "07/22/2026",
+  "time": "03:52:59",
+  "title": "Revision 13 (2026) ",
+  "creator": "Heidi Yoo",
+  "status": "archive",
+  "target": "07/28/2026",
+  "releaseStartDate": "07/28/2026",
+  "releaseEndDate": "07/31/2026",
+  "mergedRevisions": [
+   "6a6121129504e229c85ec316"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1784208805,
+   "date": 1784208805000
+  },
+  "name": "2026HTSRev12",
+  "description": "2026 HTS Revision 12",
+  "date": "07/16/2026",
+  "time": "09:33:25",
+  "title": "Revision 12 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "07/21/2026",
+  "releaseStartDate": "07/21/2026",
+  "releaseEndDate": "07/28/2026",
+  "mergedRevisions": [
+   "6a58decc9504e229c85e4a6b",
+   "6a5f8e869504e229c85e4a9f"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1782133494,
+   "date": 1782133494000
+  },
+  "name": "2026HTSRev11",
+  "description": "2026 HTS Revision 11",
+  "date": "06/22/2026",
+  "time": "09:04:54",
+  "title": "Revision 11 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "07/01/2026",
+  "releaseStartDate": "07/01/2026",
+  "releaseEndDate": "07/21/2026",
+  "mergedRevisions": [
+   "6a3934ddae79f316344b9cc2"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1780428136,
+   "date": 1780428136000
+  },
+  "name": "2026HTSRev10",
+  "description": "2026 HTS Revision 10",
+  "date": "06/02/2026",
+  "time": "03:22:16",
+  "title": "Revision 10 (2026)",
+  "creator": "Heidi Yoo",
+  "status": "archive",
+  "target": "06/08/2026",
+  "releaseStartDate": "06/08/2026",
+  "releaseEndDate": "07/01/2026",
+  "mergedRevisions": [
+   "6a1f2ea3cc0f4e4017d95164"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1779812596,
+   "date": 1779812596000
+  },
+  "name": "2026HTSRev9",
+  "description": "2026 HTS Revision 9",
+  "date": "05/26/2026",
+  "time": "12:23:16",
+  "title": "Revision 9 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "05/28/2026",
+  "releaseStartDate": "05/28/2026",
+  "releaseEndDate": "06/08/2026",
+  "mergedRevisions": [
+   "6a15c9a8cc0f4e4017d8d960"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1777906207,
+   "date": 1777906207000
+  },
+  "name": "2026HTSRev8",
+  "description": "2026 HTS Revision 8",
+  "date": "05/04/2026",
+  "time": "10:50:07",
+  "title": "Revision 8 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "05/22/2026",
+  "releaseStartDate": "05/22/2026",
+  "releaseEndDate": "05/28/2026",
+  "mergedRevisions": [
+   "6a0e0b8552f9a071de661c65",
+   "6a0f10c4cc0f4e4017d8615d"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1777382592,
+   "date": 1777382592000
+  },
+  "name": "2026HTSRev7",
+  "description": "2026 HTS Revision 7",
+  "date": "04/28/2026",
+  "time": "09:23:11",
+  "title": "Revision 7 (2026)",
+  "creator": "Ryan Kane",
+  "status": "archive",
+  "target": "04/29/2026",
+  "releaseStartDate": "04/29/2026",
+  "releaseEndDate": "05/22/2026",
+  "mergedRevisions": [
+   "69f0b550f80ba10724d6b450"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1776874289,
+   "date": 1776874289000
+  },
+  "name": "2026HTSRev6",
+  "description": "2026 HTS Revision 6",
+  "date": "04/22/2026",
+  "time": "12:11:29",
+  "title": "Revision 6 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "04/23/2026",
+  "releaseStartDate": "04/23/2026",
+  "releaseEndDate": "04/29/2026",
+  "mergedRevisions": [
+   "69e8f42d5fc81718ffa4b7bb"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1775224992,
+   "date": 1775224992000
+  },
+  "name": "2026HTSRev5",
+  "description": "2026 HTS Revision 5",
+  "date": "04/03/2026",
+  "time": "10:03:12",
+  "title": "Revision 5 (2026)",
+  "creator": "Ryan Kane",
+  "status": "archive",
+  "target": "04/08/2026",
+  "releaseStartDate": "04/08/2026",
+  "releaseEndDate": "04/23/2026",
+  "mergedRevisions": [
+   "69cfca9bb3f59df8b9f490b8",
+   "69d3e3b6b3f59df8b9f490fc"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1771861648,
+   "date": 1771861648000
+  },
+  "name": "2026HTSRev4",
+  "description": "2026 HTS Revision 4",
+  "date": "02/23/2026",
+  "time": "10:47:28",
+  "title": "Revision 4 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "02/25/2026",
+  "releaseStartDate": "02/25/2026",
+  "releaseEndDate": "04/08/2026",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1770658838,
+   "date": 1770658838000
+  },
+  "name": "2026HTSRev3",
+  "description": "2026 HTS Revision 3",
+  "date": "02/09/2026",
+  "time": "12:40:38",
+  "title": "Revision 3 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "02/11/2026",
+  "releaseStartDate": "02/12/2026",
+  "releaseEndDate": "02/25/2026",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1769439453,
+   "date": 1769439453000
+  },
+  "name": "2026HTSRev2",
+  "description": "2026 HTS Revision 2",
+  "date": "01/26/2026",
+  "time": "09:57:33",
+  "title": "Revision 2 (2026)",
+  "creator": "Ryan Kane",
+  "status": "archive",
+  "target": "01/30/2026",
+  "releaseStartDate": "01/30/2026",
+  "releaseEndDate": "02/12/2026",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1768492681,
+   "date": 1768492681000
+  },
+  "name": "2026HTSRev1",
+  "description": "2026 HTS Revision 1",
+  "date": "01/15/2026",
+  "time": "10:58:01",
+  "title": "Revision 1 (2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "01/16/2026",
+  "releaseStartDate": "01/16/2026",
+  "releaseEndDate": "01/30/2026",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1765982240,
+   "date": 1765982240000
+  },
+  "name": "2026HTSBasic",
+  "description": "2026 Basic Edition",
+  "date": "12/17/2025",
+  "time": "09:37:20",
+  "title": "(2026)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "12/31/2025",
+  "releaseStartDate": "12/31/2025",
+  "releaseEndDate": "01/16/2026",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1764773947,
+   "date": 1764773947000
+  },
+  "name": "2025HTSRev32",
+  "description": "2025 HTS Revision 32",
+  "date": "12/03/2025",
+  "time": "09:59:07",
+  "title": "Revision 32 (2025)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "12/05/2025",
+  "releaseStartDate": "12/05/2025",
+  "releaseEndDate": "12/31/2025",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1764344733,
+   "date": 1764344733000
+  },
+  "name": "2025HTSRev31",
+  "description": "2025 HTS Revision 31",
+  "date": "11/28/2025",
+  "time": "10:45:33",
+  "title": "Revision 31 (2025)",
+  "creator": "Ryan Kane",
+  "status": "archive",
+  "target": "11/28/2025",
+  "releaseStartDate": "11/28/2025",
+  "releaseEndDate": "12/05/2025",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1763739370,
+   "date": 1763739370000
+  },
+  "name": "2025HTSRev30",
+  "description": "2025 HTS Revision 30",
+  "date": "11/21/2025",
+  "time": "10:36:10",
+  "title": "Revision 30 (2025)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "11/21/2025",
+  "releaseStartDate": "11/21/2025",
+  "releaseEndDate": "11/28/2025",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1763390010,
+   "date": 1763390010000
+  },
+  "name": "2025HTSRev29",
+  "description": "2025 HTS Revision 29",
+  "date": "11/17/2025",
+  "time": "09:33:30",
+  "title": "Revision 29 (2025)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "11/17/2025",
+  "releaseStartDate": "11/17/2025",
+  "releaseEndDate": "11/21/2025",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1762794053,
+   "date": 1762794053000
+  },
+  "name": "2025HTSRev28",
+  "description": "2025 HTS Revision 28",
+  "date": "11/10/2025",
+  "time": "12:00:53",
+  "title": "Revision 28 (2025)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "11/10/2025",
+  "releaseStartDate": "11/10/2025",
+  "releaseEndDate": "11/17/2025",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1762198495,
+   "date": 1762198495000
+  },
+  "name": "2025HTSRev27",
+  "description": "2025 HTS Revision 27",
+  "date": "11/03/2025",
+  "time": "02:34:55",
+  "title": "Revision 27 (2025)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "11/07/2025",
+  "releaseStartDate": "11/07/2025",
+  "releaseEndDate": "11/10/2025",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1761570321,
+   "date": 1761570321000
+  },
+  "name": "2025HTSRev26",
+  "description": "2025 HTS Revision 26",
+  "date": "10/27/2025",
+  "time": "09:05:21",
+  "title": "Revision 26 (2025)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "10/31/2025",
+  "releaseStartDate": "10/31/2025",
+  "releaseEndDate": "11/07/2025",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1759777848,
+   "date": 1759777848000
+  },
+  "name": "2025HTSRev25",
+  "description": "2025 HTS Revision 25",
+  "date": "10/06/2025",
+  "time": "03:10:47",
+  "title": "Revision 25 (2025)",
+  "creator": "Ryan Kane",
+  "status": "archive",
+  "target": "10/13/2025",
+  "releaseStartDate": "10/10/2025",
+  "releaseEndDate": "10/31/2025",
+  "mergedRevisions": null
+ },
+ {
+  "id": {
+   "timestamp": 1758724429,
+   "date": 1758724429000
+  },
+  "name": "2025HTSRev24",
+  "description": "2025 HTS Revision 24 ",
+  "date": "09/24/2025",
+  "time": "10:33:49",
+  "title": "Revision 24 (2025)",
+  "creator": "Theron Gray",
+  "status": "archive",
+  "target": "09/25/2025",
+  "releaseStartDate": "09/26/2025",
+  "releaseEndDate": "10/10/2025",
+  "mergedRevisions": [
+   "68d40762dda31a7a8253bef2"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1757943962,
+   "date": 1757943962000
+  },
+  "name": "2025HTSRev23",
+  "description": "2025 HTS Revision 23",
+  "date": "09/15/2025",
+  "time": "09:46:02",
+  "title": "Revision 23 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/16/2025",
+  "releaseStartDate": "09/16/2025",
+  "releaseEndDate": "09/26/2025",
+  "mergedRevisions": [
+   "68c81a8e37086d231c388889"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1757335058,
+   "date": 1757335058000
+  },
+  "name": "2025HTSRev22",
+  "description": "2025 HTS Revision 22",
+  "date": "09/08/2025",
+  "time": "08:37:38",
+  "title": "Revision 22 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/09/2025",
+  "releaseStartDate": "09/09/2025",
+  "releaseEndDate": "09/16/2025",
+  "mergedRevisions": [
+   "68bed04137086d231c380e9f"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1756417515,
+   "date": 1756417515000
+  },
+  "name": "2025HTSRev21",
+  "description": "2025 HTS Revision 21",
+  "date": "08/28/2025",
+  "time": "05:45:15",
+  "title": "Revision 21 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/29/2025",
+  "releaseStartDate": "08/29/2025",
+  "releaseEndDate": "09/09/2025",
+  "mergedRevisions": [
+   "68b0ced41a472378902e90a2"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1756156378,
+   "date": 1756156378000
+  },
+  "name": "2025HTSRev20",
+  "description": "2025 HTS Revision 20",
+  "date": "08/25/2025",
+  "time": "05:12:58",
+  "title": "Revision 20 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/27/2025",
+  "releaseStartDate": "08/27/2025",
+  "releaseEndDate": "08/29/2025",
+  "mergedRevisions": [
+   "68acd3e2e251514149d8cef1"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1755271318,
+   "date": 1755271318000
+  },
+  "name": "2025HTSRev19",
+  "description": "2025 HTS Revision 19",
+  "date": "08/15/2025",
+  "time": "11:21:58",
+  "title": "Revision 19 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/18/2025",
+  "releaseStartDate": "08/18/2025",
+  "releaseEndDate": "08/27/2025",
+  "mergedRevisions": [
+   "689f520f87c1c8228aebaaa8"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1754332719,
+   "date": 1754332719000
+  },
+  "name": "2025HTSRev18",
+  "description": "2025 HTS Revision 18",
+  "date": "08/04/2025",
+  "time": "02:38:39",
+  "title": "Revision 18 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/06/2025",
+  "releaseStartDate": "08/07/2025",
+  "releaseEndDate": "08/18/2025",
+  "mergedRevisions": [
+   "6890ffebb309aa0e7842c01c",
+   "68938bfeb309aa0e7842c054"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1753905751,
+   "date": 1753905751000
+  },
+  "name": "2025HTSRev17",
+  "description": "2025 HTS Revision 17",
+  "date": "07/30/2025",
+  "time": "04:02:30",
+  "title": "Revision 17 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/01/2025",
+  "releaseStartDate": "08/01/2025",
+  "releaseEndDate": "08/07/2025",
+  "mergedRevisions": [
+   "688a7fbdc187f019ad1d5f48"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1750433554,
+   "date": 1750433554000
+  },
+  "name": "2025HTSRev16",
+  "description": "2025 HTS Revision 16",
+  "date": "06/20/2025",
+  "time": "11:32:34",
+  "title": "Revision 16 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/01/2025",
+  "releaseStartDate": "07/01/2025",
+  "releaseEndDate": "08/01/2025",
+  "mergedRevisions": [
+   "68558d9bac11a129f7b6343d",
+   "685d7037e5797011be97152d"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1750106893,
+   "date": 1750106893000
+  },
+  "name": "2025HTSRev15",
+  "description": "2025 HTS Revision 15",
+  "date": "06/16/2025",
+  "time": "04:48:13",
+  "title": "Revision 15 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/23/2025",
+  "releaseStartDate": "06/20/2025",
+  "releaseEndDate": "07/01/2025",
+  "mergedRevisions": [
+   "685083c40dd24d478b2597d3",
+   "6851ba820dd24d478b2597eb"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1748532993,
+   "date": 1748532993000
+  },
+  "name": "2025HTSRev14",
+  "description": "2025 HTS Revision 14",
+  "date": "05/29/2025",
+  "time": "11:36:33",
+  "title": "Revision 14 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/02/2025",
+  "releaseStartDate": "06/06/2025",
+  "releaseEndDate": "06/20/2025",
+  "mergedRevisions": [
+   "684062b491741a46423f62f1"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1747400386,
+   "date": 1747400386000
+  },
+  "name": "2025HTSRev13",
+  "description": "2025 HTS Revision 13",
+  "date": "05/16/2025",
+  "time": "08:59:46",
+  "title": "Revision 13 (2025)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "05/16/2025",
+  "releaseStartDate": "05/16/2025",
+  "releaseEndDate": "06/06/2025",
+  "mergedRevisions": [
+   "68273858e33d7512b020efbb"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1747143188,
+   "date": 1747143188000
+  },
+  "name": "2025HTSRev12",
+  "description": "2025 HTS Revision 12",
+  "date": "05/13/2025",
+  "time": "09:33:07",
+  "title": "Revision 12 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/13/2025",
+  "releaseStartDate": "05/13/2025",
+  "releaseEndDate": "05/16/2025",
+  "mergedRevisions": [
+   "68234b09ad0b0c65c51da990"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1745856624,
+   "date": 1745856624000
+  },
+  "name": "2025HTSRev11",
+  "description": "2025 HTS Revision 11",
+  "date": "04/28/2025",
+  "time": "12:10:24",
+  "title": "Revision 11 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/02/2025",
+  "releaseStartDate": "05/02/2025",
+  "releaseEndDate": "05/13/2025",
+  "mergedRevisions": [
+   "680fa903196c7b3f087ff937"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1744639214,
+   "date": 1744639214000
+  },
+  "name": "2025HTSRev10",
+  "description": "2025 HTS Revision 10",
+  "date": "04/14/2025",
+  "time": "10:00:14",
+  "title": "Revision 10 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/14/2025",
+  "releaseStartDate": "04/15/2025",
+  "releaseEndDate": "05/02/2025",
+  "mergedRevisions": [
+   "67fd1891bf80471c2dd2e97b"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1744299449,
+   "date": 1744299449000
+  },
+  "name": "2025HTSRev9",
+  "description": "2025 HTS Revision 9",
+  "date": "04/10/2025",
+  "time": "11:37:29",
+  "title": "Revision 9 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/10/2025",
+  "releaseStartDate": "04/11/2025",
+  "releaseEndDate": "04/15/2025",
+  "mergedRevisions": [
+   "67f7e647bf80471c2dd26ffd"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1744207326,
+   "date": 1744207326000
+  },
+  "name": "2025HTSRev8",
+  "description": "2025 HTS Revision 8",
+  "date": "04/09/2025",
+  "time": "10:02:06",
+  "title": "Revision 8 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/10/2025",
+  "releaseStartDate": "04/09/2025",
+  "releaseEndDate": "04/11/2025",
+  "mergedRevisions": [
+   "67f67e7cbf80471c2dd1f698",
+   "67f694edbf80471c2dd1f6ad"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1743705260,
+   "date": 1743705260000
+  },
+  "name": "2025HTSRev7",
+  "description": "2025 HTS Revision 7",
+  "date": "04/03/2025",
+  "time": "02:34:20",
+  "title": "Revision 7 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/05/2025",
+  "releaseStartDate": "04/04/2025",
+  "releaseEndDate": "04/09/2025",
+  "mergedRevisions": [
+   "67eed5dbbf80471c2dd17cf5"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1743455335,
+   "date": 1743455335000
+  },
+  "name": "2025HTSRev6",
+  "description": "2025 HTS Revision 6",
+  "date": "03/31/2025",
+  "time": "05:08:55",
+  "title": "Revision 6 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/02/2025",
+  "releaseStartDate": "04/03/2025",
+  "releaseEndDate": "04/04/2025",
+  "mergedRevisions": [
+   "67eb054902049d33df2841c4"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1741886457,
+   "date": 1741886457000
+  },
+  "name": "2025HTSRev5",
+  "description": "2025 HTS Revision 5",
+  "date": "03/13/2025",
+  "time": "01:20:57",
+  "title": "Revision 5 (2025)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "03/14/2025",
+  "releaseStartDate": "03/14/2025",
+  "releaseEndDate": "04/03/2025",
+  "mergedRevisions": [
+   "67d3156d4bae4b5380150c15"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1741293363,
+   "date": 1741293363000
+  },
+  "name": "2025HTSRev4",
+  "description": "2025 HTS Revision 4",
+  "date": "03/06/2025",
+  "time": "03:36:03",
+  "title": "Revision 4 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/11/2025",
+  "releaseStartDate": "03/11/2025",
+  "releaseEndDate": "03/14/2025",
+  "mergedRevisions": [
+   "67ca08554bae4b538014923d"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1741100357,
+   "date": 1741100357000
+  },
+  "name": "2025HTSRev3",
+  "description": "2025 HTS Revision 3",
+  "date": "03/04/2025",
+  "time": "09:59:17",
+  "title": "Revision 3 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/05/2025",
+  "releaseStartDate": "03/06/2025",
+  "releaseEndDate": "03/11/2025",
+  "mergedRevisions": [
+   "67c716561814e24a6ca6f10f"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1739217675,
+   "date": 1739217675000
+  },
+  "name": "2025HTSRev2",
+  "description": "2025 HTS Revision 2",
+  "date": "02/10/2025",
+  "time": "03:01:15",
+  "title": "Revision 2 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/11/2025",
+  "releaseStartDate": "02/12/2025",
+  "releaseEndDate": "03/06/2025",
+  "mergedRevisions": [
+   "67aa5d427ef8cc75426b379b"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1738678452,
+   "date": 1738678452000
+  },
+  "name": "2025HTSRev1",
+  "description": "2025 HTS Revision 1",
+  "date": "02/04/2025",
+  "time": "09:14:12",
+  "title": "Revision 1 (2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/07/2025",
+  "releaseStartDate": "02/05/2025",
+  "releaseEndDate": "02/12/2025",
+  "mergedRevisions": [
+   "67a223dc9ea9dc6443923051",
+   "67a242929ea9dc644392306e"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1733863155,
+   "date": 1733863155000
+  },
+  "name": "2025HTSBasic",
+  "description": "2025 Basic Edition",
+  "date": "12/10/2024",
+  "time": "03:39:15",
+  "title": "(2025)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "12/31/2024",
+  "releaseStartDate": "12/31/2024",
+  "releaseEndDate": "02/05/2025",
+  "mergedRevisions": [
+   "6758a729c9f50644fd4c6bca",
+   "6758a90cc9f50644fd4c6bd0",
+   "6758ac05c9f50644fd4c6bdb"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1731947932,
+   "date": 1731947932000
+  },
+  "name": "2024HTSRev10",
+  "description": "2024 HTS Revision 10",
+  "date": "11/18/2024",
+  "time": "11:38:52",
+  "title": "Revision 10 (2024)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "11/22/2024",
+  "releaseStartDate": "11/22/2024",
+  "releaseEndDate": "12/31/2024",
+  "mergedRevisions": [
+   "673b6e50f487f6047b005fdd",
+   "673b9464f487f6047b005fee"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1726596731,
+   "date": 1726596731000
+  },
+  "name": "2024HTSRev9",
+  "description": "2024 HTS Revision 9",
+  "date": "09/17/2024",
+  "time": "02:12:11",
+  "title": "Revision 9 (2024)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/26/2024",
+  "releaseStartDate": "09/26/2024",
+  "releaseEndDate": "11/22/2024",
+  "mergedRevisions": [
+   "66e9c825da774b3972057aef"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1723650441,
+   "date": 1723650441000
+  },
+  "name": "2024HTSRev8",
+  "description": "2024 HTS Revision 8",
+  "date": "08/14/2024",
+  "time": "11:47:21",
+  "title": "Revision 8 (2024)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "08/15/2024",
+  "releaseStartDate": "08/15/2024",
+  "releaseEndDate": "09/26/2024",
+  "mergedRevisions": [
+   "66bcd240103e5803b3b1698a"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1722865057,
+   "date": 1722865057000
+  },
+  "name": "2024HTSRev7",
+  "description": "2024 HTS Revision 7",
+  "date": "08/05/2024",
+  "time": "09:37:37",
+  "title": "Revision 7 (2024)",
+  "creator": "Philip Stone",
+  "status": "archive",
+  "target": "08/06/2024",
+  "releaseStartDate": "08/06/2024",
+  "releaseEndDate": "08/15/2024",
+  "mergedRevisions": [
+   "66b0d639845ac5315bcccd62"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1721930939,
+   "date": 1721930939000
+  },
+  "name": "2024HTSRev6",
+  "description": "2024 HTS Revision 6",
+  "date": "07/25/2024",
+  "time": "02:08:59",
+  "title": "Revision 6 (2024)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/31/2024",
+  "releaseStartDate": "07/31/2024",
+  "releaseEndDate": "08/06/2024",
+  "mergedRevisions": [
+   "66a2956e845ac5315bcc546e"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1720808608,
+   "date": 1720808608000
+  },
+  "name": "2024HTSRev5",
+  "description": "2024 HTS Revision 5",
+  "date": "07/12/2024",
+  "time": "02:23:28",
+  "title": "Revision 5 (2024)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/16/2024",
+  "releaseStartDate": "07/16/2024",
+  "releaseEndDate": "07/31/2024",
+  "mergedRevisions": [
+   "66917582d2a7273e3aaeeb92"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1718899901,
+   "date": 1718899901000
+  },
+  "name": "2024HTSRev4",
+  "description": "2024 HTS Revision 4",
+  "date": "06/20/2024",
+  "time": "12:11:41",
+  "title": "Revision 4 (2024)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/28/2024",
+  "releaseStartDate": "06/28/2024",
+  "releaseEndDate": "07/16/2024",
+  "mergedRevisions": [
+   "66745627da545c7df6b8927a",
+   "667c3faada545c7df6b894bd",
+   "667dc96b467faf0ae76c12b5"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1717609812,
+   "date": 1717609812000
+  },
+  "name": "2024HTSRev3",
+  "description": "2024 HTS Revision 3",
+  "date": "06/05/2024",
+  "time": "01:50:12",
+  "title": "Revision 3 (2024)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/14/2024",
+  "releaseStartDate": "06/14/2024",
+  "releaseEndDate": "06/28/2024",
+  "mergedRevisions": [
+   "6660a842916dc34c65d78439"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1717071003,
+   "date": 1717071003000
+  },
+  "name": "2024HTSRev2",
+  "description": "2024 HTS Revision 2",
+  "date": "05/30/2024",
+  "time": "08:10:03",
+  "title": "Revision 2 (2024)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/31/2024",
+  "releaseStartDate": "05/31/2024",
+  "releaseEndDate": "06/14/2024",
+  "mergedRevisions": [
+   "66586d88916dc34c65d70b23"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1705951810,
+   "date": 1705951810000
+  },
+  "name": "2024HTSRev1",
+  "description": "2024 HTS Revision 1",
+  "date": "01/22/2024",
+  "time": "02:30:10",
+  "title": "Revision 1 (2024)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "01/25/2024",
+  "releaseStartDate": "01/25/2024",
+  "releaseEndDate": "05/31/2024",
+  "mergedRevisions": [
+   "65aec33a5a0ce90c24ed0b10",
+   "65aff29f5a0ce90c24ed0b3e",
+   "65b04e705a0ce90c24ed0b49"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1702326753,
+   "date": 1702326753000
+  },
+  "name": "2024HTSBasic",
+  "description": "2024 Basic Edition",
+  "date": "12/11/2023",
+  "time": "03:32:33",
+  "title": "(2024)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "12/29/2023",
+  "releaseStartDate": "12/29/2023",
+  "releaseEndDate": "01/25/2024",
+  "mergedRevisions": [
+   "6577722c289900541078a83d",
+   "65777668289900541078a841"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1695135431,
+   "date": 1695135431000
+  },
+  "name": "2023HTSRev11",
+  "description": "2023 HTS Revision 11",
+  "date": "09/19/2023",
+  "time": "10:57:10",
+  "title": "Revision 11 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/21/2023",
+  "releaseStartDate": "09/21/2023",
+  "releaseEndDate": "12/29/2023",
+  "mergedRevisions": [
+   "6509b7e42a96244541ec02bf"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1689862856,
+   "date": 1689862856000
+  },
+  "name": "2023HTSRev10",
+  "description": "2023 HTS Revision 10",
+  "date": "07/20/2023",
+  "time": "10:20:56",
+  "title": "Revision 10 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/21/2023",
+  "releaseStartDate": "07/24/2023",
+  "releaseEndDate": "09/21/2023",
+  "mergedRevisions": [
+   "64b943afe69da73f051b6d12"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1686830043,
+   "date": 1686830043000
+  },
+  "name": "2023HTSARev9",
+  "description": "2023 HTSA Revision 9",
+  "date": "06/15/2023",
+  "time": "07:54:02",
+  "title": "Revision 9 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/30/2023",
+  "releaseStartDate": "06/30/2023",
+  "releaseEndDate": "07/24/2023",
+  "mergedRevisions": [
+   "648c702e3b7ee15670bd1093",
+   "64935db43b7ee15670bd1160"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1686596646,
+   "date": 1686596646000
+  },
+  "name": "2023HTSARev8",
+  "description": "2023 HTSA Revision 8",
+  "date": "06/12/2023",
+  "time": "03:04:06",
+  "title": "Revision 8 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/13/2023",
+  "releaseStartDate": "06/13/2023",
+  "releaseEndDate": "06/30/2023",
+  "mergedRevisions": [
+   "64876d2966f2fe520fc4a0e7"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1685989085,
+   "date": 1685989085000
+  },
+  "name": "2023HTSARev7",
+  "description": "2023 HTSA Revision 7",
+  "date": "06/05/2023",
+  "time": "02:18:05",
+  "title": "Revision 7 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/06/2023",
+  "releaseStartDate": "06/06/2023",
+  "releaseEndDate": "06/13/2023",
+  "mergedRevisions": [
+   "647e2bb0f686014575377057"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1684874640,
+   "date": 1684874640000
+  },
+  "name": "2023HTSARev6",
+  "description": "2023 HTSA Revision 6",
+  "date": "05/23/2023",
+  "time": "04:44:00",
+  "title": "Revision 6 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/31/2023",
+  "releaseStartDate": "05/31/2023",
+  "releaseEndDate": "06/06/2023",
+  "mergedRevisions": [
+   "646d2a7e32a958642afad3c6"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1684165671,
+   "date": 1684165671000
+  },
+  "name": "2023HTSARev5",
+  "description": "2023 HTSA Revision 5",
+  "date": "05/15/2023",
+  "time": "11:47:51",
+  "title": "Revision 5 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/18/2023",
+  "releaseStartDate": "05/17/2023",
+  "releaseEndDate": "05/31/2023",
+  "mergedRevisions": [
+   "64625517d9dce66806e63c52"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1682441307,
+   "date": 1682441307000
+  },
+  "name": "2023HTSARev4a",
+  "description": "2023 HTSA Revision 4",
+  "date": "04/25/2023",
+  "time": "12:48:27",
+  "title": "Revision 4 (2023)",
+  "creator": "Arun Butcher",
+  "status": "archive",
+  "target": "04/27/2023",
+  "releaseStartDate": "04/27/2023",
+  "releaseEndDate": "05/17/2023",
+  "mergedRevisions": [
+   "644804a468f9171266d3e336"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1679917356,
+   "date": 1679917356000
+  },
+  "name": "2023HTSARev3",
+  "description": "2023 HTSA Revision 3",
+  "date": "03/27/2023",
+  "time": "07:42:36",
+  "title": "Revision 3 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/31/2023",
+  "releaseStartDate": "03/31/2023",
+  "releaseEndDate": "04/07/2023",
+  "mergedRevisions": [
+   "642182e3a155972aec93cbe4",
+   "6422044aa155972aec93cc07"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1678124382,
+   "date": 1678124382000
+  },
+  "name": "2023HTSARev2",
+  "description": "2023 HTSA Revision 2",
+  "date": "03/06/2023",
+  "time": "12:39:42",
+  "title": "Revision 2 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/09/2023",
+  "releaseStartDate": "03/09/2023",
+  "releaseEndDate": "03/31/2023",
+  "mergedRevisions": [
+   "640626a603f83c01099d8a9c",
+   "64075ee503f83c01099d8abd"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1676304519,
+   "date": 1676304519000
+  },
+  "name": "2023HTSARev1",
+  "description": "2023 HTSA Revision 1",
+  "date": "02/13/2023",
+  "time": "11:08:39",
+  "title": "Revision 1 (2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/16/2023",
+  "releaseStartDate": "02/16/2023",
+  "releaseEndDate": "03/09/2023",
+  "mergedRevisions": [
+   "63ea6255b952762a814b7361",
+   "63ea70e0b952762a814b7368"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1670521111,
+   "date": 1670521111000
+  },
+  "name": "2023HTSABasic",
+  "description": "2023 Basic Edition",
+  "date": "12/08/2022",
+  "time": "12:38:31",
+  "title": "(2023)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "12/30/2022",
+  "releaseStartDate": "12/30/2022",
+  "releaseEndDate": "02/16/2023",
+  "mergedRevisions": [
+   "6392214bc7f69812727910af",
+   "6392231cc7f69812727910b3"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1669835853,
+   "date": 1669835853000
+  },
+  "name": "2022HTSARev12",
+  "description": "2022 Revision 12",
+  "date": "11/30/2022",
+  "time": "02:17:33",
+  "title": "Revision 12 (2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "11/30/2022",
+  "releaseStartDate": "11/30/2022",
+  "releaseEndDate": "12/30/2022",
+  "mergedRevisions": [
+   "6387ad4dcf20526b98c09127"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1665691834,
+   "date": 1665691834000
+  },
+  "name": "2022HTSARev11",
+  "description": "2022 Revision 11",
+  "date": "10/13/2022",
+  "time": "04:10:34",
+  "title": "Revision 11 (2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/17/2022",
+  "releaseStartDate": "10/17/2022",
+  "releaseEndDate": "11/30/2022",
+  "mergedRevisions": [
+   "634871c8e4b023a7d2774758",
+   "6349a40de4b023a7d2774763"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1663851070,
+   "date": 1663851070000
+  },
+  "name": "2022HTSARev10",
+  "description": "2022 Revision 10",
+  "date": "09/22/2022",
+  "time": "08:51:10",
+  "title": "Revision 10 (2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/23/2022",
+  "releaseStartDate": "09/23/2022",
+  "releaseEndDate": "10/17/2022",
+  "mergedRevisions": [
+   "632c5b21e4b06cd66f534544"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1662657956,
+   "date": 1662657956000
+  },
+  "name": "2022HTSARev9",
+  "description": "2022 Revision 9",
+  "date": "09/08/2022",
+  "time": "01:25:56",
+  "title": "Revision 9 (2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/09/2022",
+  "releaseStartDate": "09/09/2022",
+  "releaseEndDate": "09/23/2022",
+  "mergedRevisions": [
+   "631a26b2e4b0135b01b9a225",
+   "631a55cce4b0135b01b9a23e"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1658342408,
+   "date": 1658342408000
+  },
+  "name": "2022HTSARev8",
+  "description": "2022 Revision 8",
+  "date": "07/20/2022",
+  "time": "02:40:08",
+  "title": "Revision 8 (2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/26/2022",
+  "releaseStartDate": "07/26/2022",
+  "releaseEndDate": "09/09/2022",
+  "mergedRevisions": [
+   "62d84d56e4b064775287d2e8",
+   "62d9c4f4e4b064775287d37f",
+   "62dafcd0e4b064775287d3ba",
+   "62dea3dfe4b064775287d3da",
+   "62decb0be4b064775287d40a"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1658175999,
+   "date": 1658175999000
+  },
+  "name": "2022HTSARev7",
+  "description": "2022 Revision 7",
+  "date": "07/18/2022",
+  "time": "04:26:39",
+  "title": "Revision 7 (2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/20/2022",
+  "releaseStartDate": "07/20/2022",
+  "releaseEndDate": "07/26/2022",
+  "mergedRevisions": [
+   "62d5c317e4b0647752875c87",
+   "62d5ce2be4b0647752875c8e"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1655306615,
+   "date": 1655306615000
+  },
+  "name": "2022HTSARev6",
+  "description": "2022 Revision 6",
+  "date": "06/15/2022",
+  "time": "11:23:35",
+  "title": "Revision 6 (2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/30/2022",
+  "releaseStartDate": "06/30/2022",
+  "releaseEndDate": "07/20/2022",
+  "mergedRevisions": [
+   "62a9fa5ae4b02d876b4e1415"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1654098181,
+   "date": 1654098181000
+  },
+  "name": "2022HTSARev5",
+  "description": "2022 Revision 5",
+  "date": "06/01/2022",
+  "time": "11:43:01",
+  "title": "Revision 5 (2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/03/2022",
+  "releaseStartDate": "06/03/2022",
+  "releaseEndDate": "06/30/2022",
+  "mergedRevisions": [
+   "629789cae4b06cd158088346",
+   "629911cae4b022d65691ec8e"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1649075830,
+   "date": 1649075830000
+  },
+  "name": "2022HTSARev4",
+  "description": "2022 Revision 4",
+  "date": "04/04/2022",
+  "time": "08:37:10",
+  "title": "Revision 4 (2022) ",
+  "creator": "Arun Butcher",
+  "status": "archive",
+  "target": "04/08/2022",
+  "releaseStartDate": "04/07/2022",
+  "releaseEndDate": "06/03/2022",
+  "mergedRevisions": [
+   "624ae799e4b077995a882a23",
+   "624c46ebe4b077995a882a40",
+   "624d7802e4b077995a882a56"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1648138506,
+   "date": 1648138506000
+  },
+  "name": "2022HTSARev3",
+  "description": "2022 Revision 3",
+  "date": "03/24/2022",
+  "time": "12:15:06",
+  "title": "Revision 3 (2022)",
+  "creator": "Arun Butcher",
+  "status": "archive",
+  "target": "03/31/2022",
+  "releaseStartDate": "03/30/2022",
+  "releaseEndDate": "04/07/2022",
+  "mergedRevisions": [
+   "623ca61ce4b041b70cf9de50",
+   "623ca7dbe4b041b70cf9de54"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1645549177,
+   "date": 1645549177000
+  },
+  "name": "2022HTSARev2",
+  "description": "2022 Revision 2",
+  "date": "02/22/2022",
+  "time": "11:59:37",
+  "title": "Revision 2 (2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/22/2022",
+  "releaseStartDate": "02/23/2022",
+  "releaseEndDate": "03/30/2022",
+  "mergedRevisions": [
+   "62151791e4b091612662ae1d"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1644858860,
+   "date": 1644858860000
+  },
+  "name": "2022HTSABasicRev1B",
+  "description": "2022 Basic and Revision 1",
+  "date": "02/14/2022",
+  "time": "12:14:20",
+  "title": "(2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/15/2022",
+  "releaseStartDate": "02/14/2022",
+  "releaseEndDate": "02/23/2022",
+  "mergedRevisions": [
+   "620a8fcde4b0916126623879"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1641335371,
+   "date": 1641335371000
+  },
+  "name": "2022HTSABasic",
+  "description": "2022 Basic Edition",
+  "date": "01/04/2022",
+  "time": "05:29:31",
+  "title": "(2022)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "01/26/2022",
+  "releaseStartDate": "01/26/2022",
+  "releaseEndDate": "02/09/2022",
+  "mergedRevisions": [
+   "61d4cc39e4b001aa67877b04",
+   "61d5ab13e4b001aa67877b20",
+   "61dc4f99e4b0b247ddc11549",
+   "61ddb25fe4b0b247ddc115b9"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1641328649,
+   "date": 1641328649000
+  },
+  "name": "2022HTSAPrelimC",
+  "description": "2022 Preliminary Edition",
+  "date": "01/04/2022",
+  "time": "03:37:29",
+  "title": "(2022) Preliminary",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "01/05/2022",
+  "releaseStartDate": "01/04/2022",
+  "releaseEndDate": "01/26/2022",
+  "mergedRevisions": [
+   "61d4b115e4b001aa67870762"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1638805208,
+   "date": 1638805208000
+  },
+  "name": "2021HTSABasicRev12",
+  "description": "2021 Basic Revision 12",
+  "date": "12/06/2021",
+  "time": "10:40:08",
+  "title": "Basic Revision 12 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "12/07/2021",
+  "releaseStartDate": "12/07/2021",
+  "releaseEndDate": "12/31/2021",
+  "mergedRevisions": [
+   "61ae2fa2e4b0a851925edc48"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1638370318,
+   "date": 1638370318000
+  },
+  "name": "2021HTSABasicRev11",
+  "description": "2021 Basic Revision 11",
+  "date": "12/01/2021",
+  "time": "09:51:58",
+  "title": "Basic Revision 11 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "12/02/2021",
+  "releaseStartDate": "12/02/2021",
+  "releaseEndDate": "12/07/2021",
+  "mergedRevisions": [
+   "61a78ca3e4b0a851925e6903"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1637685982,
+   "date": 1637685982000
+  },
+  "name": "2021HTSABasicRev10",
+  "description": "2021 Basic Revision 10",
+  "date": "11/23/2021",
+  "time": "11:46:22",
+  "title": "Basic Revision 10 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "11/30/2021",
+  "releaseStartDate": "12/01/2021",
+  "releaseEndDate": "12/02/2021",
+  "mergedRevisions": [
+   "619d1be7e4b0a851925df5af"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1637084851,
+   "date": 1637084851000
+  },
+  "name": "2021HTSABasicRev9",
+  "description": "2021 Basic Revision 9",
+  "date": "11/16/2021",
+  "time": "12:47:31",
+  "title": "Basic Revision 9 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "11/16/2021",
+  "releaseStartDate": "11/18/2021",
+  "releaseEndDate": "12/01/2021",
+  "mergedRevisions": [
+   "61957472e4b038f184dbb0c7"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1632855553,
+   "date": 1632855553000
+  },
+  "name": "2021HTSABasicRev8",
+  "description": "2021 Basic Revision 8",
+  "date": "09/28/2021",
+  "time": "02:59:13",
+  "title": "Basic Revision 8 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/30/2021",
+  "releaseStartDate": "09/30/2021",
+  "releaseEndDate": "11/18/2021",
+  "mergedRevisions": [
+   "615368bfe4b08cc34e508f07"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1627484500,
+   "date": 1627484500000
+  },
+  "name": "2021HTSABasicRev7",
+  "description": "2021 Basic Revision 7",
+  "date": "07/28/2021",
+  "time": "11:01:40",
+  "title": "Basic Revision 7 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/30/2021",
+  "releaseStartDate": "08/02/2021",
+  "releaseEndDate": "09/30/2021",
+  "mergedRevisions": [
+   "61017278e4b002f633b7b7e8"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1625841962,
+   "date": 1625841962000
+  },
+  "name": "2021HTSABasicRev6",
+  "description": "2021 Basic Revision 6",
+  "date": "07/09/2021",
+  "time": "10:46:02",
+  "title": "Basic Revision 6 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/12/2021",
+  "releaseStartDate": "07/09/2021",
+  "releaseEndDate": "08/02/2021",
+  "mergedRevisions": [
+   "60e861c4e4b002f633b74464"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1617044037,
+   "date": 1617044037000
+  },
+  "name": "2021HTSABasicRev2",
+  "description": "2021 Basic Revision 2",
+  "date": "03/29/2021",
+  "time": "02:53:57",
+  "title": "Basic Revision 2 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/31/2021",
+  "releaseStartDate": "04/01/2021",
+  "releaseEndDate": "04/26/2021",
+  "mergedRevisions": [
+   "60622329e4b084705faa1cdb"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1610040174,
+   "date": 1610040174000
+  },
+  "name": "2021HTSAPrelimRev2",
+  "description": "2021 Preliminary Revision 2",
+  "date": "01/07/2021",
+  "time": "12:22:54",
+  "title": "(2021 Preliminary Revision 2)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "01/11/2021",
+  "releaseStartDate": "01/11/2021",
+  "releaseEndDate": "02/06/2021",
+  "mergedRevisions": [
+   "5ff74465e4b0362db41eabd5"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1608128302,
+   "date": 1608128302000
+  },
+  "name": "2021HTSAPreliminary",
+  "description": "2021 Preliminary Edition",
+  "date": "12/16/2020",
+  "time": "09:18:22",
+  "title": "(2021) Preliminary",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "12/31/2020",
+  "releaseStartDate": "12/31/2020",
+  "releaseEndDate": "01/06/2021",
+  "mergedRevisions": [
+   "5fda1e9fe4b0c29d710b5780",
+   "5fda3624e4b0c29d710b5789"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1605717828,
+   "date": 1605717828000
+  },
+  "name": "2020HTSARev27",
+  "description": "2020 Revision 27",
+  "date": "11/18/2020",
+  "time": "11:43:48",
+  "title": "(2020) Revision 27",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "11/20/2020",
+  "releaseStartDate": "11/19/2020",
+  "releaseEndDate": "11/23/2020",
+  "mergedRevisions": [
+   "5fb550f9e4b058816d058d89",
+   "5fb5686de4b058816d058d9c"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1591105772,
+   "date": 1591105772000
+  },
+  "name": "2020HTSARev12",
+  "description": "2020 Revision 12",
+  "date": "06/02/2020",
+  "time": "09:49:32",
+  "title": "(2020) Revision 12",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/04/2020",
+  "releaseStartDate": "06/04/2020",
+  "releaseEndDate": "06/12/2020",
+  "mergedRevisions": [
+   "5ed65b6ce4b0ec2344925cd7"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1566840433,
+   "date": 1566840433000
+  },
+  "name": "2019HTSARev12",
+  "description": "2019 Revision 12",
+  "date": "08/26/2019",
+  "time": "01:27:13",
+  "title": "(2019) Revision 12",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/30/2019",
+  "releaseStartDate": "08/30/2019",
+  "releaseEndDate": "10/07/2019",
+  "mergedRevisions": [
+   "5d641795e4b0ea5cb56ca469"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1582837993,
+   "date": 1582837993000
+  },
+  "name": "2020HTSARev5",
+  "description": "2020 Revision 5",
+  "date": "02/27/2020",
+  "time": "04:13:13",
+  "title": "(2020) Revision 5",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/04/2020",
+  "releaseStartDate": "03/04/2020",
+  "releaseEndDate": "03/18/2020",
+  "mergedRevisions": [
+   "5e5831fde4b0d6321e9c925c"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1565119316,
+   "date": 1565119316000
+  },
+  "name": "2019HTSRev11",
+  "description": "2019 Revision 11",
+  "date": "08/06/2019",
+  "time": "03:21:56",
+  "title": "(2019) Revision 11",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/07/2019",
+  "releaseStartDate": "08/07/2019",
+  "releaseEndDate": "08/30/2019",
+  "mergedRevisions": [
+   "5d49d42ce4b0d37071acc00e"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1562596975,
+   "date": 1562596975000
+  },
+  "name": "2019HTSAREV9",
+  "description": "2019 Revision 9",
+  "date": "07/08/2019",
+  "time": "10:42:55",
+  "title": "(2019) Revision 9",
+  "creator": "Arun Butcher",
+  "status": "archive",
+  "target": "07/09/2019",
+  "releaseStartDate": "07/09/2019",
+  "releaseEndDate": "07/31/2019",
+  "mergedRevisions": [
+   "5d235ab5e4b0cfd6748d25b3",
+   "5d2365b4e4b0cfd6748d25ba"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1558369972,
+   "date": 1558369972000
+  },
+  "name": "2019HTSARev6",
+  "description": "2019 Revision 6",
+  "date": "05/20/2019",
+  "time": "12:32:52",
+  "title": "(2019) Revision 6",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/21/2019",
+  "releaseStartDate": "05/20/2019",
+  "releaseEndDate": "06/05/2019",
+  "mergedRevisions": [
+   "5ce2d86de4b0110eaa73591a"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1600276976,
+   "date": 1600276976000
+  },
+  "name": "2020HTSARev22",
+  "description": "2020 Revision 22",
+  "date": "09/16/2020",
+  "time": "01:22:56",
+  "title": "(2020) Revision 22",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/21/2020",
+  "releaseStartDate": "09/22/2020",
+  "releaseEndDate": "10/08/2020",
+  "mergedRevisions": [
+   "5f6257b9e4b000bba4fbfb1e",
+   "5f68e466e4b000bba4fbfb90"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1555356924,
+   "date": 1555356924000
+  },
+  "name": "2019HTSAREV3",
+  "description": "2019 Revision 3",
+  "date": "04/15/2019",
+  "time": "03:35:24",
+  "title": "(2019) Revision 3",
+  "creator": "Arun Butcher",
+  "status": "archive",
+  "target": "04/18/2019",
+  "releaseStartDate": "04/18/2019",
+  "releaseEndDate": "05/09/2019",
+  "mergedRevisions": [
+   "5cb4dda8e4b004e690b4f816"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1575399054,
+   "date": 1575399054000
+  },
+  "name": "2019HTSARev19",
+  "description": "2019 Revision 19",
+  "date": "12/03/2019",
+  "time": "01:50:54",
+  "title": "(2019) Revision 19",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "12/05/2019",
+  "releaseStartDate": "12/05/2019",
+  "releaseEndDate": "12/16/2019",
+  "mergedRevisions": [
+   "5de6afc0e4b06720d3dbd021"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1529609998,
+   "date": 1529609998000
+  },
+  "name": "2018HTSARevision6",
+  "description": "2018 HTSA Revision 6",
+  "date": "06/21/2018",
+  "time": "03:39:58",
+  "title": "(2018) Revision 6",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/29/2018",
+  "releaseStartDate": "06/29/2018",
+  "releaseEndDate": "07/05/2018",
+  "mergedRevisions": [
+   "5b2c007be4b054818174e67f",
+   "5b3551fee4b01bc0822eb50b"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1574713619,
+   "date": 1574713619000
+  },
+  "name": "2019HTSARev18",
+  "description": "2019 Revision 18",
+  "date": "11/25/2019",
+  "time": "03:26:58",
+  "title": "(2019) Revision 18",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "11/29/2019",
+  "releaseStartDate": "11/29/2019",
+  "releaseEndDate": "12/05/2019",
+  "mergedRevisions": [
+   "5ddc3ab2e4b03e655a765992"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1526327704,
+   "date": 1526327704000
+  },
+  "name": "2018HTSARevision4_1",
+  "description": "2018 HTSA Revision 4.1",
+  "date": "05/14/2018",
+  "time": "03:55:04",
+  "title": "(2018) Revision 4",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/15/2018",
+  "releaseStartDate": "05/15/2018",
+  "releaseEndDate": "05/31/2018",
+  "mergedRevisions": [
+   "5af9ea79e4b02c5518955ef0"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1528319358,
+   "date": 1528319358000
+  },
+  "name": "2018HTSARevision5_1",
+  "description": "2018 HTSA Revision 5",
+  "date": "06/06/2018",
+  "time": "05:09:18",
+  "title": "(2018) Revision 5",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/07/2018",
+  "releaseStartDate": "06/06/2018",
+  "releaseEndDate": "06/29/2018",
+  "mergedRevisions": [
+   "5b184fa0e4b0188e38ae2e77"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1572277046,
+   "date": 1572277046000
+  },
+  "name": "2019HTSARev16",
+  "description": "2019 Revision 16",
+  "date": "10/28/2019",
+  "time": "11:37:26",
+  "title": "(2019) Revision 16",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/30/2019",
+  "releaseStartDate": "10/31/2019",
+  "releaseEndDate": "11/20/2019",
+  "mergedRevisions": [
+   "5db70d24e4b0c261a898ec1f",
+   "5db84305e4b0c261a898ec68",
+   "5db89026e4b0c261a898ec7d"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1462821705,
+   "date": 1462821705000
+  },
+  "name": "chapter98",
+  "description": "2016 HTSA Basic Edition",
+  "date": "05/09/2016",
+  "time": "03:21:45",
+  "title": "(2016)",
+  "creator": "Barbara Elkins",
+  "status": "archive",
+  "target": "05/10/2016",
+  "releaseStartDate": "05/17/2016",
+  "releaseEndDate": "06/30/2016",
+  "mergedRevisions": [
+   "5730e404e4b08867305815ee"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1557437645,
+   "date": 1557437645000
+  },
+  "name": "2019HTSARev5",
+  "description": "2019 Revision 5",
+  "date": "05/09/2019",
+  "time": "05:34:05",
+  "title": "(2019) Revision 5",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/14/2019",
+  "releaseStartDate": "05/15/2019",
+  "releaseEndDate": "05/20/2019",
+  "mergedRevisions": [
+   "5cd49e11e4b004e690b5dafb"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1553696133,
+   "date": 1553696133000
+  },
+  "name": "2019HTSARev2",
+  "description": "2019 Revision 2",
+  "date": "03/27/2019",
+  "time": "10:15:33",
+  "title": "(2019) Revision 2",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/29/2019",
+  "releaseStartDate": "03/28/2019",
+  "releaseEndDate": "04/18/2019",
+  "mergedRevisions": [
+   "5c9b86bce4b0d88ccfc4ea05",
+   "5c9bd6bde4b0d88ccfc4ea15"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1537200033,
+   "date": 1537200033000
+  },
+  "name": "2018HTSARevision12",
+  "description": "2018 HTSA Revision 12",
+  "date": "09/17/2018",
+  "time": "12:00:33",
+  "title": "(2018) Revision 12",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/28/2018",
+  "releaseStartDate": "09/28/2018",
+  "releaseEndDate": "10/12/2018",
+  "mergedRevisions": [
+   "5b9fd16de4b06cd2145764aa",
+   "5ba15c54e4b06cd2145764f3"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1584626523,
+   "date": 1584626523000
+  },
+  "name": "2020HTSARev7",
+  "description": "2020 Revision 7",
+  "date": "03/19/2020",
+  "time": "10:02:03",
+  "title": "(2020) Revision 7",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/20/2020",
+  "releaseStartDate": "03/31/2020",
+  "releaseEndDate": "04/24/2020",
+  "mergedRevisions": [
+   "5e737c4de4b05216e8017ad2",
+   "5e79219de4b05216e8017ae8",
+   "5e79275de4b05216e8017af2",
+   "5e7933dbe4b05216e8017afd"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1531245227,
+   "date": 1531245227000
+  },
+  "name": "2018HTSARevision7_1",
+  "description": "2018 HTSA Revision 7",
+  "date": "07/10/2018",
+  "time": "01:53:47",
+  "title": "(2018) Revision 7",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/11/2018",
+  "releaseStartDate": "07/11/2018",
+  "releaseEndDate": "08/01/2018",
+  "mergedRevisions": [
+   "5b44f38fe4b00f0ccbb173f1"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1517498611,
+   "date": 1517498611000
+  },
+  "name": "2018HTSARevision1",
+  "description": "2018 HTSA Revision 1",
+  "date": "02/01/2018",
+  "time": "10:23:31",
+  "title": "(2018) Revision 1",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/06/2018",
+  "releaseStartDate": "02/07/2018",
+  "releaseEndDate": "02/08/2018",
+  "mergedRevisions": [
+   "5a733474e4b025268c513519"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1598283595,
+   "date": 1598283595000
+  },
+  "name": "2020HTSARev20",
+  "description": "2020 Revision 20",
+  "date": "08/24/2020",
+  "time": "11:39:55",
+  "title": "(2020) Revision 20",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/31/2020",
+  "releaseStartDate": "08/31/2020",
+  "releaseEndDate": "09/04/2020",
+  "mergedRevisions": [
+   "5f43e087e4b0c6e75730a68a",
+   "5f4552c8e4b0c6e75730a6e0"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1594137802,
+   "date": 1594137802000
+  },
+  "name": "2020HTSARev14c",
+  "description": "2020 Revision 14",
+  "date": "07/07/2020",
+  "time": "12:03:22",
+  "title": "(2020) Revision 14",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/08/2020",
+  "releaseStartDate": "07/08/2020",
+  "releaseEndDate": "07/13/2020",
+  "mergedRevisions": [
+   "5f049de2e4b01196fc0f8923"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1591887063,
+   "date": 1591887063000
+  },
+  "name": "2020HTSARev13",
+  "description": "2020 Revision 13",
+  "date": "06/11/2020",
+  "time": "10:51:03",
+  "title": "(2020) Revision 13",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/15/2020",
+  "releaseStartDate": "06/12/2020",
+  "releaseEndDate": "07/01/2020",
+  "mergedRevisions": [
+   "5ee24626e4b01803b0f70983"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1479152252,
+   "date": 1479152252000
+  },
+  "name": "Chapter99",
+  "description": "2016 HTSA Supplement Edition",
+  "date": "11/14/2016",
+  "time": "02:37:32",
+  "title": "(2016) Supplement-1",
+  "creator": "Barbara Elkins",
+  "status": "archive",
+  "target": "11/15/2016",
+  "releaseStartDate": "11/17/2016",
+  "releaseEndDate": "12/30/2016",
+  "mergedRevisions": [
+   "582a13b4e4b0e78db7a26958",
+   "582b20f6e4b0e78db7a2696a"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1619447291,
+   "date": 1619447291000
+  },
+  "name": "2021HTSABasicRev3",
+  "description": "2021 Basic Revision 3",
+  "date": "04/26/2021",
+  "time": "10:28:11",
+  "title": "Basic Revision 3 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/27/2021",
+  "releaseStartDate": "04/26/2021",
+  "releaseEndDate": "06/10/2021",
+  "mergedRevisions": [
+   "6086cea6e4b0e5a9c2728587"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1614615270,
+   "date": 1614615270000
+  },
+  "name": "2021HTSABasic",
+  "description": "2021 Basic Edition",
+  "date": "03/01/2021",
+  "time": "11:14:30",
+  "title": "(2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/05/2021",
+  "releaseStartDate": "03/15/2021",
+  "releaseEndDate": "03/17/2021",
+  "mergedRevisions": [
+   "603d14c7e4b0db8d983f32ef"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1603739134,
+   "date": 1603739134000
+  },
+  "name": "2020HTSARev25",
+  "description": "2020 Revision 25",
+  "date": "10/26/2020",
+  "time": "03:05:34",
+  "title": "(2020) Revision 25",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/27/2020",
+  "releaseStartDate": "10/26/2020",
+  "releaseEndDate": "10/30/2020",
+  "mergedRevisions": [
+   "5f971ecee4b058816d04a70f"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1594299105,
+   "date": 1594299105000
+  },
+  "name": "2020HTSARev15",
+  "description": "2020 Revision 15",
+  "date": "07/09/2020",
+  "time": "08:51:45",
+  "title": "(2020) Revision 15",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/13/2020",
+  "releaseStartDate": "07/13/2020",
+  "releaseEndDate": "07/23/2020",
+  "mergedRevisions": [
+   "5f07144ee4b01196fc0ffc26",
+   "5f072f30e4b01196fc0ffc3b"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1579025406,
+   "date": 1579025406000
+  },
+  "name": "2020HTSABasicB",
+  "description": "2020 Basic Edition",
+  "date": "01/14/2020",
+  "time": "01:10:06",
+  "title": "(2020)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "01/15/2020",
+  "releaseStartDate": "01/16/2020",
+  "releaseEndDate": "01/21/2020",
+  "mergedRevisions": [
+   "5e1e05d9e4b0a3bc03179cc9"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1587382248,
+   "date": 1587382248000
+  },
+  "name": "2020HTSARev8",
+  "description": "2020 Revision 8",
+  "date": "04/20/2020",
+  "time": "07:30:48",
+  "title": "(2020) Revision 8",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/23/2020",
+  "releaseStartDate": "04/24/2020",
+  "releaseEndDate": "04/29/2020",
+  "mergedRevisions": [
+   "5e9d8a70e4b0bb98f00236dd"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1542647309,
+   "date": 1542647309000
+  },
+  "name": "2018HTSARevision14_1",
+  "description": "2018 HTSA Revision 14",
+  "date": "11/19/2018",
+  "time": "12:08:29",
+  "title": "(2018) Revision 14",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "11/20/2018",
+  "releaseStartDate": "11/20/2018",
+  "releaseEndDate": "02/01/2019",
+  "mergedRevisions": [
+   "5bf2f448e4b07abd59140f28"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1534798250,
+   "date": 1534798250000
+  },
+  "name": "2018HTSARevision10",
+  "description": "2018 HTSA Revision 10",
+  "date": "08/20/2018",
+  "time": "04:50:50",
+  "title": "(2018) Revision 10",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/22/2018",
+  "releaseStartDate": "08/22/2018",
+  "releaseEndDate": "08/30/2018",
+  "mergedRevisions": [
+   "5b7b2ae4e4b0294db34c1366"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1557404974,
+   "date": 1557404974000
+  },
+  "name": "2019HTSARev4",
+  "description": "2019 Revision 4",
+  "date": "05/09/2019",
+  "time": "08:29:34",
+  "title": "(2019) Revision 4",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/10/2019",
+  "releaseStartDate": "05/09/2019",
+  "releaseEndDate": "05/15/2019",
+  "mergedRevisions": [
+   "5cd41e33e4b004e690b569b1"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1611683791,
+   "date": 1611683791000
+  },
+  "name": "2021HTSAPrelimRev3",
+  "description": "2021 Preliminary Revision 3",
+  "date": "01/26/2021",
+  "time": "12:56:31",
+  "title": "(2021) Preliminary Revision 3",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/02/2021",
+  "releaseStartDate": "02/06/2021",
+  "releaseEndDate": "03/15/2021",
+  "mergedRevisions": [
+   "601059abe4b024201858f45e"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1550159664,
+   "date": 1550159664000
+  },
+  "name": "2019HTSABASICA",
+  "description": "2019 Basic Edition",
+  "date": "02/14/2019",
+  "time": "10:54:24",
+  "title": "(2019)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/15/2019",
+  "releaseStartDate": "02/21/2019",
+  "releaseEndDate": "03/25/2019",
+  "mergedRevisions": [
+   "5c6590e8e4b0ce28625bbea8",
+   "5c6c20bee4b0ce28625bbedd"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1524690735,
+   "date": 1524690735000
+  },
+  "name": "2018HTSARevision4",
+  "description": "2018 HTSA Revision 4",
+  "date": "04/25/2018",
+  "time": "05:12:15",
+  "title": "(2018) Revision 4",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/30/2018",
+  "releaseStartDate": "05/01/2018",
+  "releaseEndDate": "05/15/2018",
+  "mergedRevisions": [
+   "5ae0efebe4b09d7bcf800bfd"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1571919276,
+   "date": 1571919276000
+  },
+  "name": "2019HTSARev15",
+  "description": "2019 HTS Revision 15",
+  "date": "10/24/2019",
+  "time": "08:14:36",
+  "title": "(2019) Revision 15",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/28/2019",
+  "releaseStartDate": "10/24/2019",
+  "releaseEndDate": "10/31/2019",
+  "mergedRevisions": [
+   "5db1971fe4b0c261a8987aa0"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1518101466,
+   "date": 1518101466000
+  },
+  "name": "2018HTSARevision1_1",
+  "description": "2018 Revision 1.1",
+  "date": "02/08/2018",
+  "time": "09:51:06",
+  "title": "(2018) Revision 1.1, (Effective Date 02/07/2018)",
+  "creator": "James Holbein",
+  "status": "archive",
+  "target": "02/09/2018",
+  "releaseStartDate": "02/08/2018",
+  "releaseEndDate": "02/28/2018",
+  "mergedRevisions": [
+   "5a7c6561e4b003dc7dd8bb07"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1441129755,
+   "date": 1441129755000
+  },
+  "name": "SeptemberRelease",
+  "description": "2015 HTSA Revision 1 Edition",
+  "date": "09/01/2015",
+  "time": "01:49:15",
+  "title": "(2015) (Rev.1)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/10/2015",
+  "releaseStartDate": "09/10/2015",
+  "releaseEndDate": "10/07/2015",
+  "mergedRevisions": [
+   "55e5e7a7e4b0c3044ba8ef37"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1599058685,
+   "date": 1599058685000
+  },
+  "name": "2020HTSARev21",
+  "description": "2020 Revision 21",
+  "date": "09/02/2020",
+  "time": "10:58:05",
+  "title": "(2020) Revision 21",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/04/2020",
+  "releaseStartDate": "09/04/2020",
+  "releaseEndDate": "09/22/2020",
+  "mergedRevisions": [
+   "5f4fb4dde4b0c6e757311a76",
+   "5f4fb5fae4b0c6e757311a7b",
+   "5f50f0f0e4b068282100cda3"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1596120948,
+   "date": 1596120948000
+  },
+  "name": "2020HTSARev18",
+  "description": "2020 Revision 18",
+  "date": "07/30/2020",
+  "time": "10:55:48",
+  "title": "(2020) Revision 18",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/31/2020",
+  "releaseStartDate": "07/30/2020",
+  "releaseEndDate": "08/14/2020",
+  "mergedRevisions": [
+   "5f22e050e4b01196fc115692"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1606139692,
+   "date": 1606139692000
+  },
+  "name": "2020HTSARev28",
+  "description": "2020 Revision 28",
+  "date": "11/23/2020",
+  "time": "08:54:52",
+  "title": "(2020) Revision 28",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "11/24/2020",
+  "releaseStartDate": "11/23/2020",
+  "releaseEndDate": "12/31/2020",
+  "mergedRevisions": [
+   "5fbbc00fe4b0162b14b48503"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1590594048,
+   "date": 1590594048000
+  },
+  "name": "2020HTSARev11",
+  "description": "2020 Revision 11",
+  "date": "05/27/2020",
+  "time": "11:40:48",
+  "title": "(2020) Revision 11",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/29/2020",
+  "releaseStartDate": "05/29/2020",
+  "releaseEndDate": "06/04/2020",
+  "mergedRevisions": [
+   "5ece8b53e4b0ec234491ea67"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1601918377,
+   "date": 1601918377000
+  },
+  "name": "2020HTSARev23",
+  "description": "2020 Revision 23",
+  "date": "10/05/2020",
+  "time": "01:19:37",
+  "title": "(2020) Revision 23",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/07/2020",
+  "releaseStartDate": "10/08/2020",
+  "releaseEndDate": "10/23/2020",
+  "mergedRevisions": [
+   "5f7b574be4b0ec3c0f4f7e08"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1564497858,
+   "date": 1564497858000
+  },
+  "name": "2019HTSARev10",
+  "description": "2019 Revision 10",
+  "date": "07/30/2019",
+  "time": "10:44:18",
+  "title": "(2019) Revision 10",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/31/2019",
+  "releaseStartDate": "07/31/2019",
+  "releaseEndDate": "08/07/2019",
+  "mergedRevisions": [
+   "5d40591ae4b0873130d7fd6b"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1513958130,
+   "date": 1513958130000
+  },
+  "name": "2018BasicEdition",
+  "description": "2018 HTSA Basic Edition",
+  "date": "12/22/2017",
+  "time": "10:55:30",
+  "title": "(2018)",
+  "creator": "Arun Butcher",
+  "status": "archive",
+  "target": "01/02/2018",
+  "releaseStartDate": "12/29/2017",
+  "releaseEndDate": "02/07/2018",
+  "mergedRevisions": [
+   "5a3d2b25e4b07bad576da05f",
+   "5a427c42e4b07bad576da0a1"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1597150095,
+   "date": 1597150095000
+  },
+  "name": "2020HTSARev19",
+  "description": "2020 Revision 19",
+  "date": "08/11/2020",
+  "time": "08:48:15",
+  "title": "(2020) Revision 19",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/14/2020",
+  "releaseStartDate": "08/14/2020",
+  "releaseEndDate": "08/31/2020",
+  "mergedRevisions": [
+   "5f329513e4b0a4aa3771d9bf"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1623171666,
+   "date": 1623171666000
+  },
+  "name": "2021HTSABasicRev4",
+  "description": "2021 Basic Revision 4",
+  "date": "06/08/2021",
+  "time": "01:01:06",
+  "title": "Basic Revision 4 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "06/10/2021",
+  "releaseStartDate": "06/10/2021",
+  "releaseEndDate": "07/02/2021",
+  "mergedRevisions": [
+   "60bfa3bae4b07c86f6e664f0"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1595595005,
+   "date": 1595595005000
+  },
+  "name": "2020HTSARev17",
+  "description": "2020 Revision 17",
+  "date": "07/24/2020",
+  "time": "08:50:05",
+  "title": "2020 Revision 17",
+  "creator": "Arun Butcher",
+  "status": "archive",
+  "target": "07/29/2020",
+  "releaseStartDate": "07/28/2020",
+  "releaseEndDate": "07/30/2020",
+  "mergedRevisions": [
+   "5f1ad991e4b01196fc10e308",
+   "5f1f24c9e4b01196fc10e394"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1615905488,
+   "date": 1615905488000
+  },
+  "name": "2021HTSABasicRev1",
+  "description": "2021 Basic Revision 1",
+  "date": "03/16/2021",
+  "time": "10:38:08",
+  "title": "Basic Revision 1 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/17/2021",
+  "releaseStartDate": "03/17/2021",
+  "releaseEndDate": "04/01/2021",
+  "mergedRevisions": [
+   "6050c3d8e4b084705fa9a996"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1582218915,
+   "date": 1582218915000
+  },
+  "name": "2020HTSARev4",
+  "description": "2020 Revision 4",
+  "date": "02/20/2020",
+  "time": "12:15:15",
+  "title": "(2020) Revision 4",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/21/2020",
+  "releaseStartDate": "02/21/2020",
+  "releaseEndDate": "03/04/2020",
+  "mergedRevisions": [
+   "5e4ebf88e4b0d6321e9c201a"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1609886728,
+   "date": 1609886728000
+  },
+  "name": "2021HTSAPrelimRev1",
+  "description": "2021 Preliminary Revision 1",
+  "date": "01/05/2021",
+  "time": "05:45:28",
+  "title": "(2021 Preliminary Revision 1)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "01/06/2021",
+  "releaseStartDate": "01/06/2021",
+  "releaseEndDate": "01/11/2021",
+  "mergedRevisions": [
+   "5ff4ef47e4b0362db41e388e",
+   "5ff4f2e7e4b0362db41e3893"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1486569010,
+   "date": 1486569010000
+  },
+  "name": "basicCorrections2",
+  "description": "2017 HTSA Basic Edition",
+  "date": "02/08/2017",
+  "time": "10:50:10",
+  "title": "(2017)",
+  "creator": "Nicholas Mazzi",
+  "status": "archive",
+  "target": "02/09/2017",
+  "releaseStartDate": "02/09/2017",
+  "releaseEndDate": "06/30/2017",
+  "mergedRevisions": [
+   "589b3ebde4b0c9192e33fc4d",
+   "589b4267e4b0c9192e33fc57"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1603136785,
+   "date": 1603136785000
+  },
+  "name": "2020HTSARev24",
+  "description": "2020 Revision 24",
+  "date": "10/19/2020",
+  "time": "03:46:25",
+  "title": "(2020) Revision 24",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/22/2020",
+  "releaseStartDate": "10/23/2020",
+  "releaseEndDate": "10/26/2020",
+  "mergedRevisions": [
+   "5f8dedfae4b058816d0433ee"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1575907841,
+   "date": 1575907841000
+  },
+  "name": "2019HTSARev20",
+  "description": "2019 Revision 20",
+  "date": "12/09/2019",
+  "time": "11:10:41",
+  "title": "(2019) Revision 20",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "12/16/2019",
+  "releaseStartDate": "12/16/2019",
+  "releaseEndDate": "12/31/2019",
+  "mergedRevisions": [
+   "5dee73e4e4b0887666c02949",
+   "5dee750ae4b0887666c0294d",
+   "5dee75e2e4b0887666c02951"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1587755581,
+   "date": 1587755581000
+  },
+  "name": "2020HTSARevision9",
+  "description": "2020 Revision 9",
+  "date": "04/24/2020",
+  "time": "03:13:01",
+  "title": "(2020) Revision 9",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/29/2020",
+  "releaseStartDate": "04/29/2020",
+  "releaseEndDate": "05/14/2020",
+  "mergedRevisions": [
+   "5ea33b27e4b0bb98f002aa10"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1538423821,
+   "date": 1538423821000
+  },
+  "name": "2018HTSARevision13",
+  "description": "2018 HTSA Revision 13",
+  "date": "10/01/2018",
+  "time": "03:57:01",
+  "title": "(2018) Revision 13",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/11/2018",
+  "releaseStartDate": "10/12/2018",
+  "releaseEndDate": "10/31/2018",
+  "mergedRevisions": [
+   "5bb27d8fe4b06cd214584740"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1579215055,
+   "date": 1579215055000
+  },
+  "name": "2020HTSARev1",
+  "description": "2020 Revision 1",
+  "date": "01/16/2020",
+  "time": "05:50:55",
+  "title": "(2020) Revision 1",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "01/21/2020",
+  "releaseStartDate": "01/21/2020",
+  "releaseEndDate": "02/06/2020",
+  "mergedRevisions": [
+   "5e20ea90e4b0495316e65fc5"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1533652989,
+   "date": 1533652989000
+  },
+  "name": "2018HTSARevision8_1",
+  "description": "2018 HTSA Revision 8",
+  "date": "08/07/2018",
+  "time": "10:43:09",
+  "title": "(2018) Revision 8",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/08/2018",
+  "releaseStartDate": "08/07/2018",
+  "releaseEndDate": "08/16/2018",
+  "mergedRevisions": [
+   "5b69b0b1e4b0d6e6af6b1a87"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1524066009,
+   "date": 1524066009000
+  },
+  "name": "2018HTSARevision3",
+  "description": "2018 HTSA Revision 3",
+  "date": "04/18/2018",
+  "time": "11:40:09",
+  "title": "(2018) Revision 3",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "04/25/2018",
+  "releaseStartDate": "04/25/2018",
+  "releaseEndDate": "05/01/2018",
+  "mergedRevisions": [
+   "5ad768b6e4b09d7bcf7f9bf3",
+   "5ad76ae3e4b09d7bcf7f9bf9"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1509385012,
+   "date": 1509385012000
+  },
+  "name": "NTE",
+  "description": "2017 HTSA Revision 1 Edition",
+  "date": "10/30/2017",
+  "time": "01:36:52",
+  "title": "(2017) - Revision 1",
+  "creator": "Barbara Elkins",
+  "status": "archive",
+  "target": "10/31/2017",
+  "releaseStartDate": "10/30/2017",
+  "releaseEndDate": "12/21/2017",
+  "mergedRevisions": [
+   "59f763d8e4b004c62ee992bc"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1584028183,
+   "date": 1584028183000
+  },
+  "name": "2020HTSARev6",
+  "description": "2020 Revision 6",
+  "date": "03/12/2020",
+  "time": "11:49:43",
+  "title": "(2020) Revision 6",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/17/2020",
+  "releaseStartDate": "03/18/2020",
+  "releaseEndDate": "03/31/2020",
+  "mergedRevisions": [
+   "5e6a5b84e4b05216e8010843",
+   "5e6a9b40e4b05216e8010874",
+   "5e6aa57fe4b05216e801088c"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1534194737,
+   "date": 1534194737000
+  },
+  "name": "2018HTSARevision9",
+  "description": "2018 HTSA Revision 9",
+  "date": "08/13/2018",
+  "time": "05:12:17",
+  "title": "(2018) HTSA Revision 9",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "08/16/2018",
+  "releaseStartDate": "08/16/2018",
+  "releaseEndDate": "08/22/2018",
+  "mergedRevisions": [
+   "5b71f7d7e4b0d6e6af6b89c7"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1580757455,
+   "date": 1580757455000
+  },
+  "name": "2020HTSARev2",
+  "description": "2020 Revision 2",
+  "date": "02/03/2020",
+  "time": "02:17:35",
+  "title": "(2020) Revision 2",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/06/2020",
+  "releaseStartDate": "02/06/2020",
+  "releaseEndDate": "02/13/2020",
+  "mergedRevisions": [
+   "5e387347e4b0495316e6d249"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1561989392,
+   "date": 1561989392000
+  },
+  "name": "2019HTSAREV8b",
+  "description": "2019 Revision 8",
+  "date": "07/01/2019",
+  "time": "09:56:32",
+  "title": "(2019) Revision 8",
+  "creator": "Arun Butcher",
+  "status": "archive",
+  "target": "07/02/2019",
+  "releaseStartDate": "07/01/2019",
+  "releaseEndDate": "07/09/2019",
+  "mergedRevisions": [
+   "5d1a1195e4b0cfd6748cb467"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1560441688,
+   "date": 1560441688000
+  },
+  "name": "2019HTSAREV7C",
+  "description": "2019 Revision 7",
+  "date": "06/13/2019",
+  "time": "12:01:28",
+  "title": "(2019) Revision 7",
+  "creator": "Arun Butcher",
+  "status": "archive",
+  "target": "06/14/2019",
+  "releaseStartDate": "06/13/2019",
+  "releaseEndDate": "06/28/2019",
+  "mergedRevisions": [
+   "5d0273fbe4b02b6f8aad72e2"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1553104659,
+   "date": 1553104659000
+  },
+  "name": "2019HTSARev1",
+  "description": "2019 Revision 1",
+  "date": "03/20/2019",
+  "time": "01:57:39",
+  "title": "(2019) Revision 1",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/25/2019",
+  "releaseStartDate": "03/25/2019",
+  "releaseEndDate": "03/28/2019",
+  "mergedRevisions": [
+   "5c92800ce4b0d88ccfc47837",
+   "5c92a257e4b0d88ccfc4784f"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1522346369,
+   "date": 1522346369000
+  },
+  "name": "2018HTSARevision2_1",
+  "description": "2018 HTSA Revision 2 (Posted 03-29-18)",
+  "date": "03/29/2018",
+  "time": "01:59:29",
+  "title": "(2018) Revision 2 (Posted March 29, 2018)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/30/2018",
+  "releaseStartDate": "03/29/2018",
+  "releaseEndDate": "04/25/2018",
+  "mergedRevisions": [
+   "5abd2aabe4b0e1db3f61fef8",
+   "5abd5b43e4b09d7bcf7f2ce3",
+   "5abd60c6e4b09d7bcf7f2ced"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1519675396,
+   "date": 1519675396000
+  },
+  "name": "2018HTSARevision1_2",
+  "description": "2018 HTSA Revision 1.2 (Effective Date 03/01/2018)",
+  "date": "02/26/2018",
+  "time": "03:03:16",
+  "title": "(2018) Revision 1.2 (Effective Date 03/01/2018)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "02/28/2018",
+  "releaseStartDate": "02/28/2018",
+  "releaseEndDate": "03/23/2018",
+  "mergedRevisions": [
+   "5a946939e4b003dc7dd92a0f",
+   "5a95ad39e4b003dc7dd92a31"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1603889019,
+   "date": 1603889019000
+  },
+  "name": "2020HTSARev26",
+  "description": "2020 Revision 26",
+  "date": "10/28/2020",
+  "time": "08:43:39",
+  "title": "(2020) Revision 26",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/30/2020",
+  "releaseStartDate": "10/30/2020",
+  "releaseEndDate": "11/19/2020",
+  "mergedRevisions": [
+   "5f9968c9e4b058816d0519f6"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1624367145,
+   "date": 1624367145000
+  },
+  "name": "2021HTSABasicRev5",
+  "description": "2021 Basic Revision 5",
+  "date": "06/22/2021",
+  "time": "09:05:45",
+  "title": "Basic Revision 5 (2021)",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "07/01/2021",
+  "releaseStartDate": "07/02/2021",
+  "releaseEndDate": "07/09/2021",
+  "mergedRevisions": [
+   "60d1e15ce4b06d5915d789cd"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1595366248,
+   "date": 1595366248000
+  },
+  "name": "2020HTSARev16",
+  "description": "2020 HTSA Revision 16",
+  "date": "07/21/2020",
+  "time": "05:17:28",
+  "title": "(2020) Revision 16",
+  "creator": "Donnette Rimmer",
+  "status": "archive",
+  "target": "07/23/2020",
+  "releaseStartDate": "07/23/2020",
+  "releaseEndDate": "07/28/2020",
+  "mergedRevisions": [
+   "5f17609ee4b01196fc106fdd",
+   "5f18379ce4b01196fc106fef"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1588939217,
+   "date": 1588939217000
+  },
+  "name": "2020HTSARev10",
+  "description": "2020 Revision 10",
+  "date": "05/08/2020",
+  "time": "08:00:17",
+  "title": "(2020) Revision 10",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "05/13/2020",
+  "releaseStartDate": "05/14/2020",
+  "releaseEndDate": "05/29/2020",
+  "mergedRevisions": [
+   "5eb54b19e4b0ec23449177a0",
+   "5ebaee02e4b0ec234491783b"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1573597397,
+   "date": 1573597397000
+  },
+  "name": "2019HTSARev17",
+  "description": "2019 Revision 17",
+  "date": "11/12/2019",
+  "time": "05:23:17",
+  "title": "(2019) Revision 17",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "11/18/2019",
+  "releaseStartDate": "11/20/2019",
+  "releaseEndDate": "11/29/2019",
+  "mergedRevisions": [
+   "5dcb329ee4b03e655a75e563",
+   "5dcc2e20e4b03e655a75e573",
+   "5dcc7ef8e4b03e655a75e5b9",
+   "5dcdb888e4b03e655a75e647",
+   "5dd43b8ce4b03e655a75e7e5",
+   "5dd55e0ae4b03e655a75e82b"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1581368430,
+   "date": 1581368430000
+  },
+  "name": "2020HTSARev3",
+  "description": "2020 Revision 3",
+  "date": "02/10/2020",
+  "time": "04:00:30",
+  "title": "(2020) Revision 3",
+  "creator": "Donnette Rimmer",
+  "status": "archive",
+  "target": "02/13/2020",
+  "releaseStartDate": "02/13/2020",
+  "releaseEndDate": "02/21/2020",
+  "mergedRevisions": [
+   "5e41c6d4e4b0d6321e9bad5b",
+   "5e42e314e4b0d6321e9bad92"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1571170470,
+   "date": 1571170470000
+  },
+  "name": "2019HTSARev14",
+  "description": "2019 Revision 14",
+  "date": "10/15/2019",
+  "time": "04:14:30",
+  "title": "(2019) Revision 14",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/17/2019",
+  "releaseStartDate": "10/18/2019",
+  "releaseEndDate": "10/24/2019",
+  "mergedRevisions": [
+   "5da62a24e4b0c261a8980845"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1569957921,
+   "date": 1569957921000
+  },
+  "name": "2019HTSAREV13",
+  "description": "2019 Revision 13",
+  "date": "10/01/2019",
+  "time": "03:25:21",
+  "title": "(2019) Revision 13",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "10/07/2019",
+  "releaseStartDate": "10/07/2019",
+  "releaseEndDate": "10/18/2019",
+  "mergedRevisions": [
+   "5d93a931e4b068b406bb6d01"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1521475005,
+   "date": 1521475005000
+  },
+  "name": "2018HTSARevision2",
+  "description": "2018 HTSA Revision 2",
+  "date": "03/19/2018",
+  "time": "11:56:45",
+  "title": "(2018) Revision 2",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "03/22/2018",
+  "releaseStartDate": "03/23/2018",
+  "releaseEndDate": "03/29/2018",
+  "mergedRevisions": [
+   "5aafdf4fe4b087cd3b522478",
+   "5aafe326e4b087cd3b522480",
+   "5ab115b8e4b087cd3b5224b9"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1536087212,
+   "date": 1536087212000
+  },
+  "name": "2018HTSARevision11_1",
+  "description": "2018 HTSA Revision 11",
+  "date": "09/04/2018",
+  "time": "02:53:32",
+  "title": "(2018) Revision 11",
+  "creator": "Janet Freas",
+  "status": "archive",
+  "target": "09/05/2018",
+  "releaseStartDate": "09/05/2018",
+  "releaseEndDate": "09/28/2018",
+  "mergedRevisions": [
+   "5b8ed5aae4b087203479f9c9"
+  ]
+ },
+ {
+  "id": {
+   "timestamp": 1443730772,
+   "date": 1443730772000
+  },
+  "name": "Presproc",
+  "description": "2015 HTSA Revision 2 Edition",
+  "date": "10/01/2015",
+  "time": "04:19:32",
+  "title": "(2015)(Rev.2)",
+  "creator": "Barbara Elkins",
+  "status": "archive",
+  "target": "10/08/2015",
+  "releaseStartDate": "10/07/2015",
+  "releaseEndDate": "12/31/2015",
+  "mergedRevisions": [
+   "560d9690e4b0c3044ba95cd3"
+  ]
+ }
+]

@@ -55,40 +55,18 @@ def test_invalid_registration_is_unprocessable(tmp_path):
     assert response.status_code == 422
 
 
-def test_root_serves_login_ui(tmp_path):
-    client = TestClient(create_app(tmp_path / "accounts.sqlite3", "test-secret"))
 
-    response = client.get("/")
-
-    assert response.status_code == 200
-    assert 'id="login-form"' in response.text
-    assert 'id="register-form"' in response.text
-    assert 'id="register-form" class="auth-form" hidden' in response.text
-    assert 'id="register-email" name="email" type="email"' in response.text
-    assert 'id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required' in response.text
-    assert "novalidate" not in response.text
-
-
-def test_static_assets_are_served(tmp_path):
-    client = TestClient(create_app(tmp_path / "accounts.sqlite3", "test-secret"))
-
-    css = client.get("/static/app.css")
-    javascript = client.get("/static/app.js")
-
-    assert css.status_code == 200
-    assert "--accent" in css.text
-    assert javascript.status_code == 200
-    assert "location.replace('/trade')" in javascript.text
-
-
-def test_workspace_uses_original_business_navigation_without_activation_or_extra_email_page(tmp_path):
-    client = TestClient(create_app(tmp_path / "accounts.sqlite3", "test-secret"))
-
-    response = client.get("/trade")
-
-    assert response.status_code == 200
-    for label in ["今日简报", "客户开发", "网站诊断", "社媒营销", "LinkedIn", "海关数据", "客户管理", "文档库", "文档生成", "客户背调", "定时任务", "对话记录"]:
-        assert label in response.text
-    assert "邮件沟通" not in response.text
-    assert "30 天试用" not in response.text
-    assert "激活码" not in response.text
+def test_unchanged_session_does_not_overwrite_company_selection(tmp_path):
+    app = create_app(tmp_path / "accounts.sqlite3", "test-secret")
+    client = TestClient(app)
+    client.post("/api/register", json={"email": "session@example.com", "password": "correct-horse-1"})
+    client.get("/api/me")
+    previous_cookie = client.cookies.get("login_demo_session")
+    created = client.post("/api/companies", json={"name": "Second"})
+    assert "set-cookie" in created.headers
+    old_client = TestClient(app)
+    old_client.cookies.set("login_demo_session", previous_cookie)
+    delayed_read = old_client.get("/api/company")
+    assert "set-cookie" not in delayed_read.headers
+    assert client.get("/api/company").json()["id"] == created.json()["id"]
+    assert "set-cookie" in client.post("/api/logout").headers

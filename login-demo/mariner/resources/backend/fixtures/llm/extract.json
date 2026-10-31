@@ -1,0 +1,64 @@
+{
+ "_meta": {
+  "role": "extract",
+  "lookup_key": "document_number"
+ },
+ "2026-20511": {
+  "document_number": "2026-20511",
+  "legal_status": "in_force",
+  "change": {
+   "change_type": "hts_profile_update",
+   "target_id": "8479.90.9591",
+   "payload": {
+    "s301_exclusion": {
+     "heading": null,
+     "note": "U.S. note 20(vvv)(i)(20); from 2026-07-01 described in statistical reporting number 8479.90.9591",
+     "valid_from": "2026-07-01",
+     "valid_to": null,
+     "verified": false
+    }
+   }
+  },
+  "summary_zh": "自 2026-07-01 起入境的货物，中国 301 排除注释 20(vvv)(i)(20) 的适用范围改用统计编号 8479.90.9591 描述，以维持原有排除范围；不改变税率。",
+  "evidence": [
+   {
+    "field": "change.target_id",
+    "quote": "described in statistical reporting number 8479.90.9591 effective"
+   },
+   {
+    "field": "change.payload.s301_exclusion.note",
+    "quote": "makes a conforming amendment to U.S. note 20(vvv)(i)(20) to subchapter"
+   },
+   {
+    "field": "change.payload.s301_exclusion.valid_from",
+    "quote": "eastern standard time on July 1, 2026"
+   },
+   {
+    "field": "legal_status",
+    "quote": "is effective as of July 1, 2026"
+   }
+  ],
+  "summary_en": "From 2026-07-01, the coverage of China Section 301 exclusion note 20(vvv)(i)(20) is described by statistical number 8479.90.9591 to keep the original coverage; no rate change."
+ },
+ "2026-20510": {
+  "document_number": "2026-20510",
+  "legal_status": "in_force",
+  "change": {
+   "change_type": "no_rate_change",
+   "target_id": null,
+   "payload": {}
+  },
+  "summary_zh": "中国技术转让 301 措施未终止、继续有效，之后可能因四年审查而修改；本次不改变任何税率。",
+  "evidence": [
+   {
+    "field": "legal_status",
+    "quote": "the actions have not terminated and will remain in effect"
+   },
+   {
+    "field": "summary_zh",
+    "quote": "did not terminate on July 6, 2026"
+   }
+  ],
+  "summary_en": "The China technology-transfer Section 301 actions have not terminated and remain in effect; they may change after the four-year review; this notice changes no rate."
+ }
+}

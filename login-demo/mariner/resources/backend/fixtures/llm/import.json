@@ -1,0 +1,66 @@
+{
+ "_meta": {
+  "role": "import",
+  "lookup_key": "sha256 of file bytes"
+ },
+ "338b5ec0c948576e90b5e03031fe43503574fcc3c8e93e8f02b04f6bb7ad5115": {
+  "rows": [
+   {
+    "order_id": "ORD-101",
+    "product": "Plastic storage box",
+    "hts10": "3926.90.99",
+    "origin": "CN",
+    "incoterm": "DDP",
+    "channel": "b2b",
+    "importer_of_record": "seller",
+    "tariff_clause": "none",
+    "status": "confirmed",
+    "qty": 5000,
+    "unit_price_usd": 4.2,
+    "purchase_cost_cny_per_unit": 14,
+    "other_cost_cny_per_unit": 1,
+    "fx_cny_per_usd": 7.1,
+    "intl_freight_usd": 2200,
+    "insurance_usd": 0,
+    "us_side_cost_usd": 1200,
+    "customs_value_usd": 11000,
+    "transport_mode": "ocean",
+    "quote_date": "2026-10-20",
+    "load_date": "2026-11-05",
+    "entry_date": "2026-12-05",
+    "delivery_date": "2026-12-12",
+    "baseline_duty_rate_pct": 42.8,
+    "target_margin_pct": 15
+   },
+   {
+    "order_id": "ORD-102",
+    "product": "Plush toy",
+    "hts10": "9503.00.00",
+    "origin": "CN",
+    "incoterm": "FOB",
+    "channel": "b2b",
+    "importer_of_record": "buyer",
+    "tariff_clause": "none",
+    "status": "quoted",
+    "qty": 3000,
+    "unit_price_usd": 6.5,
+    "purchase_cost_cny_per_unit": 30,
+    "other_cost_cny_per_unit": 1.5,
+    "fx_cny_per_usd": 7.1,
+    "intl_freight_usd": 0,
+    "insurance_usd": 0,
+    "us_side_cost_usd": 0,
+    "customs_value_usd": 19500,
+    "transport_mode": "ocean",
+    "quote_date": "2026-10-25",
+    "load_date": "2026-11-15",
+    "entry_date": "2026-12-15",
+    "delivery_date": "2026-12-22",
+    "baseline_duty_rate_pct": 12.5,
+    "target_margin_pct": 18
+   }
+  ],
+  "notes_zh": "从图片识别出 2 行订单。",
+  "notes_en": "Recognized 2 order rows from the image."
+ }
+}

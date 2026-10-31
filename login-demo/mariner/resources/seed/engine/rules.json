@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "snapshot_date": "2026-10-31",
+    "scope": "Origin CN, destination US, ad valorem layers only (no AD/CVD, no specific/compound rates)",
+    "warning": "Demo rule snapshot for the hackathon. Every rate must be re-checked against HTSUS Chapter 99 and the cited source before real use. Fields marked verified=false are assumptions."
+  },
+
+  "programs": [
+    {
+      "id": "IEEPA_FENTANYL_CN",
+      "name": "IEEPA fentanyl tariff (China)",
+      "heading": "9903.01.24",
+      "rate_pct": 10.0,
+      "origins": ["CN"],
+      "valid_from": "2025-11-10",
+      "valid_to": "2026-02-23",
+      "applies_to_232_goods": null,
+      "status": "terminated",
+      "published": "2025-11-04",
+      "refund_status": "struck_down",
+      "note": "Cut from 20% to 10% effective 2025-11-10 (EO of 2025-11-04). Collection ceased 2026-02-24 after SCOTUS ruling of 2026-02-20. Stacking with Section 232 not modelled (null) - engine flags 232 goods for manual review.",
+      "sources": [
+        "https://www.internationaltradeinsights.com/2025/11/trump-reduces-ieepa-fentanyl-tariffs-to-10-effective-november-10-continues-suspension-of-heightened-reciprocal-tariff-rate/",
+        "https://budgetmodel.wharton.upenn.edu/p/2026-02-20-supreme-court-tariff-ruling/"
+      ]
+    },
+    {
+      "id": "IEEPA_RECIPROCAL_CN",
+      "name": "IEEPA reciprocal tariff (China, 10% while 34% suspended)",
+      "heading": "9903.01.25 (to be verified)",
+      "rate_pct": 10.0,
+      "origins": ["CN"],
+      "valid_from": "2025-11-10",
+      "valid_to": "2026-02-23",
+      "applies_to_232_goods": false,
+      "status": "terminated",
+      "published": "2025-11-04",
+      "refund_status": "struck_down",
+      "note": "History before 2025-11-10 intentionally omitted from this snapshot.",
+      "sources": [
+        "https://www.whitehouse.gov/fact-sheets/2025/11/fact-sheet-president-donald-j-trump-strikes-deal-on-economic-and-trade-relations-with-china/"
+      ]
+    },
+    {
+      "id": "SEC122_GLOBAL",
+      "name": "Section 122 temporary import surcharge",
+      "heading": "9903.03.xx (to be verified)",
+      "rate_pct": 10.0,
+      "origins": ["*"],
+      "valid_from": "2026-02-24",
+      "valid_to": "2026-07-23",
+      "applies_to_232_goods": false,
+      "status": "expired",
+      "published": "2026-02-20",
+      "refund_status": "challenged_pending_appeal",
+      "note": "150-day statutory limit; expired 2026-07-24. CIT ruled it invalid on 2026-05-07 (stayed on appeal).",
+      "sources": [
+        "https://www.rvia.org/news-insights/section-122-tariffs-replaced-new-section-301-forced-labor-tariffs",
+        "https://carraglobe.com/section-122-tariff-2026/"
+      ]
+    },
+    {
+      "id": "SEC301_FORCED_LABOR_CN",
+      "name": "Section 301 forced-labor tariff (China)",
+      "heading": "9903.05.31",
+      "rate_pct": 12.5,
+      "origins": ["CN"],
+      "valid_from": "2026-07-24",
+      "valid_to": null,
+      "applies_to_232_goods": false,
+      "product_exemption_flag": "fl301_exempt",
+      "in_transit_exception": {
+        "heading": "9903.05.85",
+        "loaded_before": "2026-07-24",
+        "entered_before": "2026-07-28"
+      },
+      "status": "in_force",
+      "published": "2026-07-23",
+      "refund_status": null,
+      "note": "Rate text verified via USITC HTS API on 2026-10-31: 'The duty provided in the applicable subheading + 12.5%'. Stacks with China Section 301 list duties (US note 52(a)). Not applied to Section 232 goods (9903.05.90).",
+      "sources": [
+        "https://hts.usitc.gov/reststop/search?keyword=9903.05.31",
+        "https://tariffwolf.com/section-301-forced-labor-tariff/",
+        "https://www.kroll.com/en/publications/a-tale-of-tariff-substitution"
+      ]
+    }
+  ],
+
+  "fees": {
+    "MPF": [
+      {"valid_from": "2025-10-01", "valid_to": "2026-09-30", "rate_pct": 0.3464, "min_usd": 33.58, "max_usd": 651.50,
+       "source": "CBP Dec. 25-10 (FY2026), as reported by multiple brokers", "verified": true},
+      {"valid_from": "2026-10-01", "valid_to": null, "rate_pct": 0.3464, "min_usd": 34.58, "max_usd": 670.86,
+       "source": "https://cvinternational.com/us-customs-merchandise-processing-fee-increase-effective-october-1-2026/", "verified": false}
+    ],
+    "HMF": {"rate_pct": 0.125, "modes": ["ocean"]},
+    "formal_entry_threshold_usd": 2500
+  },
+
+  "hts_profiles": {
+    "8507.60.00.90": {
+      "desc": "Lithium-ion batteries, non-EV (demo SKU: power-tool battery packs)",
+      "mfn_pct": 3.4,
+      "mfn_verified": true,
+      "s301_list": [
+        {"from": "2018-01-01", "to": "2025-12-31", "rate_pct": 7.5, "heading": "9903.88.15 (List 4A)"},
+        {"from": "2026-01-01", "to": null, "rate_pct": 25.0, "heading": "9903.91.06"}
+      ],
+      "s301_verified": true,
+      "s232": false,
+      "fl301_exempt": false,
+      "fl301_exempt_verified": false,
+      "watch": ["W_301_EXCESS_CAPACITY"]
+    },
+    "8479.50.00.00": {
+      "desc": "Industrial robots, n.e.s.",
+      "mfn_pct": 2.5,
+      "mfn_verified": true,
+      "s301_list": [{"from": "2018-07-06", "to": null, "rate_pct": 25.0, "heading": "9903.88.01 (List 1)"}],
+      "s301_verified": false,
+      "s232": false,
+      "fl301_exempt": false,
+      "fl301_exempt_verified": false,
+      "watch": ["W_232_ROBOTICS"]
+    },
+    "6110.20.20": {
+      "desc": "Cotton sweaters/pullovers (knit)",
+      "mfn_pct": 16.5,
+      "mfn_verified": true,
+      "s301_list": [{"from": "2020-02-14", "to": null, "rate_pct": 7.5, "heading": "9903.88.15 (List 4A)"}],
+      "s301_verified": false,
+      "s232": false,
+      "fl301_exempt": false,
+      "fl301_exempt_verified": false,
+      "watch": []
+    },
+    "9503.00.00": {
+      "desc": "Toys",
+      "mfn_pct": 0.0,
+      "mfn_verified": true,
+      "s301_list": [],
+      "s301_verified": false,
+      "s301_note": "Assumed List 4B (suspended, never collected).",
+      "s232": false,
+      "fl301_exempt": false,
+      "fl301_exempt_verified": false,
+      "watch": []
+    },
+    "3926.90.99": {
+      "desc": "Other articles of plastics",
+      "mfn_pct": 5.3,
+      "mfn_verified": true,
+      "s301_list": [{"from": "2018-09-24", "to": null, "rate_pct": 25.0, "heading": "9903.88.03 (List 3)"}],
+      "s301_verified": false,
+      "s232": false,
+      "fl301_exempt": false,
+      "fl301_exempt_verified": false,
+      "watch": []
+    },
+    "8501.10.40": {
+      "desc": "Small electric motors (DEMO: assumed to be covered by one of the 178 extended exclusions)",
+      "mfn_pct": 4.4,
+      "mfn_verified": true,
+      "s301_list": [{"from": "2018-07-06", "to": null, "rate_pct": 25.0, "heading": "9903.88.01 (List 1)"}],
+      "s301_verified": false,
+      "s301_exclusion": {"heading": "9903.88.69", "valid_to": "2026-11-09", "verified": false,
+                          "note": "Exclusion expiry date per USTR/STR; product coverage of this SKU is a DEMO ASSUMPTION."},
+      "s232": false,
+      "fl301_exempt": false,
+      "fl301_exempt_verified": false,
+      "watch": ["W_301_EXCLUSION_EXPIRY"]
+    }
+  },
+
+  "watch_items": {
+    "W_232_ROBOTICS": {
+      "title": "Section 232 proclamation on robotics & industrial machinery (2026-10-28)",
+      "legal_status": "negotiation_no_tariff",
+      "certainty": 0.1,
+      "next_milestone": "2027-04-26",
+      "summary": "Signed 2026-10-28. Directs Commerce/USTR to negotiate; no tariff, quota, HTS list or effective date yet. First progress update due within 180 days.",
+      "sources": ["https://www.thompsonhinesmartrade.com/2026/10/president-directs-section-232-negotiations-on-robotics-and-industrial-machinery-imports-defers-tariffs-or-quotas/",
+                  "https://www.whitehouse.gov/fact-sheets/2026/10/fact-sheet-president-donald-j-trump-adjusts-imports-of-robotics-industrial-machinery-and-their-parts-and-components-into-the-united-states/"]
+    },
+    "W_301_EXCESS_CAPACITY": {
+      "title": "Section 301 investigation: structural excess capacity (China sectors incl. batteries)",
+      "legal_status": "investigation",
+      "certainty": 0.2,
+      "next_milestone": null,
+      "summary": "Opened 2026-03-11 against 16 economies; China sectors named: steel, aluminum, batteries, solar, semiconductors, automotive. No final action found as of 2026-10-31.",
+      "sources": ["https://www.federalregister.gov/documents/2026/03/17/2026-05214/initiation-of-section-301-investigations-acts-policies-and-practices-of-certain-economies-relating"]
+    },
+    "W_301_EXCLUSION_EXPIRY": {
+      "title": "178 China Section 301 exclusions expire after 2026-11-09 unless extended",
+      "legal_status": "scheduled_expiry",
+      "certainty": 0.9,
+      "next_milestone": "2026-11-09",
+      "summary": "Exclusions under 9903.88.69/9903.88.70 cover entries through 11:59 pm ET 2026-11-09. No extension notice found as of 2026-10-31; they were extended once before (Nov 2025).",
+      "sources": ["https://ustr.gov/about/policy-offices/press-office/press-releases/2025/november/ustr-extends-exclusions-china-section-301-tariffs-related-forced-technology-transfer-investigation",
+                  "https://www.strtrade.com/trade-news-resources/str-trade-report/trade-report/december/china-section-301-tariff-exclusions-extended"]
+    }
+  }
+}

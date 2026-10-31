@@ -1,0 +1,133 @@
+{
+ "actions": [
+  {
+   "code": "A01",
+   "zh": "入境日若能在 {date} 或之前，税率 {rate_alt}%（当前预计 {rate_new}%），可少缴约 ${saving}；当前预计入境 {entry}，晚 {days} 天。货已装船，入境时间基本由到港时间决定，提前空间很小；不要指望保税仓（按出仓日税率计）",
+   "en": "If entry happens on or before {date}, the rate is {rate_alt}% (currently {rate_new}%), saving about ${saving}. Planned entry is {entry}, {days} days late. The goods have shipped, so entry timing mostly depends on arrival and there is little room to move it earlier; a bonded warehouse will not help (duty is assessed at the withdrawal-date rate)."
+  },
+  {
+   "code": "A02",
+   "zh": "入境日若能在 {date} 或之前，税率 {rate_alt}%（当前预计 {rate_new}%），可少缴约 ${saving}；当前预计入境 {entry}，晚 {days} 天。尚未装船：评估提前装船、改空运或改港的成本是否低于可省关税",
+   "en": "If entry happens on or before {date}, the rate is {rate_alt}% (currently {rate_new}%), saving about ${saving}. Planned entry is {entry}, {days} days late. Not shipped yet: check whether shipping earlier, switching to air or changing the port costs less than the duty saved."
+  },
+  {
+   "code": "A03",
+   "zh": "盯 USTR 是否在 {date} 前发布延期公告（上一次是 2025-11 延期）；未延期则按上面的数字执行",
+   "en": "Watch whether USTR announces an extension before {date} (the last extension was in 2025-11); if it is not extended, act on the figures above."
+  },
+  {
+   "code": "A04",
+   "zh": "观察：{watch_title} — 当前无税率变化，不改报价；准备备用报价和合同关税条款",
+   "en": "Watch: {watch_title} — no rate change yet; keep the current quote, and prepare a fallback quote and a contract tariff clause."
+  },
+  {
+   "code": "A05",
+   "zh": "维持原毛利率 {margin}% 需售价 ≥ ${price_req}（原 ${price_old}）；结合竞品价格决定是调价还是吸收",
+   "en": "Keeping the original {margin}% margin needs a selling price of at least ${price_req} (was ${price_old}); compare competitor prices before deciding to raise the price or absorb the cost."
+  },
+  {
+   "code": "A06",
+   "zh": "维持原毛利率 {margin}% 需单价 ≥ ${price_req}（原 ${price_old}）；货已发出，只能与客户协商分摊；后续新单改 DAP/FOB 或加关税调整条款",
+   "en": "Keeping the original {margin}% margin needs a unit price of at least ${price_req} (was ${price_old}); the goods have shipped, so only a cost split with the customer is possible; for new orders, switch to DAP/FOB or add a tariff adjustment clause."
+  },
+  {
+   "code": "A07",
+   "zh": "维持原毛利率 {margin}% 需单价 ≥ ${price_req}（原 ${price_old}）；或在发货前与客户改为 DAP/FOB（买方做进口商）",
+   "en": "Keeping the original {margin}% margin needs a unit price of at least ${price_req} (was ${price_old}); or switch to DAP/FOB with the customer before shipping (buyer as importer of record)."
+  },
+  {
+   "code": "A08",
+   "zh": "按合同关税分担条款，我方承担增量的 {share}：约 ${amount}；向客户发正式通知并附法规原文",
+   "en": "Under the contract's tariff-sharing clause we bear {share} of the increase, about ${amount}; send the customer a formal notice with the regulation text attached."
+  },
+  {
+   "code": "A09",
+   "zh": "客户（进口商）关税增加约 ${amount}，到岸成本 {pct}%；提前沟通，防止压价或取消",
+   "en": "The customer's (importer's) duty rises by about ${amount} and landed cost changes {pct}%; talk to the customer early to avoid price cuts or cancellation."
+  },
+  {
+   "code": "A10",
+   "zh": "关税下降，利润增加约 ${amount}；可留作价格竞争空间或维持报价",
+   "en": "Duty goes down and profit rises by about ${amount}; keep it as room for price competition or hold the quote."
+  },
+  {
+   "code": "A11",
+   "zh": "该票已缴 {program} 约 ${amount}，属已被判无效的关税：由登记进口商通过 CBP CAPE 申报退款；先核对 7501 与清算状态",
+   "en": "This entry paid about ${amount} of {program}, a duty ruled invalid: the importer of record can claim a refund through CBP CAPE; first check the 7501 and the liquidation status."
+  },
+  {
+   "code": "A12",
+   "zh": "该票已缴 {program} 约 ${amount}，合法性仍在上诉中：先保留单证，暂不计入利润",
+   "en": "This entry paid about ${amount} of {program}, whose legality is still under appeal: keep the documents and do not count it in profit yet."
+  },
+  {
+   "code": "A13",
+   "zh": "规则推算应缴 {rate_rule}%，与当时预估 {rate_user}% 不同：核对报关单实际申报的第99章税号",
+   "en": "The rules give {rate_rule}% owed, which differs from the {rate_user}% estimated at the time: check the Chapter 99 headings actually declared on the entry."
+  },
+  {
+   "code": "A14",
+   "zh": "税号/301清单/豁免归属含示例假设：上线前请报关行核对",
+   "en": "Tariff code, Section 301 list and exemption assignments include demo assumptions: have a customs broker check them before going live."
+  }
+ ],
+ "reasons": [
+  {
+   "code": "R01",
+   "zh": "重算后亏损",
+   "en": "Loss after recalculation"
+  },
+  {
+   "code": "R02",
+   "zh": "毛利率下降 {pp}pp",
+   "en": "Margin change {pp}pp"
+  },
+  {
+   "code": "R03",
+   "zh": "毛利率 {margin}% 低于目标 {target}%",
+   "en": "Margin {margin}% is below the {target}% target"
+  },
+  {
+   "code": "R04",
+   "zh": "客户到岸成本 +{pct}%",
+   "en": "Customer landed cost +{pct}%"
+  },
+  {
+   "code": "R05",
+   "zh": "观察项：{watch_title}（确定性 {certainty}）",
+   "en": "Watch item: {watch_title} (certainty {certainty})"
+  },
+  {
+   "code": "R06",
+   "zh": "毛利率 {pp}pp / 客户到岸成本 {pct}%",
+   "en": "Margin {pp}pp / customer landed cost {pct}%"
+  },
+  {
+   "code": "R07",
+   "zh": "填写的当时税率 {rate_user}% 与规则库按报价日推算的 {rate_rule}% 不一致，先核对基准",
+   "en": "The entered baseline rate {rate_user}% differs from the {rate_rule}% derived from the rules at the quote date; check the baseline first"
+  }
+ ],
+ "flags": [
+  {
+   "code": "F01",
+   "zh": "{program} 与 232 叠加关系未建模，需人工复核",
+   "en": "{program}: stacking with Section 232 is not modelled; needs manual review"
+  },
+  {
+   "code": "F02",
+   "zh": "{program} 适用在途豁免 {heading}（装船<{loaded_before} 且入境<{entered_before}）",
+   "en": "{program}: in-transit exemption {heading} applies (loaded before {loaded_before} and entered before {entered_before})"
+  },
+  {
+   "code": "F03",
+   "zh": "规则库字段 {field}=false（示例假设，需核对第99章原文）",
+   "en": "Rule field {field}=false (demo assumption; check the Chapter 99 text)"
+  },
+  {
+   "code": "F04",
+   "zh": "MPF 上下限取自单一来源（{date} 起），需核对 CBP 公告",
+   "en": "MPF floor and cap come from a single source (from {date}); check the CBP notice"
+  }
+ ]
+}

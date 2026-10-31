@@ -1,0 +1,460 @@
+{
+ "_meta": {
+  "role": "triage",
+  "lookup_key": "document_number"
+ },
+ "2026-22089": {
+  "document_number": "2026-22089",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "关于马耳他游艇巡航许可的规则，与货物进口关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "Pleasure Vessels of Malta Entitled To Cruising Licenses"
+   }
+  ],
+  "confidence": 0.95,
+  "one_line_en": "Rule on cruising licenses for Maltese pleasure vessels; unrelated to import duties on goods."
+ },
+ "2026-21853": {
+  "document_number": "2026-21853",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "报关行许可年费缴纳通知，不影响货物关税。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "Customs Broker Permit User Fee Payment for 2027"
+   }
+  ],
+  "confidence": 0.9,
+  "one_line_en": "Notice on customs broker permit user fees; does not affect duties on goods."
+ },
+ "2026-21755": {
+  "document_number": "2026-21755",
+  "relevant": true,
+  "category": "comment_request",
+  "programs": [
+   "SEC301"
+  ],
+  "countries": [
+   "CN"
+  ],
+  "legal_status": "proposed",
+  "needs_fulltext": true,
+  "one_line_zh": "USTR 就是否继续暂停针对中国海事、物流和造船业的 301 措施征求意见；是否影响货物关税需读全文确认。",
+  "evidence": [
+   {
+    "field": "category",
+    "quote": "Request for Comments on Further Suspension of Section 301 Action"
+   },
+   {
+    "field": "countries",
+    "quote": "China's Targeting of the Maritime, Logistics, and Shipbuilding Sectors"
+   }
+  ],
+  "confidence": 0.8,
+  "one_line_en": "USTR seeks comments on further suspending the Section 301 action on China's maritime, logistics and shipbuilding sectors; read the full text to see whether goods duties are affected."
+ },
+ "2026-21600": {
+  "document_number": "2026-21600",
+  "relevant": true,
+  "category": "procedure",
+  "programs": [
+   "DE_MINIMIS"
+  ],
+  "countries": [
+   "ALL"
+  ],
+  "legal_status": "procedural",
+  "needs_fulltext": true,
+  "one_line_zh": "CBP 延长邮政小包新入境流程的合规期限；只影响走邮政渠道的货物，新日期需读全文确认。",
+  "evidence": [
+   {
+    "field": "category",
+    "quote": "New Postal Informal Entry Process; Delayed Compliance Extension"
+   }
+  ],
+  "confidence": 0.85,
+  "one_line_en": "CBP extends the compliance period for the new postal informal entry process; affects only goods sent by mail; read the full text for the new date."
+ },
+ "2026-21570": {
+  "document_number": "2026-21570",
+  "relevant": true,
+  "category": "procedure",
+  "programs": [
+   "DE_MINIMIS"
+  ],
+  "countries": [
+   "ALL"
+  ],
+  "legal_status": "procedural",
+  "needs_fulltext": false,
+  "one_line_zh": "CBP 调整邮政电子非正式入境流程的测试安排；只影响走邮政渠道的货物。",
+  "evidence": [
+   {
+    "field": "category",
+    "quote": "Modification of the Test of the New Electronic Informal Entry Process for Mail"
+   }
+  ],
+  "confidence": 0.8,
+  "one_line_en": "CBP modifies the test of the electronic informal entry process for mail; affects only goods sent by mail."
+ },
+ "2026-21408": {
+  "document_number": "2026-21408",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "商业实验室认证通知，与关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "as a Commercial Laboratory"
+   }
+  ],
+  "confidence": 0.95,
+  "one_line_en": "Accreditation notice for a commercial laboratory; unrelated to duties."
+ },
+ "2026-21407": {
+  "document_number": "2026-21407",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "商业计量与实验室认证通知，与关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "as a Commercial Gauger and Laboratory"
+   }
+  ],
+  "confidence": 0.95,
+  "one_line_en": "Accreditation notice for a commercial gauger and laboratory; unrelated to duties."
+ },
+ "2026-21406": {
+  "document_number": "2026-21406",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "商业计量与实验室认证通知，与关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "as a Commercial Gauger and Laboratory"
+   }
+  ],
+  "confidence": 0.95,
+  "one_line_en": "Accreditation notice for a commercial gauger and laboratory; unrelated to duties."
+ },
+ "2026-21405": {
+  "document_number": "2026-21405",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "商业计量与实验室认证通知，与关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "as a Commercial Gauger and Laboratory"
+   }
+  ],
+  "confidence": 0.95,
+  "one_line_en": "Accreditation notice for a commercial gauger and laboratory; unrelated to duties."
+ },
+ "2026-20884": {
+  "document_number": "2026-20884",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "铁路旅客预报信息拟议规则，与货物关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "Advance Traveler Information for Rail"
+   }
+  ],
+  "confidence": 0.9,
+  "one_line_en": "Proposed rule on advance traveler information for rail; unrelated to duties on goods."
+ },
+ "2026-20650": {
+  "document_number": "2026-20650",
+  "relevant": true,
+  "category": "procedure",
+  "programs": [
+   "DE_MINIMIS"
+  ],
+  "countries": [
+   "ALL"
+  ],
+  "legal_status": "proposed",
+  "needs_fulltext": true,
+  "one_line_zh": "CBP 关于低价值货物的拟议规则，可能影响小额包裹的申报与征税方式，具体内容需读全文。",
+  "evidence": [
+   {
+    "field": "category",
+    "quote": "Low-Value Shipments"
+   }
+  ],
+  "confidence": 0.75,
+  "one_line_en": "CBP proposed rule on low-value shipments; may change how small parcels are declared and taxed; read the full text for details."
+ },
+ "2026-20615": {
+  "document_number": "2026-20615",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "USTR 就欧盟碳边境调节机制对美国贸易的影响征求意见，不涉及美国对华进口关税。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "Effect of the European Union's Carbon Border Adjustment Mechanism"
+   }
+  ],
+  "confidence": 0.85,
+  "one_line_en": "USTR seeks comments on how the EU carbon border adjustment mechanism affects U.S. trade; not about U.S. duties on Chinese goods."
+ },
+ "2026-20511": {
+  "document_number": "2026-20511",
+  "relevant": true,
+  "category": "exclusion",
+  "programs": [
+   "SEC301"
+  ],
+  "countries": [
+   "CN"
+  ],
+  "legal_status": "in_force",
+  "needs_fulltext": true,
+  "one_line_zh": "USTR 对中国 301 措施的一项产品排除做了一致性修订；涉及哪个税号需读全文确认。",
+  "evidence": [
+   {
+    "field": "category",
+    "quote": "Notice of Conforming Amendment to Product Exclusion"
+   }
+  ],
+  "confidence": 0.85,
+  "one_line_en": "USTR makes a conforming amendment to one product exclusion under the China Section 301 action; read the full text for the tariff code."
+ },
+ "2026-20510": {
+  "document_number": "2026-20510",
+  "relevant": true,
+  "category": "procedure",
+  "programs": [
+   "SEC301"
+  ],
+  "countries": [
+   "CN"
+  ],
+  "legal_status": "in_force",
+  "needs_fulltext": false,
+  "one_line_zh": "中国技术转让 301 措施未在 2026-07-06 终止，继续有效；四年审查仍在进行，暂无税率变化。",
+  "evidence": [
+   {
+    "field": "legal_status",
+    "quote": "the actions have not terminated and will remain in effect"
+   },
+   {
+    "field": "one_line_zh",
+    "quote": "did not terminate on July 6, 2026"
+   }
+  ],
+  "confidence": 0.9,
+  "one_line_en": "The China technology-transfer Section 301 actions did not terminate on 2026-07-06 and remain in effect; the four-year review continues; no rate change."
+ },
+ "2026-20341": {
+  "document_number": "2026-20341",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "美墨加协定运行情况的征求意见与听证通知，不涉及中国原产货物。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "the United Mexican States, and Canada"
+   }
+  ],
+  "confidence": 0.85,
+  "one_line_en": "Request for comments and hearing on the operation of the USMCA; not about goods of Chinese origin."
+ },
+ "2026-20228": {
+  "document_number": "2026-20228",
+  "relevant": true,
+  "category": "refund",
+  "programs": [
+   "IEEPA"
+  ],
+  "countries": [
+   "ALL"
+  ],
+  "legal_status": "procedural",
+  "needs_fulltext": true,
+  "one_line_zh": "CBP 就法院判令的 IEEPA 关税退款工作表开展信息收集；与已入境订单的退款申请相关。",
+  "evidence": [
+   {
+    "field": "category",
+    "quote": "Court-Ordered Refunds Under the International Emergency Economic Powers Act Worksheet"
+   }
+  ],
+  "confidence": 0.85,
+  "one_line_en": "CBP information collection for the court-ordered IEEPA refund worksheet; relevant to refund claims for entered orders."
+ },
+ "2026-20229": {
+  "document_number": "2026-20229",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "CBP 客户代表技术支持门户的信息收集通知，与关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "Client Representative Technical Assistance Portal (CR-TAP)"
+   }
+  ],
+  "confidence": 0.9,
+  "one_line_en": "CBP information collection for the Client Representative Technical Assistance Portal; unrelated to duties."
+ },
+ "2026-20185": {
+  "document_number": "2026-20185",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "国土安全部移民相关费用的通胀调整，与货物关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "Immigration-Related Fees"
+   }
+  ],
+  "confidence": 0.95,
+  "one_line_en": "Inflation adjustment of DHS immigration-related fees; unrelated to duties on goods."
+ },
+ "2026-20171": {
+  "document_number": "2026-20171",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "报关单（Entry Summary）信息收集的常规修订，不改变税率。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "Revision; Entry Summary"
+   }
+  ],
+  "confidence": 0.8,
+  "one_line_en": "Routine revision of the entry summary information collection; no rate change."
+ },
+ "2026-20170": {
+  "document_number": "2026-20170",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "入境申报信息收集的常规修订，不改变税率。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "Agency Information Collection Activities; Revision; Entry"
+   }
+  ],
+  "confidence": 0.8,
+  "one_line_en": "Routine revision of the entry information collection; no rate change."
+ },
+ "2026-22385": {
+  "document_number": "2026-22385",
+  "relevant": true,
+  "category": "needs_fulltext",
+  "programs": [
+   "SEC232"
+  ],
+  "countries": [
+   "ALL"
+  ],
+  "legal_status": null,
+  "needs_fulltext": true,
+  "one_line_zh": "总统公告（第 11077 号）：对机器人、工业机械及其零部件的进口作出调整；是否加征关税需读全文确认。",
+  "evidence": [
+   {
+    "field": "programs",
+    "quote": "Imports Into U.S.; Adjustment (Proc. 11077)"
+   }
+  ],
+  "confidence": 0.7,
+  "one_line_en": "Presidential Proclamation 11077 adjusts imports of robotics, industrial machinery and their parts; read the full text to see whether duties are imposed."
+ },
+ "2026-22386": {
+  "document_number": "2026-22386",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "国防授权法相关权限委托备忘录，与关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "National Defense Authorization Act for Fiscal Year 2026"
+   }
+  ],
+  "confidence": 0.85,
+  "one_line_en": "Memorandum delegating authority under the National Defense Authorization Act; unrelated to duties."
+ },
+ "2026-22251": {
+  "document_number": "2026-22251",
+  "relevant": false,
+  "category": "irrelevant",
+  "programs": [],
+  "countries": [],
+  "legal_status": null,
+  "needs_fulltext": false,
+  "one_line_zh": "USTR 绩效评审委员会成员名单，与关税无关。",
+  "evidence": [
+   {
+    "field": "relevant",
+    "quote": "Performance Review Board Members"
+   }
+  ],
+  "confidence": 0.95,
+  "one_line_en": "List of USTR Performance Review Board members; unrelated to duties."
+ }
+}

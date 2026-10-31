@@ -1,3 +1,4 @@
+from tariff_context import build_tariff_context
 """Authenticated conversation, model configuration, memory and SSE endpoints."""
 
 import asyncio
@@ -47,6 +48,7 @@ class ChatInput(BusinessInput):
     document_ids: list[int] = Field(default_factory=list,max_length=5)
     web_search: bool = False
     force_tools: bool = False
+    include_tariff: bool = False
 
 
 class MemoryInput(BusinessInput):
@@ -217,6 +219,10 @@ async def stream_conversation(cid: int, payload: ChatInput, request: Request, st
         else:
             messages[0]['content'] += '\n本轮未取得联网搜索结果（' + research['error'] + '）；不得声称已查询最新网页。'
     token, message_id = store.claim_turn(cid, payload.content, payload.skill_id)
+    if payload.include_tariff:
+        block = await asyncio.to_thread(build_tariff_context, request.app, store, conversation, settings['model'], cid)
+        messages[0]['content'] += '\n' + block
+
 
     async def generate():
         chunks = []
@@ -319,6 +325,13 @@ async def hermes_conversation(cid: int, payload: ChatInput, request: Request, st
     history = '\n'.join(f"{message['role']}: {message['content']}" for message in messages[1:])
     prompt = system + '\n\n对话历史：\n' + history + '\n\n当前用户请求：\n' + payload.content
     token, message_id = store.claim_turn(cid, payload.content, payload.skill_id)
+    if payload.include_tariff:
+        model_label = settings['model'] if importing_customers or (plain_continuation and not payload.force_tools) else 'Hermes'
+        block = await asyncio.to_thread(build_tariff_context, request.app, store, conversation, model_label, cid)
+        messages[0]['content'] += '\n' + block
+        system += '\n' + block
+        prompt = system + '\n\n对话历史：\n' + history + '\n\n当前用户请求：\n' + payload.content
+
 
     async def generate():
         chunks = []

@@ -220,6 +220,9 @@ def migrate(path: Path) -> None:
             columns = {row['name'] for row in conn.execute(f'PRAGMA table_info({table})').fetchall()}
             if column not in columns:
                 conn.execute(f'ALTER TABLE {table} ADD COLUMN {column} {declaration}')
+        from tariff_schema import TABLES as TARIFF_TABLES
+        for statement in TARIFF_TABLES:
+            conn.execute(statement)
         for row in conn.execute('SELECT id, workspace_id FROM companies ORDER BY id').fetchall():
             conn.execute(
                 'UPDATE libraries SET company_id=? WHERE workspace_id=? AND company_id IS NULL',
