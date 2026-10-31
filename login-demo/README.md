@@ -1,109 +1,94 @@
-# Trade AI 业务流程复刻版
+# Trade AI · Mariner v0.3 融合版
 
-本地运行的独立登录应用，按原项目的业务导航复刻工作流程。登录账号拥有自己的公司空间，不显示试用天数，也没有激活码或到期拦截。
+业务管理与关税风险分析在同一个应用中运行。前端以 Mariner v0.3 为基础，保留其原色、字体、卡片、侧栏和布局；Smart Trade AI 提供多账号、多公司、客户、订单、文档与业务智能体功能。桌面最小宽度为 1280px。
 
-## 使用说明书
+## 架构与许可
 
-- [Word 版使用说明书](docs/TradeAI使用说明书.docx)
-- [PDF 版使用说明书](docs/TradeAI使用说明书.pdf)
-- [Markdown 源文件](docs/TradeAI使用说明书.md)
+生产运行只需一个监听 `127.0.0.1:8017` 的 FastAPI 进程。Next.js 静态导出位于 `web/out/`，由 FastAPI 同源提供；开发模式使用 Next 代理 `/api/*`。原项目根目录的应用仍独立保留。
 
-目前已接入：
+关税模块来自 Mariner AI（MIT），许可分别保留在 `mariner/LICENSE-MARINER`、`web/LICENSE-MARINER`；宿主沿用 AGPL-3.0。关税数字由 `mariner/engine/` 的确定性引擎计算，前端不重新计算关税。
 
-- 账号注册、登录、退出、刷新恢复登录状态。
-- 一个账号默认创建一个公司，也可以在侧栏添加和切换多个公司；客户、订单和文档库按公司隔离。
-- 原项目式业务导航：今日简报、客户开发、网站诊断、社媒营销、LinkedIn、海关数据、客户管理、文档库、文档生成、客户背调、定时任务、对话记录。
-- 公司名称、官网、联系人、地址、行业、主营产品、目标市场和 Agent 身份设定。
-- 客户新增、编辑、删除；联系人、国家、分级、邮箱、社交联系方式、主营品类和跟进备注。
-- 客户搜索、等级筛选和客户详情；订单从客户详情进入。
-- UTF-8 CSV 客户导入和导出。导入最多 1000 行、文件最多 2 MB，表头必须包含 `name`；可先导出空列表作为模板。错误文件整体拒绝，不留下半份数据。
-- 12 个原业务入口、流式回复、会话历史和业务技能自动路由；Hermes 任务会在“思考与执行”面板中实时显示模型思考摘要、具体工具名、参数摘要、执行状态和结果摘要。
-- 每个账号独立保存模型配置、API Key 和业务记忆备注；对话参考当前公司的资料和所选客户。
-- 多商品订单、待谈价格、状态流转和可打印报价单。
-- 公司文档库：上传文件，或直接关联电脑上的文件夹并扫描文本、PDF、Office 文件与图纸图片；下载和提取文字。
-- 36 个原项目 B2B 业务技能目录，可在 AI 对话和自动化任务中选用。
-- 客户情报支持 Tavily 公开搜索和原项目深度背调，包括 WHOIS、企业邮箱/MX、技术栈、制裁名单和 LinkedIn 验证编排。
-- AI 对话可按入口开启联网搜索，引用来源后放进模型上下文；定时任务也使用相同的搜索配置。
-- 对话默认启用“Hermes 工具”模式，可直接调用本机 Hermes 已启用的网页浏览、搜索和文件工具；关闭后使用轻量流式模型。
-- 本地定时任务：每天、工作日或每周执行指定业务提示词，保留成功/失败运行记录。
-- 任务模板、立即执行、最近运行结果和对话记录恢复。
+## 环境与安装
 
-LinkedIn 登录态自动私信/发帖和 B2B 平台后台账号巡检仍需要目标平台自己的登录态。Hermes 原生工具已经接入；如果 Hermes Gateway 未运行，应用会在首次工具请求时尝试启动，失败时退回普通模型并显示错误。
-
-## 配置 AI
-
-登录后点击侧栏底部的“⚙️”填写模型名称和 API Key。保存后即可在任一业务入口对话。未填写 Key 时会提示配置，不会生成模拟回答。
-
-对话中的“Hermes 工具”默认开启，可执行原项目的工具调用流程。直接流式模式不依赖 Hermes，适合只需要文本生成的请求。
-
-API Key 用本地持久加密密钥加密后存入数据库，GET 接口不返回明文。备份或移动应用数据时，应一起保留 `data/accounts.sqlite3` 和 `data/model-encryption.key`；丢失加密文件后，需要重新填写模型 API Key。
-
-这轮自动化模型测试使用 HTTPX 模拟响应，未消耗真实 API 额度。真实服务连通性、账号余额和具体模型是否可用，需填写有效 Key 后确认。
-
-## 客户情报与自动化
-
-进入“客户背调”并点击“搜索配置”填写 Tavily API Key 后，可按公司、官网或问题搜索最多 5 条来源并保存报告。输入邮箱或域名后还可以点击“深度背调”，调用原项目的 WHOIS、MX、技术栈、制裁名单和 LinkedIn 验证编排。报告只能查看和关联当前公司空间的客户；搜索失败同样保存失败状态，避免把缺失结果当成已经核验。
-
-目标邮箱可直接从当前公司的客户管理资料中选择，主邮箱和备用邮箱都会进入下拉选项；选择后会自动填入核验目标并关联对应客户。域名、官网和自定义核验问题仍可手动输入。
-
-进入“自动化”可创建每天、工作日或每周任务。应用进程运行期间每 30 秒检查到期任务；执行结果保存在当前空间的运行记录中。任务只生成文本，不会执行 shell、访问任意文件或自动发送内容。
-
-Tavily Key 与模型 Key 均使用本地加密文件保存，接口不会回传明文。备份数据时需同时保留 `data/model-encryption.key`。
-
-## Windows 启动
-
-在本目录运行（需要可用的 Python 3.11+）：
+Python 3.12+，Node.js 20.9+（建议 22 或 24），npm。以下命令在 `login-demo/` 中执行：
 
 ```powershell
 python -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install -r requirements-dev.txt
-uvicorn app:app --reload
+.venv/Scripts/python -m pip install -r requirements.txt -r requirements-dev.txt
+npm --prefix web ci
+Set-Location web
+npx playwright install chromium
+Set-Location ..
 ```
 
-默认地址为 `http://127.0.0.1:8000`。本次演示使用 `8017` 端口；可用下列命令启动同一地址：
+## 启动
+
+离线关税演示（使用固定日期和本地政策夹具）：
 
 ```powershell
-python -m uvicorn app:app --host 127.0.0.1 --port 8017
+./scripts/build-web.ps1
+$env:TARIFF_COLLECTOR_MODE = 'fixture'
+$env:TARIFF_AS_OF_DATE = '2026-10-31'
+$env:TARIFF_SCHEDULER_ENABLED = 'false'
+.venv/Scripts/python -m uvicorn app:app --host 127.0.0.1 --port 8017
 ```
 
-如果系统 `python` 只是 Windows Store 别名，可在这台电脑使用已安装的 Anaconda：
+打开 http://127.0.0.1:8017/ 并注册账号。此模式下关税模块可以使用内置示例；业务对话仍需配置真实模型。测试服务器另有完全模拟的业务模型，不会冒充真实服务。
 
-```powershell
-& 'C:\Users\wangdiao\anaconda3\python.exe' -m uvicorn app:app --host 127.0.0.1 --port 8017
-```
+开发模式：`./scripts/dev.ps1 -Fixture`，打开 http://127.0.0.1:3000/。日志在 `artifacts/`，Ctrl+C 结束两个开发服务。Linux/macOS 对应 `bash scripts/dev.sh --fixture` 和 `bash scripts/build-web.sh`。
 
-## macOS / Linux 启动
-
-在本目录运行：
-
-```sh
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements-dev.txt
-uvicorn app:app --reload
-```
-
-## 测试
-
-```sh
-python -m pytest tests -q
-```
-
-从仓库根目录运行时，使用 `python -m pytest -c login-demo/pytest.ini login-demo/tests -q`，避免继承原项目的测试配置。
-
-流式前端解析测试（需要 Node.js 20+）在本目录运行 `node --test tests_js/sse.test.js`。
+构建后不要使用 `next start`；静态导出由 FastAPI 提供。缺失导出时服务明确返回 503。正式构建不启用组件展示页。
 
 ## 数据和隔离
 
-账号、默认空间、公司资料和客户保存在本应用目录下的 `data/accounts.sqlite3`，与运行命令时的当前目录无关。密码使用带随机盐的 PBKDF2 哈希保存。
+注册账号拥有独立 workspace，可添加多个公司。客户、订单、文档库、背调报告、任务和会话按公司隔离；业务模型、业务记忆、关税模型配置按 workspace 保存。
 
-请求通过签名 Cookie 中的用户 ID 解析空间。业务接口不接受客户端指定归属；客户的读取、修改、删除、列表和 CSV 导入导出全部受空间条件限制。数据库外键还会拦截客户与其他空间公司之间的错误关联。
+每个公司的关税数据库为 `data/tariff/w{workspace_id}/c{company_id}.sqlite3`。首次进入关税页面或生成关税订单才创建；浏览普通业务页面不会自动创建。默认包含 O1–O8 示例订单，可关闭种子订单开关。公司切换清空前端缓存；未改变会话的响应不重写 cookie，避免旧请求覆盖新公司选择。
 
-订单、文档库、文件、模板和对话同样按空间过滤。上传文件使用服务端生成的文件名，下载前核对空间和记录；“查看文字”只读取已提取的本地文字。扫描 PDF 和图纸图片不会被假装成已识别的文字。
+## 配置 AI
 
-已有登录演示数据库会原位升级，不导入原项目的业务数据。此次升级前的本地备份位于 `data/accounts-before-workspaces.sqlite3`（仅本机保留，不提交到 Git）。
+“设置 → 对话模型”配置 DeepSeek 模型名与 API Key。“设置 → 关税智能体模型”单独配置 OpenAI 兼容接口地址、模型与 Key，支持测试连接、清除配置；与业务模型互不影响。密钥通过 workspace 绑定加密存储，接口不返回明文。
 
-可设置 `LOGIN_DEMO_SECRET` 以保持服务重启后的会话有效。未设置时，每次进程启动都会生成新密钥，旧会话失效，需要重新登录；账号和业务记录继续保留。
+业务对话支持推理流、停止、历史恢复、来源、参考文档与客户上下文。Hermes 工具默认开启，需要本机 Hermes 环境；关闭后使用直接模型流。Tavily Key 在“设置 → 联网搜索”配置。联网搜索、真实模型、Hermes、WHOIS 等外部服务需要有效配置与网络；离线自动化验收不证明它们在你的账号下可用。
 
-应用当前用于本地演示，启动时只监听 `127.0.0.1`。公网部署和团队协作尚未纳入当前实现。
+## 关税模块与业务打通
+
+保留关税工作台、风险收件箱、政策日报、知识库、规则审核、采集流水线、审计链、多模态订单导入和独立模型配置。默认实时采集；每天北京时间 07:30 只处理已经启用关税模块的公司。
+
+订单详情的“关税风险”可生成关税订单：逐商品补齐 HTS、成本、税率基准、日期和合同条款，提交后创建关联并计算风险。重复提交更新已有订单；订单商品发生变化会提示重新检查；订单状态可同步。客户详情汇总关联风险，收件箱可关联独立导入订单的客户。
+
+模型可能收到订单数据的授权入口有三处：关税工作台“对话可使用订单数据”、文件识别确认弹窗、业务聊天“引用关税风险数据”。聊天开关默认关闭，用户开启才追加确定性引擎结果，发送时写入公司的 `CHAT_ORDER_DATA_SENT` 审计记录。
+
+## 环境变量
+
+| 变量 | 默认 / 用途 |
+|---|---|
+| `LOGIN_DEMO_SECRET` | 随机会话签名密钥；固定值可让重启后会话继续有效 |
+| `TRADE_ALLOWED_ORIGINS` | `http://127.0.0.1:3000,http://localhost:3000`；额外允许的写请求来源，逗号分隔 |
+| `TARIFF_COLLECTOR_MODE` | `live`，离线演示设 `fixture` |
+| `TARIFF_AS_OF_DATE` | 当前日期；固定演示设 `2026-10-31` |
+| `TARIFF_SCHEDULER_ENABLED` | `true`；演示与测试设 `false` |
+| `TARIFF_SEED_SAMPLE_ORDERS` | `1`；设 `0` 不导入示例订单 |
+| `TRADE_BACKEND` | `http://127.0.0.1:8017`；仅开发代理使用 |
+
+## 测试与验收
+
+```powershell
+.venv/Scripts/python -m pytest tests -q
+.venv/Scripts/python -m ruff check
+Set-Location web
+npm run lint
+npm run typecheck
+npm test
+npx playwright test
+npm run build:export
+```
+
+Playwright 自动构建并启动临时隔离数据库，监听 127.0.0.1:8019。政策、搜索、模型和背调均使用本地夹具；浏览器和测试服务阻断外部访问。截图位于 `artifacts/screenshots/bridge-*.png`。E2E 构建开启组件展示页，因此完成测试后须重新执行普通 `build:export` 才作为正式产物。
+
+## 备份与限制
+
+同时备份 `data/accounts.sqlite3`、`data/model-encryption.key`、`data/tariff/` 和上传的文档目录。丢失密钥文件后，已有模型 Key 无法恢复，需要重新配置。备份 SQLite 时停止服务或使用 SQLite 在线备份功能。
+
+双语切换覆盖界面；用户数据、模型输出及部分宿主后端错误保留原语言。原 `docs/TradeAI使用说明书.*` 未修改，其中截图为旧版界面。关税结果用于辅助审核；规则与示例数据日期以界面显示为准。
+已知限制：业务聊天引用关税结果仅通过提示词要求照抄数字，未接入关税工作台的数字守卫。图片与扫描 PDF 识别需要支持视觉的关税模型；DeepSeek 文本接口不能识别图片。实时采集按公司分别执行，请求量随已启用公司数增长。订单转换先写关税库再写业务主库，若关联写入失败需重试，幂等处理可补齐关联。首次启用公司关税库会同步导入与计算，可能等待数秒。
