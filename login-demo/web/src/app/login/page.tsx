@@ -19,36 +19,6 @@ function Login() {
     cache = useQueryClient();
   return (
     <main className="login-wrap">
-      <section className="login-showcase" aria-label="望雕 AI 产品介绍">
-        <div className="showcase-art">
-          <Image
-            src="/wangdiao-login-poster.png"
-            alt="望雕 AI 外贸智能工作台宣传图"
-            fill
-            priority
-            sizes="(max-width: 900px) 100vw, 58vw"
-          />
-          <div className="showcase-scrim" />
-        </div>
-        <div className="showcase-copy">
-          <div className="showcase-kicker">
-            <span className="kicker-line" />
-            外贸增长智能工作台
-          </div>
-          <h1>望雕 AI</h1>
-          <p>
-            从客户开发、产品分析到订单与关税风险，把分散的外贸信息变成可执行的增长动作，让每一次出海决策更快、更准、更有底气。
-          </p>
-          <div className="showcase-points">
-            <span>客户开发</span>
-            <span>网站诊断</span>
-            <span>社媒营销</span>
-            <span>海关数据</span>
-            <span>订单管理</span>
-            <span>关税预警</span>
-          </div>
-        </div>
-      </section>
       <section className="login-panel">
         <div className="login-panel-inner">
           <div className="login-brand">
