@@ -5,8 +5,10 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, type Schema } from "@/lib/api";
 
 import { ErrorBanner, LoadingPanel, PrimaryButton, Tag, TextField, MetricCard } from "@/components/ui";
+import { useToast } from "@/components/trade-ui";
 function SettingsForm({ settings }: { settings: Schema<"LlmSettings"> }) {
   const cache = useQueryClient(),
+    toast = useToast(),
     [base, setBase] = useState(settings.base_url || ""),
     [model, setModel] = useState(settings.model || ""),
     [key, setKey] = useState("");
@@ -20,6 +22,7 @@ function SettingsForm({ settings }: { settings: Schema<"LlmSettings"> }) {
     onSuccess: () => {
       setKey("");
       void update();
+      toast(t("模型设置已保存"));
     },
   });
   const test = useMutation({
@@ -37,7 +40,7 @@ function SettingsForm({ settings }: { settings: Schema<"LlmSettings"> }) {
     <>
       <div className="filter-row">
         <Tag tone={settings.configured ? "good" : "warn"} large>
-          {settings.configured ? t("已接入") : t("未接入（使用内置夹具）")}
+          {settings.configured ? t("已接入") : t("未接入")}
         </Tag>
       </div>
       {error && (
@@ -78,7 +81,7 @@ function SettingsForm({ settings }: { settings: Schema<"LlmSettings"> }) {
           <div className="detail-top pad-bottom">
             <div className="detail-left form">
               <div className="device-tag">OpenAI Chat Completions</div>
-              <h2 className="detail-heading">{t("模型接入")}</h2>
+              <h2 className="detail-heading">{t("模型设置")}</h2>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -150,9 +153,8 @@ function SettingsForm({ settings }: { settings: Schema<"LlmSettings"> }) {
                 </p>
               )}
               <p className="detail-copy hint">
-                {t("接口需兼容 OpenAI Chat Completions 格式（POST")}
-                {base || t("{接口地址}")}
-                {t("/chat/completions）。未配置时，智能体使用内置夹具。")}
+                {t("接口需兼容 OpenAI Chat Completions 格式（POST")} {base || t("{接口地址}")}
+                {t("/chat/completions）。同一配置用于业务对话与关税智能体。")}
               </p>
             </div>
           </div>
@@ -161,7 +163,7 @@ function SettingsForm({ settings }: { settings: Schema<"LlmSettings"> }) {
     </>
   );
 }
-export function TariffModelSettings() {
+export function UnifiedModelSettings() {
   const settings = useQuery({
     queryKey: ["llm-settings"],
     queryFn: () => api<Schema<"LlmSettings">>("/settings/llm"),

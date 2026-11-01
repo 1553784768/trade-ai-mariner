@@ -13,7 +13,7 @@ import type {
 } from "@/lib/trade-types";
 import { CONTEXTS } from "@/lib/trade-contexts";
 import { Shell } from "./shell";
-import { useTradeChat } from "./trade-chat";
+import { useTradeChatStates } from "./trade-chat";
 import { Tag } from "./ui";
 import {
   Field,
@@ -448,7 +448,7 @@ export function conversationHref(conversation: TradeConversation) {
   return ctx === "daily" ? `/?c=${conversation.id}` : `/chat?ctx=${ctx}&c=${conversation.id}`;
 }
 export function History() {
-  const { state: chat } = useTradeChat();
+  const chats = useTradeChatStates();
   const query = useTradeQuery<TradeConversation[]>("/conversations"),
     [id, setId] = useSelection(),
     action = useAction();
@@ -478,7 +478,7 @@ export function History() {
               </Link>
               <button
                 className="btn"
-                disabled={chat.busy && String(chat.cid) === selected}
+                disabled={Object.values(chats).some((chat) => chat.busy && String(chat.cid) === selected)}
                 onClick={() => {
                   if (confirm(t("确定删除这段对话吗？")))
                     void action.run(

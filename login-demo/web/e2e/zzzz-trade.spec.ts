@@ -290,7 +290,7 @@ test("scheduled tasks create, run, pause and delete", async ({ page }) => {
 
 test("settings persist model, company, search and business memory", async ({ page, request }) => {
   await page.goto("/settings?tab=chat");
-  await page.getByLabel("模型名称", { exact: true }).fill("deepseek-chat");
+  await page.getByLabel("模型名称", { exact: true }).fill("custom-chat-model");
   await page.getByRole("button", { name: "保存", exact: true }).click();
   await expect(page.locator(".toast-stack")).toContainText("模型设置已保存");
   await page.getByRole("tab", { name: "公司资料", exact: true }).click();
@@ -304,9 +304,25 @@ test("settings persist model, company, search and business memory", async ({ pag
     .poll(async () => (await (await request.get("/api/memory")).json()).content)
     .toBe("Use concise quotations.");
   await page.getByRole("tab", { name: "联网搜索", exact: true }).click();
+  await expect(page.getByLabel("当前模型", { exact: true })).toHaveValue("custom-chat-model");
+  await expect(page.getByLabel("模型接口地址", { exact: true })).toHaveValue("https://model.example/v1");
   await page.getByLabel("Tavily API Key", { exact: true }).fill("fake-tavily-key");
   await page.getByRole("button", { name: "保存", exact: true }).click();
   await expect(page.locator(".toast-stack")).toContainText("搜索配置已保存");
+});
+
+test("sidebar keeps its scroll position across navigation", async ({ page }) => {
+  await page.goto("/");
+  const nav = page.locator(".sidebar .nav-list");
+  const before = await nav.evaluate((element) => {
+    element.scrollTop = element.scrollHeight;
+    return element.scrollTop;
+  });
+  expect(before).toBeGreaterThan(0);
+  await nav.locator('a[href="/history"]').click();
+  await expect(page).toHaveURL(/\/history$/);
+  const after = await nav.evaluate((element) => element.scrollTop);
+  expect(after).toBe(before);
 });
 
 test("all business screens translate, fit desktop and produce review screenshots", async ({ page }) => {
@@ -362,4 +378,42 @@ test("Hermes execution survives client navigation and keeps tool results", async
   await expect(page.locator(".chat-message.assistant")).toContainText("已完成客户官网核验");
   await page.locator(".thinking summary").click();
   await expect(page.locator(".tool-list")).toContainText("浏览器操作");
+});
+
+test("chat workspaces keep independent conversations", async ({ page }) => {
+  await page.goto("/chat?ctx=lead");
+  await page.getByLabel("消息", { exact: true }).fill("lead workspace message");
+  await page.getByRole("button", { name: "发送", exact: true }).click();
+  await expect(page.getByRole("button", { name: "停止", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "发送", exact: true })).toBeVisible();
+
+  await page.locator('.sidebar a[href="/chat?ctx=customs"]').click();
+  await expect(page.locator("h1")).toHaveText("海关数据");
+  await expect(page.locator(".chat-message.user")).toHaveCount(0);
+
+  await page.getByLabel("消息", { exact: true }).fill("customs workspace message");
+  await page.getByRole("button", { name: "发送", exact: true }).click();
+  await expect(page.getByRole("button", { name: "停止", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "发送", exact: true })).toBeVisible();
+
+  await page.locator('.sidebar a[href="/chat?ctx=lead"]').click();
+  await expect(page.locator(".chat-message.user")).toContainText("lead workspace message");
+  await expect(page.locator(".chat-message.user")).not.toContainText("customs workspace message");
+});
+
+test("chat customer selector groups products and shows ABC tiers", async ({ page }) => {
+  await page.goto("/chat?ctx=lead");
+  const picker = page.getByLabel("关联客户", { exact: true });
+  await picker.click();
+  const lighters = page.locator('details.customer-group[data-category="打火机"]');
+  const pajamas = page.locator('details.customer-group[data-category="睡衣"]');
+  await lighters.locator("summary").click();
+  await pajamas.locator("summary").click();
+  await expect(lighters.getByRole("option", { name: "Acme GmbH · A 类 · 连锁超市" })).toBeVisible();
+  await expect(lighters.getByRole("option", { name: "Globex LLC · B 类 · 打火机批发商" })).toBeVisible();
+  await expect(pajamas.getByRole("option", { name: "Pajama World · C 类 · 睡衣零售商" })).toBeVisible();
+  await lighters.getByRole("option", { name: /Acme GmbH · A 类 · 连锁超市/ }).click();
+  await expect(picker).toContainText("Acme GmbH");
+  await expect(page.locator(".chat-options").getByText("A 类", { exact: true })).toBeVisible();
+  await expect(page.locator(".chat-options").getByText("连锁超市", { exact: true })).toBeVisible();
 });

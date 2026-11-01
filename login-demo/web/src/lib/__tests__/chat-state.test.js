@@ -45,3 +45,10 @@ test("continuation retries the tool agent after a failed tool turn", () => {
   assert.equal(shouldUseHermesTools(true, "继续", true), true);
   assert.equal(shouldUseHermesTools(true, "继续", false), false);
 });
+
+test("ambiguous option replies do not start the full tool agent", () => {
+  assert.equal(shouldUseHermesTools(true, "A"), false);
+  assert.equal(shouldUseHermesTools(true, "1"), false);
+  assert.equal(shouldUseHermesTools(true, "确认"), false);
+  assert.equal(shouldUseHermesTools(true, "上传这个邮箱账号"), true);
+});

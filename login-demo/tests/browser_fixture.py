@@ -115,5 +115,10 @@ if __name__=='__main__':
                     'email':'alice@browser.example',
                     'backup_email':'sales@browser.example',
                 })
-                ChatStore(path,tenant).save_settings({'api_key_encrypted':app.state.secret_store.encrypt(wid,'fake-ui-key')})
+                ChatStore(path,tenant).save_settings({
+                    'provider':'openai-compatible',
+                    'base_url':'https://model.example/v1',
+                    'model':'fixture-model',
+                    'api_key_encrypted':app.state.secret_store.encrypt(wid,'fake-ui-key'),
+                })
         uvicorn.run(app,host='127.0.0.1',port=int(os.getenv('PORT','8018')),log_level='warning')

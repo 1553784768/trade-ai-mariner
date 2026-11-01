@@ -36,8 +36,14 @@ CUSTOMER_IMPORT_TOOL = {
                             'whatsapp': {'type': 'string'},
                             'country': {'type': 'string'},
                             'tier': {'type': 'string', 'enum': ['A', 'B', 'C']},
-                            'buyer_type': {'type': 'string'},
-                            'main_category': {'type': 'string'},
+                            'buyer_type': {
+                                'type': 'string',
+                                'description': '客户实际经营类型，例如连锁超市、批发商、品牌商或电商。',
+                            },
+                            'main_category': {
+                                'type': 'string',
+                                'description': '本次对话正在销售的产品或品类，例如打火机。',
+                            },
                             'source': {'type': 'string'},
                             'note': {'type': 'string'},
                         },
@@ -53,7 +59,8 @@ CUSTOMER_IMPORT_TOOL = {
 CUSTOMER_IMPORT_INSTRUCTION = (
     '用户本轮明确要求把先前对话中的客户写入当前公司客户库。'
     '必须调用 import_customers 工具，只提取对话中已经出现的客户，不得虚构联系人、邮箱或网站；'
-    '没有信息的字段留空。'
+    'main_category 填写本次销售的产品或品类；buyer_type 填写客户实际经营类型，'
+    '例如连锁超市、批发商、品牌商或电商。没有信息的字段留空。'
 )
 
 _IMPORT_VERB = r'(写入|保存|导入|加入|放进|存到|存进|添加到|录入)'

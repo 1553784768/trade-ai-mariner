@@ -80,7 +80,11 @@ def test_chat_consent_is_explicit_and_audited(tmp_path, monkeypatch):
     app = create_app(tmp_path / 'accounts.sqlite3', 'test', model_transport=httpx.MockTransport(provider))
     with TestClient(app) as client:
         client.post('/api/register', json={'email': 'chat@example.com', 'password': 'password-test-1'})
-        client.put('/api/model-settings', json={'api_key': 'test-key'})
+        client.put('/api/model-settings', json={
+            'base_url': 'https://model.example/v1',
+            'model': 'test-model',
+            'api_key': 'test-key',
+        })
         cid = client.post('/api/conversations', json={'title': 'Consent test'}).json()['id']
         client.post(f'/api/conversations/{cid}/stream', json={'content': 'Hi', 'include_tariff': True})
         assert '尚未启用关税风险模块' in captured[-1]['messages'][0]['content']

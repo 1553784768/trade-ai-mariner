@@ -153,9 +153,11 @@ def migrate(path: Path) -> None:
         conn.execute("""
             CREATE TABLE IF NOT EXISTS model_settings (
                 workspace_id INTEGER PRIMARY KEY REFERENCES workspaces(id) ON DELETE CASCADE,
-                provider TEXT NOT NULL DEFAULT 'deepseek',
-                model TEXT NOT NULL DEFAULT 'deepseek-chat',
-                api_key_encrypted TEXT NOT NULL DEFAULT ''
+                provider TEXT NOT NULL DEFAULT 'openai-compatible',
+                model TEXT NOT NULL DEFAULT '',
+                base_url TEXT NOT NULL DEFAULT '',
+                api_key_encrypted TEXT NOT NULL DEFAULT '',
+                last_test TEXT NOT NULL DEFAULT 'null'
             )
         """)
         conn.execute("""
@@ -216,6 +218,8 @@ def migrate(path: Path) -> None:
             ('conversations', 'company_id', 'INTEGER'),
             ('research_reports', 'company_id', 'INTEGER'),
             ('automations', 'company_id', 'INTEGER'),
+            ('model_settings', 'base_url', "TEXT NOT NULL DEFAULT ''"),
+            ('model_settings', 'last_test', "TEXT NOT NULL DEFAULT 'null'"),
         ]:
             columns = {row['name'] for row in conn.execute(f'PRAGMA table_info({table})').fetchall()}
             if column not in columns:
@@ -223,6 +227,29 @@ def migrate(path: Path) -> None:
         from tariff_schema import TABLES as TARIFF_TABLES
         for statement in TARIFF_TABLES:
             conn.execute(statement)
+        unified_models_done = conn.execute(
+            "SELECT 1 FROM schema_meta WHERE key='unified_model_settings_v1'"
+        ).fetchone()
+        if not unified_models_done:
+            # Preserve existing tariff credentials once when upgrading to the shared model store.
+            conn.execute("""
+                INSERT INTO model_settings(
+                    workspace_id,provider,model,base_url,api_key_encrypted,last_test
+                )
+                SELECT workspace_id,'openai-compatible',model,base_url,api_key_encrypted,last_test
+                FROM tariff_model_settings
+                WHERE api_key_encrypted <> ''
+                ON CONFLICT(workspace_id) DO UPDATE SET
+                    provider=excluded.provider,
+                    model=excluded.model,
+                    base_url=excluded.base_url,
+                    api_key_encrypted=excluded.api_key_encrypted,
+                    last_test=excluded.last_test
+                WHERE model_settings.api_key_encrypted = ''
+            """)
+            conn.execute(
+                "INSERT OR REPLACE INTO schema_meta(key,value) VALUES ('unified_model_settings_v1','1')"
+            )
         for row in conn.execute('SELECT id, workspace_id FROM companies ORDER BY id').fetchall():
             conn.execute(
                 'UPDATE libraries SET company_id=? WHERE workspace_id=? AND company_id IS NULL',

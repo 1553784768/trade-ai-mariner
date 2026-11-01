@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense, useEffect, useRef, useState, type ReactNode } from "react";
+import { Suspense, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -12,7 +12,6 @@ import {
   IconBook,
   IconMessageChatbot,
   IconFileText,
-  IconSearch,
   IconUsers,
   IconTarget,
   IconWorldSearch,
@@ -34,99 +33,15 @@ import { api, tradeApi, jsonBody, type Schema } from "@/lib/api";
 import { BRAND } from "@/lib/brand";
 import { normalizePath } from "@/lib/routes";
 import { formatTime } from "@/lib/format";
-import { modifierLabel } from "@/lib/platform";
 import type { Company, CustomerPage, ModelSettings, Skill, TariffSummary } from "@/lib/trade-types";
 import { useMe } from "./auth";
 import { ErrorBanner } from "./ui";
 import { Field, Modal, useAction, useTradeQuery } from "./trade-ui";
 
+let savedNavScrollTop = 0;
+
 export function useMeta() {
   return useQuery({ queryKey: ["meta"], queryFn: () => api<Schema<"Meta">>("/meta") });
-}
-function SidebarSearch({ opened }: { opened: boolean }) {
-  const pathname = normalizePath(usePathname()),
-    params = useSearchParams(),
-    router = useRouter(),
-    ref = useRef<HTMLInputElement>(null);
-  const [input, setInput] = useState(params.get("q") || ""),
-    [focused, setFocused] = useState(false);
-  const urlQuery = params.get("q") || "";
-  const [previous, setPrevious] = useState(urlQuery);
-  if (previous !== urlQuery) {
-    setPrevious(urlQuery);
-    setInput(urlQuery);
-  }
-  const customers = useTradeQuery<CustomerPage>(
-    `/customers?q=${encodeURIComponent(input)}&limit=5`,
-    input.length >= 2 && pathname !== "/tariff/inbox",
-  );
-  const impacts = useQuery({
-    queryKey: ["search-impacts", input],
-    queryFn: () => api<Schema<"ImpactCard">[]>(`/impacts?q=${encodeURIComponent(input)}`),
-    enabled: opened && input.length >= 2 && pathname !== "/tariff/inbox",
-  });
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (
-        (e.ctrlKey || e.metaKey) &&
-        e.key.toLowerCase() === "k" &&
-        !document.querySelector('[role="dialog"]')
-      ) {
-        e.preventDefault();
-        ref.current?.focus();
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, []);
-  useEffect(() => {
-    if (pathname !== "/tariff/inbox" || input === urlQuery) return;
-    const timer = setTimeout(() => {
-      const next = new URLSearchParams(params);
-      if (input) next.set("q", input);
-      else next.delete("q");
-      next.delete("order");
-      router.replace(`/tariff/inbox?${next}`, { scroll: false });
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [input, urlQuery, pathname, params, router]);
-  return (
-    <div style={{ position: "relative" }}>
-      <div className="search-box">
-        <IconSearch size={14} />
-        <input
-          ref={ref}
-          aria-label={t("搜索客户、订单号、品名、HS 编码…")}
-          placeholder={t("搜索客户、订单号、品名、HS 编码…")}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setTimeout(() => setFocused(false), 150)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && pathname !== "/tariff/inbox")
-              router.push(`/tariff/inbox?q=${encodeURIComponent(input)}`);
-          }}
-        />
-        <kbd className="kbd">{modifierLabel()} K</kbd>
-      </div>
-      {focused && input.length >= 2 && pathname !== "/tariff/inbox" && (
-        <div className="popover">
-          <div className="nav-section-title">{t("客户管理")}</div>
-          {customers.data?.items.map((c) => (
-            <Link className="menu-item" key={c.id} href={`/customers?id=${c.id}`}>
-              {c.name}
-            </Link>
-          ))}
-          <div className="nav-section-title">{t("关税订单")}</div>
-          {impacts.data?.slice(0, 5).map((v) => (
-            <Link className="menu-item" key={v.order_id} href={`/tariff/inbox?order=${v.order_id}`}>
-              {v.order_id} · {v.product}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
 }
 function ShellContent({
   title,
@@ -163,6 +78,7 @@ function ShellContent({
     [companyMenu, setCompanyMenu] = useState(false),
     [profile, setProfile] = useState(false),
     [dialog, setDialog] = useState("");
+  const navRef = useRef<HTMLElement>(null);
   const skills = useTradeQuery<Skill[]>("/chat/skills", dialog === "skills"),
     customers = useTradeQuery<CustomerPage>("/customers?limit=1"),
     action = useAction();
@@ -185,6 +101,14 @@ function ShellContent({
       }
     }
   }, [me.data, company.data, customers.data]);
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    nav.scrollTop = savedNavScrollTop;
+    return () => {
+      savedNavScrollTop = nav.scrollTop;
+    };
+  }, []);
   const sections = [
     { label: "工作台", links: [["/", "今日简报", IconLayoutDashboard]] },
     {
@@ -293,8 +217,7 @@ function ShellContent({
       </header>
       <div className="layout">
         <aside className="sidebar">
-          <SidebarSearch opened={tariff || !!status.data?.opened} />
-          <nav className="nav-list">
+          <nav className="nav-list" ref={navRef}>
             {sections.map((section) => (
               <div key={section.label}>
                 <div className="nav-section-title">{t(section.label)}</div>

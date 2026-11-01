@@ -1,16 +1,17 @@
 "use client";
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useRef,
   useState,
-  type Dispatch,
   type SetStateAction,
   type ReactNode,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
+import { IconChevronDown } from "@tabler/icons-react";
 import { t } from "@/i18n/runtime";
 import { tradeApi, jsonBody } from "@/lib/api";
 import type {
@@ -22,6 +23,7 @@ import type {
   TradeMessage,
 } from "@/lib/trade-types";
 import { BRAND } from "@/lib/brand";
+import { groupCustomersByCategory } from "@/lib/customer-groups";
 import { CONTEXTS } from "@/lib/trade-contexts";
 import { shouldUseHermesTools } from "@/lib/chat-state";
 import { readSSE } from "@/lib/sse";
@@ -45,17 +47,47 @@ type ChatState = {
   busy: boolean;
   controller: AbortController | null;
   lastToolFailed: boolean;
+  needsToolContinuation: boolean;
 };
-const initial: ChatState = { cid: null, messages: [], busy: false, controller: null, lastToolFailed: false };
-const ChatContext = createContext<{ state: ChatState; setState: Dispatch<SetStateAction<ChatState>> }>({
-  state: initial,
+const initial: ChatState = {
+  cid: null,
+  messages: [],
+  busy: false,
+  controller: null,
+  lastToolFailed: false,
+  needsToolContinuation: false,
+};
+const ChatContext = createContext<{
+  states: Record<string, ChatState>;
+  setState: (key: string, update: SetStateAction<ChatState>) => void;
+}>({
+  states: {},
   setState: () => {},
 });
 export function TradeChatProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState(initial);
-  return <ChatContext.Provider value={{ state, setState }}>{children}</ChatContext.Provider>;
+  const [states, setStates] = useState<Record<string, ChatState>>({});
+  const setState = useCallback((key: string, update: SetStateAction<ChatState>) => {
+    setStates((current) => {
+      const previous = current[key] || initial;
+      return {
+        ...current,
+        [key]: typeof update === "function" ? update(previous) : update,
+      };
+    });
+  }, []);
+  return <ChatContext.Provider value={{ states, setState }}>{children}</ChatContext.Provider>;
 }
-export const useTradeChat = () => useContext(ChatContext);
+export function useTradeChat(threadKey: string) {
+  const { states, setState: setStore } = useContext(ChatContext);
+  const setState = useCallback(
+    (update: SetStateAction<ChatState>) => setStore(threadKey, update),
+    [setStore, threadKey],
+  );
+  return { state: states[threadKey] || initial, setState };
+}
+export function useTradeChatStates() {
+  return useContext(ChatContext).states;
+}
 const busyMessage = "当前回复还在进行中，请等待完成或点击停止后再操作。";
 function ThinkingPanel({ value }: { value: Thinking }) {
   const [now, setNow] = useState(value.startedAt);
@@ -87,19 +119,34 @@ function ThinkingPanel({ value }: { value: Thinking }) {
   );
 }
 export function TradeChat({ daily = false }: { daily?: boolean }) {
+  const params = useSearchParams();
+  const rawContext = daily ? "daily" : params.get("ctx") || "lead";
+  const contextKey = CONTEXTS[rawContext] ? rawContext : daily ? "daily" : "lead";
+  const threadKey = `${contextKey}:${params.get("customer") || ""}`;
+  return <TradeChatWindow key={threadKey} daily={daily} contextKey={contextKey} threadKey={threadKey} />;
+}
+function TradeChatWindow({
+  daily,
+  contextKey,
+  threadKey,
+}: {
+  daily: boolean;
+  contextKey: string;
+  threadKey: string;
+}) {
   const params = useSearchParams(),
     router = useRouter(),
     cache = useQueryClient(),
     toast = useToast();
-  const contextKey = daily ? "daily" : params.get("ctx") || "lead",
-    context = CONTEXTS[contextKey] || CONTEXTS.daily;
-  const { state, setState } = useTradeChat(),
+  const context = CONTEXTS[contextKey] || CONTEXTS.daily;
+  const { state, setState } = useTradeChat(threadKey),
     stateRef = useRef(state);
   useEffect(() => {
     stateRef.current = state;
   }, [state]);
   const [content, setContent] = useState(""),
     [customerId, setCustomerId] = useState(params.get("customer") || ""),
+    [customerOpen, setCustomerOpen] = useState(false),
     [libraryId, setLibraryId] = useState(""),
     [documentId, setDocumentId] = useState(params.get("doc") || ""),
     [webSearch, setWebSearch] = useState(true),
@@ -109,9 +156,14 @@ export function TradeChat({ daily = false }: { daily?: boolean }) {
     libraries = useTradeQuery<Library[]>("/libraries"),
     model = useTradeQuery<ModelSettings>("/model-settings"),
     files = useTradeQuery<DocumentFile[]>(`/libraries/${libraryId}/files`, !!libraryId);
+  const customerGroups = groupCustomersByCategory(customers.data?.items || []),
+    selectedCustomer = customers.data?.items.find((customer) => String(customer.id) === customerId),
+    selectedTier = selectedCustomer?.tier || "",
+    selectedTierTone = selectedTier === "A" ? "good" : selectedTier === "B" ? "warn" : "";
   const requested = params.get("c"),
     loaded = useRef<string | null>(null),
-    end = useRef<HTMLDivElement>(null);
+    end = useRef<HTMLDivElement>(null),
+    customerPicker = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!requested || requested === loaded.current) return;
     const current = stateRef.current;
@@ -147,6 +199,14 @@ export function TradeChat({ daily = false }: { daily?: boolean }) {
   useEffect(() => {
     end.current?.scrollIntoView({ block: "nearest" });
   }, [state.messages]);
+  useEffect(() => {
+    if (!customerOpen) return;
+    const close = (event: MouseEvent) => {
+      if (!customerPicker.current?.contains(event.target as Node)) setCustomerOpen(false);
+    };
+    window.addEventListener("mousedown", close);
+    return () => window.removeEventListener("mousedown", close);
+  }, [customerOpen]);
   function patchAssistant(update: (m: Message) => Message) {
     setState((current) => ({
       ...current,
@@ -163,8 +223,8 @@ export function TradeChat({ daily = false }: { daily?: boolean }) {
     const text = content.trim(),
       controller = new AbortController(),
       start = Date.now();
-    const tools = shouldUseHermesTools(hermes, text, state.lastToolFailed),
-      force = state.lastToolFailed && tools;
+    const tools = shouldUseHermesTools(hermes, text, state.lastToolFailed || state.needsToolContinuation),
+      force = (state.lastToolFailed || state.needsToolContinuation) && tools;
     let cid = state.cid;
     setState((s) => ({ ...s, busy: true, controller }));
     setContent("");
@@ -201,7 +261,9 @@ export function TradeChat({ daily = false }: { daily?: boolean }) {
         signal: controller.signal,
         raw: true,
       });
+      let needsToolContinuation = false;
       await readSSE(response, (type, data) => {
+        if (type === "partial") needsToolContinuation = true;
         if (type === "delta" || type === "replace")
           patchAssistant((m) => ({
             ...m,
@@ -232,7 +294,11 @@ export function TradeChat({ daily = false }: { daily?: boolean }) {
         if (type === "sources")
           patchAssistant((m) => ({ ...m, sources: data.sources as Message["sources"] }));
       });
-      setState((s) => ({ ...s, lastToolFailed: false }));
+      setState((s) => ({
+        ...s,
+        lastToolFailed: false,
+        needsToolContinuation,
+      }));
     } catch (error) {
       if ((error as Error).name !== "AbortError") {
         toast((error as Error).message, true);
@@ -350,20 +416,82 @@ export function TradeChat({ daily = false }: { daily?: boolean }) {
           }}
         >
           <div className="chat-options">
-            <select
-              className="select"
-              aria-label={t("关联客户")}
-              disabled={!!state.cid || state.busy}
-              value={customerId}
-              onChange={(e) => setCustomerId(e.target.value)}
-            >
-              <option value="">{t("不关联客户")}</option>
-              {customers.data?.items.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
+            <div className="customer-picker" ref={customerPicker}>
+              <button
+                type="button"
+                className="customer-picker-trigger"
+                aria-label={t("关联客户")}
+                aria-haspopup="listbox"
+                aria-expanded={customerOpen}
+                disabled={!!state.cid || state.busy}
+                onClick={() => setCustomerOpen((open) => !open)}
+              >
+                <span>{selectedCustomer?.name || t("不关联客户")}</span>
+                <IconChevronDown size={14} />
+              </button>
+              {customerOpen && (
+                <div className="customer-menu" role="listbox" aria-label={t("关联客户")}>
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={!customerId}
+                    className="customer-option clear"
+                    onClick={() => {
+                      setCustomerId("");
+                      setCustomerOpen(false);
+                    }}
+                  >
+                    {t("不关联客户")}
+                  </button>
+                  {customerGroups.map((group) => (
+                    <details
+                      className="customer-group"
+                      data-category={group.category || t("未分类")}
+                      key={group.category || "uncategorized"}
+                    >
+                      <summary>
+                        <span>{group.category || t("未分类")}</span>
+                        <span>{t("{n} 位客户", { n: group.customers.length })}</span>
+                        <IconChevronDown size={14} />
+                      </summary>
+                      <div className="customer-group-options">
+                        {group.customers.map((customer) => {
+                          const tier = customer.tier ? t("{tier} 类", { tier: customer.tier }) : t("未分级");
+                          const businessType = customer.buyer_type || t("经营类型未标注");
+                          return (
+                            <button
+                              type="button"
+                              role="option"
+                              aria-selected={String(customer.id) === customerId}
+                              aria-label={`${customer.name} · ${tier} · ${businessType}`}
+                              className="customer-option"
+                              key={customer.id}
+                              onClick={() => {
+                                setCustomerId(String(customer.id));
+                                setCustomerOpen(false);
+                              }}
+                            >
+                              <strong>{customer.name}</strong>
+                              <span className="customer-option-meta">
+                                <Tag
+                                  tone={customer.tier === "A" ? "good" : customer.tier === "B" ? "warn" : ""}
+                                >
+                                  {tier}
+                                </Tag>
+                                <span>{businessType}</span>
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </details>
+                  ))}
+                  {!customerGroups.length && <div className="customer-empty">{t("暂无客户")}</div>}
+                </div>
+              )}
+            </div>
+            {selectedTier && <Tag tone={selectedTierTone}>{t("{tier} 类", { tier: selectedTier })}</Tag>}
+            {selectedCustomer?.buyer_type && <Tag>{selectedCustomer.buyer_type}</Tag>}
             <select
               className="select"
               aria-label={t("参考文档库")}

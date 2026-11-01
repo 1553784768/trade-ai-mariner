@@ -53,6 +53,16 @@ const messages: Record<string, string> = {
   关税订单: "Tariff orders",
   对话模型: "Chat model",
   关税智能体模型: "Tariff agent model",
+  模型设置: "Model settings",
+  当前模型: "Current model",
+  模型接口地址: "Model endpoint",
+  产品分类: "Product category",
+  未分类: "Uncategorized",
+  未分级: "Unranked",
+  经营类型未标注: "Business type not specified",
+  "{n} 位客户": "{n} customers",
+  暂无客户: "No customers",
+  "{tier} 类": "Tier {tier}",
   已配置: "Configured",
   未配置: "Not configured",
   "已保存；留空保留": "Saved; leave blank to keep",
@@ -241,7 +251,9 @@ const messages: Record<string, string> = {
   引用关税数据: "Include tariff data",
   "开启后，本轮将向对话模型发送关税订单和利润数据，并记录审计。":
     "This turn will send tariff orders and profit data to the chat model and record an audit event.",
-  请先配置对话模型: "Configure the chat model first",
+  "同一配置用于业务对话与关税智能体。":
+    "The same configuration is used for business chat and the tariff agent.",
+  请先配置对话模型: "Configure the shared model first",
   "当前回复还在进行中，请等待完成或点击停止后再操作。":
     "A reply is in progress. Wait for completion or stop it first.",
   关税风险摘要: "Tariff risk summary",

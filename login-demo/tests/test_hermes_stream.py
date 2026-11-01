@@ -52,11 +52,12 @@ def test_hermes_stream_ignores_plain_session_status_lines():
 
 
 def test_hermes_stream_command_omits_gateway_unsupported_run_budget():
-    command = stream_command('hermes', '你好')
+    command = stream_command('hermes')
 
     assert '--run-budget' not in command
+    assert command[command.index('--query-file') + 1] == '-'
     assert command[command.index('--format') + 1] == 'stream-json'
-    assert command[command.index('--max-turns') + 1] == '24'
+    assert command[command.index('--max-turns') + 1] == '60'
 
 
 def test_hermes_route_streams_tool_timeline_and_final_reply(tmp_path):
@@ -110,3 +111,40 @@ def test_hermes_route_streams_tool_timeline_and_final_reply(tmp_path):
     assert tool_result['duration_ms'] == 1200
     assert any(event == 'done' for event, _ in received)
     assert client.get(f'/api/conversations/{conversation_id}').json()['messages'][-1]['content'] == '已完成网站资料核验。'
+
+
+def test_hermes_route_keeps_final_reply_when_tool_budget_is_reached(tmp_path):
+    async def fake_streamer(prompt, working_directory):
+        yield {
+            'type': 'result',
+            'text': '已完成客户筛选，并给出当前可执行建议。',
+            'exit_code': 1,
+            'error': 'max_iterations_reached',
+        }
+
+    app = create_app(
+        tmp_path / 'hermes-partial.sqlite3',
+        'test-secret',
+        hermes_streamer=fake_streamer,
+    )
+    client = TestClient(app)
+    client.post('/api/register', json={
+        'email': 'hermes-partial@example.com',
+        'password': 'correct-horse-1',
+    })
+    conversation_id = client.post('/api/conversations', json={'title': '工具轮数上限'}).json()['id']
+
+    response = client.post(
+        f'/api/conversations/{conversation_id}/hermes',
+        json={'content': '请筛选并整理新的目标客户名单', 'skill_id': 'b2b-lead-generation', 'web_search': False},
+    )
+
+    assert response.status_code == 200
+    received = events(response.text)
+    assert not any(event == 'error' for event, _ in received)
+    assert any(event == 'partial' for event, _ in received)
+    assert any(event == 'done' for event, _ in received)
+    saved = client.get(f'/api/conversations/{conversation_id}').json()['messages'][-1]
+    assert saved['status'] == 'complete'
+    assert '已完成客户筛选，并给出当前可执行建议。' in saved['content']
+    assert '达到工具调用轮数上限' in saved['content']

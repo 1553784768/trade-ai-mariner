@@ -5,9 +5,10 @@ from pathlib import Path
 from threading import RLock
 
 from fastapi import HTTPException
+
 from database import connection
-from tenancy import require_tenant
 from mariner.runtime import open_runtime
+from tenancy import require_tenant
 
 logger = logging.getLogger(__name__)
 
@@ -18,33 +19,42 @@ class WorkspaceLlmStore:
 
     def get(self):
         with connection(self.db_path) as conn:
-            row = conn.execute('SELECT * FROM tariff_model_settings WHERE workspace_id=?', (self.workspace_id,)).fetchone()
-        if row is None:
+            row = conn.execute('SELECT * FROM model_settings WHERE workspace_id=?', (self.workspace_id,)).fetchone()
+        if row is None or not row['api_key_encrypted']:
             return None
         try:
             key = self.secret_store.decrypt(self.workspace_id, row['api_key_encrypted'])
         except ValueError:
             logger.warning('Cannot decrypt tariff model settings for workspace %s', self.workspace_id)
             return None
-        return dict(base_url=row['base_url'], model=row['model'], api_key=key, last_test=json.loads(row['last_test']))
+        try:
+            last_test = json.loads(row['last_test'])
+        except (TypeError, json.JSONDecodeError):
+            last_test = None
+        return {'base_url': row['base_url'], 'model': row['model'], 'api_key': key, 'last_test': last_test}
 
     def save(self, *, base_url, model, api_key):
         encrypted = self.secret_store.encrypt(self.workspace_id, api_key)
         with connection(self.db_path) as conn:
-            conn.execute("""INSERT INTO tariff_model_settings(workspace_id,base_url,model,api_key_encrypted)
-                VALUES (?,?,?,?) ON CONFLICT(workspace_id) DO UPDATE SET
-                base_url=excluded.base_url, model=excluded.model, api_key_encrypted=excluded.api_key_encrypted,
-                last_test='null', updated_at=strftime('%Y-%m-%dT%H:%M:%fZ','now')""",
+            conn.execute("""INSERT INTO model_settings(
+                    workspace_id,provider,base_url,model,api_key_encrypted,last_test
+                ) VALUES (?,'openai-compatible',?,?,?,'null')
+                ON CONFLICT(workspace_id) DO UPDATE SET
+                    provider='openai-compatible',
+                    base_url=excluded.base_url,
+                    model=excluded.model,
+                    api_key_encrypted=excluded.api_key_encrypted,
+                    last_test='null'""",
                 (self.workspace_id, base_url, model, encrypted))
         return self.get()
 
     def clear(self):
         with connection(self.db_path) as conn:
-            conn.execute('DELETE FROM tariff_model_settings WHERE workspace_id=?', (self.workspace_id,))
+            conn.execute('DELETE FROM model_settings WHERE workspace_id=?', (self.workspace_id,))
 
     def record_test(self, result):
         with connection(self.db_path) as conn:
-            conn.execute('UPDATE tariff_model_settings SET last_test=? WHERE workspace_id=?',
+            conn.execute('UPDATE model_settings SET last_test=? WHERE workspace_id=?',
                          (json.dumps(result, ensure_ascii=False), self.workspace_id))
 
 

@@ -39,7 +39,7 @@ $env:TARIFF_SCHEDULER_ENABLED = 'false'
 .venv/Scripts/python -m uvicorn app:app --host 127.0.0.1 --port 8017
 ```
 
-打开 **http://127.0.0.1:8017/** 并注册账号。生产运行只需 FastAPI，Next.js 前端已静态导出。上述命令使用本地关税演示数据；业务对话仍需在设置中配置有效模型 Key。
+打开 **http://127.0.0.1:8017/** 并注册账号。生产运行只需 FastAPI，Next.js 前端已静态导出。上述命令使用本地关税演示数据；业务对话和关税智能体共用设置中的一套模型配置。
 
 开发启动、Linux/macOS 命令、真实政策采集、模型设置、数据备份与测试方法，见 [login-demo/README.md](login-demo/README.md)。
 

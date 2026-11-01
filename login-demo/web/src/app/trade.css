@@ -472,3 +472,387 @@
   min-width: 180px;
   flex: 1;
 }
+.customer-picker {
+  position: relative;
+  min-width: 300px;
+  flex: 2 1 300px;
+}
+.customer-picker-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-ink-200);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  cursor: pointer;
+}
+.customer-picker-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+.customer-picker-trigger span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.customer-picker-trigger svg {
+  flex-shrink: 0;
+  color: var(--color-ink-400);
+}
+.customer-menu {
+  position: absolute;
+  z-index: 80;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 560px;
+  max-width: calc(100vw - 340px);
+  max-height: 420px;
+  overflow: auto;
+  border: 1px solid var(--color-ink-200);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  box-shadow: 0 16px 38px color-mix(in srgb, var(--color-ink-900) 14%, transparent);
+}
+.customer-group {
+  border-top: 1px solid var(--color-ink-100);
+}
+.customer-group:first-of-type {
+  border-top: 0;
+}
+.customer-group summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 14px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+}
+.customer-group summary::-webkit-details-marker {
+  display: none;
+}
+.customer-group summary span:nth-child(2) {
+  color: var(--color-ink-400);
+  font-size: 11px;
+  font-weight: 400;
+}
+.customer-group summary svg {
+  transition: transform 120ms ease;
+}
+.customer-group[open] summary svg {
+  transform: rotate(180deg);
+}
+.customer-group-options {
+  padding: 0 8px 8px;
+}
+.customer-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.customer-option:hover,
+.customer-option[aria-selected="true"] {
+  background: var(--color-surface);
+}
+.customer-option strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.customer-option-meta {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-ink-500);
+  font-size: 12px;
+}
+.customer-option.clear {
+  justify-content: flex-start;
+  color: var(--color-ink-500);
+}
+.customer-empty {
+  padding: 16px;
+  color: var(--color-ink-400);
+  text-align: center;
+}
+
+/* 望雕 AI 登录页 */
+.login-wrap {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(420px, 0.78fr);
+  place-items: stretch;
+  background: var(--color-surface);
+}
+.login-showcase {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--color-brand-soft);
+}
+.showcase-art,
+.showcase-art img,
+.showcase-scrim {
+  position: absolute;
+  inset: 0;
+}
+.showcase-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 16%;
+}
+.showcase-scrim {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--color-ink-900) 16%, transparent) 0%, transparent 34%),
+    linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--color-ink-900) 88%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink-900) 42%, transparent) 42%,
+      transparent 72%
+    );
+}
+.showcase-copy {
+  position: absolute;
+  z-index: 2;
+  left: 56px;
+  right: 56px;
+  bottom: 56px;
+  max-width: 720px;
+  color: var(--color-white);
+}
+.showcase-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-brand-soft);
+}
+.kicker-line {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-brand);
+}
+.showcase-copy h1 {
+  margin: 18px 0 14px;
+  font-size: 60px;
+  line-height: 1.05;
+  font-weight: 800;
+}
+.showcase-copy p {
+  margin: 0;
+  max-width: 560px;
+  color: color-mix(in srgb, var(--color-white) 86%, transparent);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.showcase-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+.showcase-points span {
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-white) 28%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-white) 12%, transparent);
+  color: color-mix(in srgb, var(--color-white) 94%, transparent);
+  font-size: 12px;
+}
+.login-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-white);
+  border-left: 1px solid var(--color-ink-200);
+}
+.login-panel-inner {
+  width: min(100%, 460px);
+  margin: auto;
+  padding: 48px 56px;
+}
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-ink-200);
+  border-radius: 8px;
+  background: var(--color-surface);
+}
+.brand-mark img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.login-brand > div {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+.login-brand strong {
+  color: var(--color-ink-900);
+  font-size: 18px;
+}
+.login-brand small {
+  color: var(--color-ink-500);
+  font-size: 11px;
+}
+.login-heading {
+  margin-top: 64px;
+}
+.eyebrow {
+  color: var(--color-brand);
+  font-size: 12px;
+  font-weight: 700;
+}
+.login-heading h2 {
+  margin: 12px 0 10px;
+  color: var(--color-ink-900);
+  font-size: 32px;
+  line-height: 1.2;
+}
+.login-heading p {
+  margin: 0;
+  color: var(--color-ink-500);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.login-switch {
+  width: 100%;
+  margin: 32px 0 22px;
+  padding: 4px;
+  border-color: var(--color-ink-200);
+  border-radius: 8px;
+  background: var(--color-surface);
+}
+.login-switch button {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 6px;
+  color: var(--color-ink-500);
+  font-size: 13px;
+}
+.login-switch button.active {
+  background: var(--color-ink-900);
+  color: var(--color-white);
+  box-shadow: 0 6px 14px color-mix(in srgb, var(--color-ink-900) 22%, transparent);
+}
+.login-form {
+  gap: 14px;
+}
+.login-form .field {
+  gap: 7px;
+  margin-bottom: 0;
+}
+.login-form .field label {
+  color: var(--color-ink-700);
+  font-size: 12px;
+}
+.login-form .input {
+  min-height: 48px;
+  padding: 12px 14px;
+  border-color: var(--color-ink-200);
+  border-radius: 8px;
+  background: var(--color-white);
+  color: var(--color-ink-900);
+}
+.login-form .input::placeholder {
+  color: var(--color-ink-400);
+}
+.login-form .input:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-brand) 12%, transparent);
+  background: var(--color-white);
+}
+.login-submit {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 6px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--color-brand);
+  color: var(--color-white);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--color-brand) 24%, transparent);
+  font-size: 14px;
+}
+.login-submit:hover {
+  background: var(--color-brand-dark);
+  border-color: var(--color-brand-dark);
+}
+.login-note {
+  margin: 16px 0 0;
+  color: var(--color-ink-400);
+  font-size: 11px;
+  text-align: center;
+}
+.login-panel-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 56px;
+  border-top: 1px solid var(--color-ink-100);
+  color: var(--color-ink-400);
+  font-size: 10px;
+}
+@media (max-width: 900px) {
+  .login-wrap {
+    grid-template-columns: 1fr;
+  }
+  .login-showcase {
+    min-height: 480px;
+  }
+  .showcase-copy h1 {
+    font-size: 44px;
+  }
+  .login-panel {
+    min-height: 620px;
+    border-left: 0;
+  }
+}
+@media (max-width: 600px) {
+  .login-showcase {
+    min-height: 440px;
+  }
+  .showcase-copy {
+    left: 24px;
+    right: 24px;
+    bottom: 32px;
+  }
+  .showcase-copy h1 {
+    font-size: 36px;
+  }
+  .login-panel-inner {
+    padding: 36px 24px;
+  }
+  .login-panel-footer {
+    padding: 16px 24px;
+  }
+}

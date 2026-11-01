@@ -27,7 +27,7 @@ test("T-16.1 system fonts and offline assets", async ({ page }) => {
   );
   expect(fonts).toEqual([]);
 });
-test("T-16.2 shell, global search and language persistence", async ({ page, request }) => {
+test("T-16.2 shell and language persistence", async ({ page, request }) => {
   const started = await (await request.post(`${apiBase}/pipeline/runs`)).json();
   await expect
     .poll(async () => (await (await request.get(`${apiBase}/pipeline/runs/${started.id}`)).json()).status)
@@ -42,11 +42,10 @@ test("T-16.2 shell, global search and language persistence", async ({ page, requ
   await expect(page.locator('.nav-item[href="/tariff/review"] .nav-count')).toHaveText("2");
   await expect(page.locator('.nav-item[href="/tariff/brief"]')).toHaveClass(/active/);
   await shot(page, "T-16.2");
+  await expect(page.locator(".sidebar .search-box")).toHaveCount(0);
   await page.keyboard.press("Control+k");
-  const search = page.locator(".sidebar .search-box input");
-  await expect(search).toBeFocused();
-  await search.fill("O5");
-  await search.press("Enter");
+  await expect(page.locator(".sidebar .search-box")).toHaveCount(0);
+  await page.goto("/tariff/inbox?q=O5");
   await expect(page).toHaveURL(/\/inbox\?q=O5/);
   await expect(page.locator("[data-order]")).toHaveCount(1);
   await expect(page.locator("[data-order]")).toHaveAttribute("data-order", "O5");
@@ -54,6 +53,12 @@ test("T-16.2 shell, global search and language persistence", async ({ page, requ
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page.locator("h1")).toHaveText("Order Risk Inbox");
+});
+test("T-16.2b sidebar search is removed", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".sidebar .search-box")).toHaveCount(0);
+  await page.keyboard.press("Control+k");
+  await expect(page.locator(".sidebar .search-box")).toHaveCount(0);
 });
 test("T-16.4 component gallery and SVG geometry", async ({ page }) => {
   await page.goto("/dev/components");

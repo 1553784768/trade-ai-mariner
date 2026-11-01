@@ -64,9 +64,25 @@ def main():
             store = WorkspaceStore(path, tenant)
             store.update_company({'name': 'Trade AI Demo', 'products': 'Industrial motors and toys'})
             if email == 'e2e@example.com':
-                for name, country, tier in [('Acme GmbH', '德国', 'A'), ('Globex LLC', '美国', 'B')]:
-                    store.create_customer({'name': name, 'country': country, 'tier': tier, 'email': 'buyer@example.com'})
-                ChatStore(path, tenant).save_settings({'api_key_encrypted': application.state.secret_store.encrypt(wid, 'fake-e2e-key')})
+                for name, country, tier, category, buyer_type in [
+                    ('Acme GmbH', '德国', 'A', '打火机', '连锁超市'),
+                    ('Globex LLC', '美国', 'B', '打火机', '打火机批发商'),
+                    ('Pajama World', '法国', 'C', '睡衣', '睡衣零售商'),
+                ]:
+                    store.create_customer({
+                        'name': name,
+                        'country': country,
+                        'tier': tier,
+                        'main_category': category,
+                        'buyer_type': buyer_type,
+                        'email': 'buyer@example.com',
+                    })
+                ChatStore(path, tenant).save_settings({
+                    'provider': 'openai-compatible',
+                    'base_url': 'https://model.example/v1',
+                    'model': 'fixture-model',
+                    'api_key_encrypted': application.state.secret_store.encrypt(wid, 'fake-e2e-key'),
+                })
                 with connection(path) as conn:
                     conn.execute('INSERT INTO research_settings(workspace_id,api_key_encrypted) VALUES (?,?)',
                                  (wid, application.state.secret_store.encrypt(wid, 'fake-tavily-key')))

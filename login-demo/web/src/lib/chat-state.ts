@@ -15,6 +15,7 @@ export function canOpenConversation(state: ChatState, conversationId: string | n
 const TOOL_INTENT =
   /(查|搜索|检索|浏览|网页|官网|链接|文件|下载|抓取|打开|search|browse|website|url|file|download|fetch)/i;
 const CONTINUATION = /^(请)?(继续|接着|然后|往下|接着说|继续说|继续写|接着写|continue|goon|keepgoing)/i;
+const AMBIGUOUS_CONFIRMATION = /^(?:[a-e]|option\s*[a-e]|[1-9]|确认|好的|可以|是的|ok|yes)[。.!！]?$/i;
 
 export function isContinuationRequest(content: string) {
   const text = String(content || "").trim();
@@ -23,5 +24,6 @@ export function isContinuationRequest(content: string) {
 }
 
 export function shouldUseHermesTools(enabled: boolean, content: string, retryFailedToolTurn = false) {
+  if (AMBIGUOUS_CONFIRMATION.test(String(content || "").trim())) return false;
   return Boolean(enabled) && (Boolean(retryFailedToolTurn) || !isContinuationRequest(content));
 }

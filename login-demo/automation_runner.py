@@ -65,6 +65,7 @@ def _execute(app, wid, company_id, automation_id):
     automation = dict(automation)
     if settings is None or not settings['api_key_encrypted']:
         return {'status': 'error', 'output': '', 'error': '尚未配置模型 API Key。'}
+    settings = dict(settings)
     try:
         key = app.state.secret_store.decrypt(wid, settings['api_key_encrypted'])
         instruction = SKILLS[automation['skill_id']][1] if automation['skill_id'] in SKILLS else app.state.skill_catalog.instruction(automation['skill_id'])

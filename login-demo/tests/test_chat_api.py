@@ -30,9 +30,31 @@ def setup(tmp_path):
 
 
 def configure(client):
-    response = client.put('/api/model-settings', json={"provider": "deepseek", "model": "deepseek-chat", "api_key": "fake-key-for-tests-only"})
+    response = client.put('/api/model-settings', json={
+        "provider": "deepseek",
+        "base_url": "https://api.deepseek.com",
+        "model": "deepseek-chat",
+        "api_key": "fake-key-for-tests-only",
+    })
     assert response.status_code == 200
     return response
+
+
+def test_unconfigured_model_has_no_provider_defaults(setup):
+    first, _, _, _ = setup
+    assert first.get('/api/model-settings').json() == {
+        "provider": "openai-compatible",
+        "model": "",
+        "base_url": "",
+        "has_key": False,
+    }
+
+
+def test_api_key_requires_a_complete_model_configuration(setup):
+    first, _, _, _ = setup
+    response = first.put('/api/model-settings', json={"api_key": "key-without-provider"})
+    assert response.status_code == 422
+    assert first.get('/api/model-settings').json()["has_key"] is False
 
 
 def conversation(client, **extra):
@@ -47,11 +69,63 @@ def test_model_settings_hide_and_encrypt_key_and_preserve_it_on_edit(setup):
     assert configured.json()["has_key"] is True
     assert "fake-key-for-tests-only" not in configured.text
     assert "fake-key-for-tests-only" not in first.get('/api/model-settings').text
+    assert first.get('/api/model-settings').json()["base_url"] == "https://api.deepseek.com"
     assert second.get('/api/model-settings').json()["has_key"] is False
     assert first.put('/api/model-settings', json={"model": "another-model"}).json()["has_key"] is True
     with sqlite3.connect(path) as conn:
         raw = conn.execute("SELECT api_key_encrypted FROM model_settings").fetchone()[0]
         assert "fake-key-for-tests-only" not in raw
+
+
+def test_business_and_tariff_share_one_model_configuration(setup):
+    first, _, path, _ = setup
+    response = first.put('/api/tariff/settings/llm', json={
+        "base_url": "https://unified.example/v1",
+        "model": "unified-model",
+        "api_key": "shared-private-key",
+    })
+    assert response.status_code == 200
+    assert first.get('/api/model-settings').json() == {
+        "provider": "openai-compatible",
+        "model": "unified-model",
+        "base_url": "https://unified.example/v1",
+        "has_key": True,
+    }
+    assert first.put('/api/model-settings', json={
+        "base_url": "https://business.example/v1",
+        "model": "business-model",
+    }).status_code == 200
+    tariff = first.get('/api/tariff/settings/llm').json()
+    assert tariff["base_url"] == "https://business.example/v1"
+    assert tariff["model"] == "business-model"
+    assert tariff["api_key_masked"] == "****-key"
+    with sqlite3.connect(path) as conn:
+        assert conn.execute("SELECT COUNT(*) FROM model_settings").fetchone()[0] == 1
+
+
+def test_business_chat_uses_the_shared_model_endpoint(tmp_path):
+    urls = []
+
+    def provider(request):
+        urls.append(str(request.url))
+        return httpx.Response(
+            200,
+            content='data: {"choices":[{"delta":{"content":"ok"}}]}\n\ndata: [DONE]\n\n',
+            headers={"content-type": "text/event-stream"},
+        )
+
+    app = create_app(tmp_path / "shared.sqlite3", "test-secret", model_transport=httpx.MockTransport(provider))
+    with TestClient(app) as client:
+        client.post('/api/register', json={"email": "shared@example.com", "password": "correct-horse-1"})
+        client.put('/api/model-settings', json={
+            "base_url": "https://models.example/v1",
+            "model": "shared-model",
+            "api_key": "shared-key",
+        })
+        response = client.post('/api/conversations', json={"title": "shared"}).json()
+        streamed = client.post(f"/api/conversations/{response['id']}/stream", json={"content": "hello"})
+        assert streamed.status_code == 200
+    assert urls == ["https://models.example/v1/chat/completions"]
 
 
 def test_invalid_model_key_is_not_echoed_in_validation_error(setup):
@@ -251,6 +325,34 @@ def test_turn_lease_outlives_long_hermes_tool_runs(setup):
     with connection(path) as conn:
         busy_until = conn.execute('SELECT busy_until FROM conversations WHERE id=?', (cid,)).fetchone()[0]
     assert busy_until - time.time() >= 360
+
+
+def test_restart_releases_interrupted_chat_turns(setup):
+    first, _, path, _ = setup
+    cid = conversation(first)
+    with connection(path) as conn:
+        row = conn.execute(
+            "SELECT workspace_id, company_id FROM conversations WHERE id=?",
+            (cid,),
+        ).fetchone()
+        user = conn.execute("SELECT id, email FROM users WHERE id=(SELECT owner_user_id FROM workspaces WHERE id=?)", (row["workspace_id"],)).fetchone()
+    tenant = TenantContext(user["id"], row["workspace_id"], user["email"], row["company_id"])
+    ChatStore(path, tenant).claim_turn(cid, "interrupted message", "general")
+
+    create_app(path, "test-secret")
+
+    with connection(path) as conn:
+        conversation_row = conn.execute(
+            "SELECT busy_token, busy_until FROM conversations WHERE id=?",
+            (cid,),
+        ).fetchone()
+        message = conn.execute(
+            "SELECT status FROM messages WHERE conversation_id=? AND role='assistant' ORDER BY id DESC LIMIT 1",
+            (cid,),
+        ).fetchone()
+    assert conversation_row["busy_token"] == ""
+    assert conversation_row["busy_until"] == 0
+    assert message["status"] == "cancelled"
 
 
 def test_encrypted_key_remains_usable_after_app_restart(setup):

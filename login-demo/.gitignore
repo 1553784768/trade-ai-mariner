@@ -18,3 +18,5 @@ web/tariff-openapi.json
 web/test-results*/
 web/e2e-pending/
 artifacts/*.log
+server.stdout.log
+server.stderr.log

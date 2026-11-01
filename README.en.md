@@ -39,7 +39,7 @@ $env:TARIFF_SCHEDULER_ENABLED = 'false'
 .venv/Scripts/python -m uvicorn app:app --host 127.0.0.1 --port 8017
 ```
 
-Open **http://127.0.0.1:8017/** and register an account. FastAPI serves the exported Next.js frontend; no Node server is required in production. These commands enable local tariff fixtures. Business chat still requires a valid model key in Settings.
+Open **http://127.0.0.1:8017/** and register an account. FastAPI serves the exported Next.js frontend; no Node server is required in production. These commands enable local tariff fixtures. Business chat and the tariff agent share one model configuration in Settings.
 
 See the [application guide](login-demo/README.md) for development mode, Linux/macOS commands, live policy collection, model configuration, backups and tests.
 

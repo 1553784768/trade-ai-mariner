@@ -76,7 +76,7 @@ export type DocumentFile = {
 export type DocumentText = { id: number; filename: string; text: string; note: string };
 export type Template = { id: number; name: string; content: string };
 export type Skill = { id: string; name: string; description: string; category: string };
-export type ModelSettings = { provider: string; model: string; has_key: boolean };
+export type ModelSettings = { provider: string; model: string; base_url: string; has_key: boolean };
 export type TradeMessage = { id?: number; role: string; content: string; skill_id?: string; status?: string };
 export type TradeConversation = {
   id: number;

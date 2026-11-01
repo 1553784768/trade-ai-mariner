@@ -1,10 +1,12 @@
 from tariff_context import build_tariff_context
+
 """Authenticated conversation, model configuration, memory and SSE endpoints."""
 
 import asyncio
 import json
 import logging
 from typing import Annotated, Literal
+from urllib.parse import urlparse
 
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import StreamingResponse
@@ -20,19 +22,20 @@ from customer_tools import (
     execute_customer_import,
     wants_customer_import,
 )
-from model_gateway import ModelError, SKILLS, context_messages, stream_model
-from tenancy import TenantContext, require_tenant
 from documents_api import document
-from tavily_service import tavily_lookup
 from hermes_bridge import HermesError, stream_hermes
+from model_gateway import SKILLS, ModelError, context_messages, stream_model
+from tavily_service import tavily_lookup
+from tenancy import TenantContext, require_tenant
 
 router = APIRouter(prefix='/api', tags=['workspace chat'])
 logger = logging.getLogger(__name__)
 
 
 class SettingsUpdate(BusinessInput):
-    provider: Literal['deepseek'] | None = None
+    provider: Literal['deepseek', 'openai-compatible'] | None = None
     model: Name | None = None
+    base_url: str | None = Field(None, max_length=500)
     api_key: SecretStr | None = Field(None, max_length=1000)
     clear_key: bool = False
 
@@ -63,7 +66,12 @@ Store = Annotated[ChatStore, Depends(get_chat_store)]
 
 
 def public_settings(settings):
-    return {'provider': settings['provider'], 'model': settings['model'], 'has_key': bool(settings['api_key_encrypted'])}
+    return {
+        'provider': settings['provider'],
+        'model': settings.get('model') or '',
+        'base_url': settings.get('base_url') or '',
+        'has_key': bool(settings['api_key_encrypted']),
+    }
 
 
 @router.get('/model-settings')
@@ -74,12 +82,27 @@ def model_settings(store: Store):
 @router.put('/model-settings')
 def update_model_settings(payload: SettingsUpdate, request: Request, store: Store):
     values = payload.model_dump(exclude_unset=True, exclude={'api_key', 'clear_key'})
+    if 'base_url' in values:
+        parsed = urlparse(values['base_url'])
+        if (
+            parsed.scheme not in ('http', 'https')
+            or not parsed.hostname
+            or parsed.username
+            or parsed.query
+            or parsed.fragment
+        ):
+            raise HTTPException(422, '模型接口地址不合法。')
+        values['base_url'] = values['base_url'].rstrip('/')
     if payload.api_key and payload.api_key.get_secret_value().strip():
         if payload.clear_key:
             raise HTTPException(422, '不能同时填写和清除模型密钥。')
         values['api_key_encrypted'] = request.app.state.secret_store.encrypt(store.workspace_id, payload.api_key.get_secret_value().strip())
     if payload.clear_key:
         values['api_key_encrypted'] = ''
+    current = store.model_settings()
+    candidate = {**current, **values}
+    if candidate['api_key_encrypted'] and (not candidate['model'].strip() or not candidate['base_url']):
+        raise HTTPException(422, '请同时填写模型接口地址、模型名称和 API Key。')
     return public_settings(store.save_settings(values))
 
 
@@ -197,7 +220,7 @@ async def stream_conversation(cid: int, payload: ChatInput, request: Request, st
         documents.append({'filename':doc['filename'],'text':doc['extracted_text'][:12000]})
     settings = store.model_settings()
     if not settings['api_key_encrypted']:
-        raise HTTPException(409, '请先在“模型与记忆”填写 API Key 和模型名称。')
+        raise HTTPException(409, '请先在“模型设置”填写 API Key 和模型名称。')
     try:
         key = request.app.state.secret_store.decrypt(store.workspace_id, settings['api_key_encrypted'])
     except ValueError as exc:
@@ -307,14 +330,20 @@ async def hermes_conversation(cid: int, payload: ChatInput, request: Request, st
     if importing_customers or (plain_continuation and not payload.force_tools):
         settings = store.model_settings()
         if not settings['api_key_encrypted']:
-            raise HTTPException(409, '请先在“模型与记忆”填写 API Key 和模型名称。')
+            raise HTTPException(409, '请先在“模型设置”填写 API Key 和模型名称。')
         try:
             key = request.app.state.secret_store.decrypt(store.workspace_id, settings['api_key_encrypted'])
         except ValueError as exc:
             raise HTTPException(409, str(exc)) from exc
     if importing_customers:
         messages[0]['content'] += '\n' + CUSTOMER_IMPORT_INSTRUCTION
-    system = messages[0]['content'] + '\n你可以使用 Hermes 已启用的工具。只执行用户当前问题所需的操作；没有实际执行工具时不得声称已执行。'
+    system = (
+        messages[0]['content']
+        + '\n你可以使用 Hermes 已启用的工具。只执行用户当前问题所需的操作；'
+        '没有实际执行工具时不得声称已执行。'
+        '外部连接工具因网络或授权失败时最多重试一次；'
+        '不要用其他工具绕过同一个失败，直接向用户说明需要完成的连接步骤。'
+    )
     if documents:
         system += '\n当前可参考的文档内容：\n' + json.dumps(documents, ensure_ascii=False)
     sources = []
@@ -393,6 +422,7 @@ async def hermes_conversation(cid: int, payload: ChatInput, request: Request, st
             streamed_text = ''
             final_text = ''
             result_error = ''
+            result_warning = ''
             workspace = (
                 store.path.parent
                 / 'hermes-workspaces'
@@ -425,7 +455,17 @@ async def hermes_conversation(cid: int, payload: ChatInput, request: Request, st
                     final_text = event.get('text') or ''
                     result_error = event.get('error') or ''
                     if result_error or int(event.get('exit_code') or 0) != 0:
-                        raise HermesError(result_error or 'Hermes 工具执行失败。')
+                        if final_text.strip() or streamed_text.strip():
+                            result_warning = result_error or 'Hermes 工具执行未完整结束。'
+                        else:
+                            raise HermesError(result_error or 'Hermes 工具执行失败。')
+
+            if result_warning:
+                yield sse('partial', {'detail': result_warning})
+                final_text += (
+                    '\n\n> 本次 Hermes 达到工具调用轮数上限或未完整结束，'
+                    '以上为已完成部分，任务可能尚未全部完成。'
+                )
 
             if final_text and final_text != streamed_text:
                 if not streamed_text:

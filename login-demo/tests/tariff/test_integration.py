@@ -40,10 +40,15 @@ def test_isolation_encryption_scheduler_and_origin(tmp_path):
             assert a.post('/api/tariff/settings/llm/test').json()['ok']
         assert a.get('/api/tariff/settings/llm').json()['last_test']['ok']
         with sqlite3.connect(path) as conn:
-            row = conn.execute('SELECT * FROM tariff_model_settings').fetchone()
+            row = conn.execute(
+                'SELECT workspace_id,base_url,model,api_key_encrypted FROM model_settings'
+            ).fetchone()
             assert 'private-key-1234' not in row[3]
             other = conn.execute('SELECT id FROM workspaces WHERE id != ?', (row[0],)).fetchone()[0]
-            conn.execute('INSERT INTO tariff_model_settings(workspace_id,base_url,model,api_key_encrypted) VALUES (?,?,?,?)', (other, row[1], row[2], row[3]))
+            conn.execute(
+                'INSERT INTO model_settings(workspace_id,base_url,model,api_key_encrypted) VALUES (?,?,?,?)',
+                (other, row[1], row[2], row[3]),
+            )
         assert not b.get('/api/tariff/settings/llm').json()['configured']
         a.delete('/api/tariff/settings/llm')
         response = a.post('/api/tariff/pipeline/runs')

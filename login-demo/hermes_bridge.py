@@ -14,8 +14,8 @@ class HermesError(Exception):
 
 
 _ANSI_ESCAPE = re.compile(r'\x1b(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-DEFAULT_HERMES_TIMEOUT = 360
-DEFAULT_HERMES_MAX_TURNS = 24
+DEFAULT_HERMES_TIMEOUT = 1200
+DEFAULT_HERMES_MAX_TURNS = 60
 TOOL_OUTPUT_PREVIEW_CHARS = 320
 
 _TOOL_LABELS = (
@@ -134,12 +134,12 @@ async def _drain_stderr(stream) -> str:
     return ''.join(chunks).strip()
 
 
-def stream_command(executable: str, prompt: str) -> list[str]:
+def stream_command(executable: str) -> list[str]:
     return [
         executable,
         'chat',
-        '-q',
-        prompt,
+        '--query-file',
+        '-',
         '--max-turns',
         str(DEFAULT_HERMES_MAX_TURNS),
         '-Q',
@@ -160,16 +160,28 @@ async def stream_hermes(
     if not executable:
         raise HermesError('Hermes 命令不可用，请先安装并启动 Hermes。')
     working_directory.mkdir(parents=True, exist_ok=True)
-    process = await asyncio.create_subprocess_exec(
-        *stream_command(executable, prompt),
-        cwd=working_directory,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-        env={**os.environ, 'NO_COLOR': '1'},
-        creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
-    )
+    try:
+        process = await asyncio.create_subprocess_exec(
+            *stream_command(executable),
+            cwd=working_directory,
+            stdin=asyncio.subprocess.PIPE,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+            env={**os.environ, 'NO_COLOR': '1'},
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
+        )
+    except OSError as exc:
+        raise HermesError('Hermes 无法启动，请检查安装和运行环境。') from exc
+    try:
+        process.stdin.write(prompt.encode('utf-8'))
+        await process.stdin.drain()
+        process.stdin.close()
+        await process.stdin.wait_closed()
+    except (BrokenPipeError, ConnectionResetError):
+        pass
     stderr_task = asyncio.create_task(_drain_stderr(process.stderr))
     saw_result = False
+    result_text = ''
     try:
         async with asyncio.timeout(timeout):
             while True:
@@ -180,10 +192,12 @@ async def stream_hermes(
                 event = parse_stream_event(text)
                 if event:
                     saw_result = saw_result or event['type'] == 'result'
+                    if event['type'] == 'result':
+                        result_text = event.get('text') or ''
                     yield event
             return_code = await process.wait()
         stderr = await stderr_task
-        if return_code != 0 or not saw_result:
+        if (return_code != 0 or not saw_result) and not result_text.strip():
             detail = _clean_stdout(stderr)
             raise HermesError(detail[:1000] if detail else 'Hermes 工具执行失败。')
     except TimeoutError as exc:
@@ -229,13 +243,14 @@ async def run_hermes(
             [
                 executable,
                 'chat',
-                '-q',
-                prompt,
+                '--query-file',
+                '-',
                 '--max-turns',
                 str(DEFAULT_HERMES_MAX_TURNS),
                 '-Q',
             ],
             cwd=working_directory,
+            input=prompt,
             capture_output=True,
             text=True,
             encoding='utf-8',

@@ -1,34 +1,36 @@
+import asyncio
 import os
 import secrets
-import asyncio
 from contextlib import asynccontextmanager
 from pathlib import Path
 
+from apscheduler.schedulers.background import BackgroundScheduler
 from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, RedirectResponse
-from spa_files import mount_spa
-from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
-from stable_session import StableSessionMiddleware
+from pydantic import BaseModel
 
-from tariff_bridge_api import router as tariff_bridge_router
-from tariff_runtime import TariffRegistry
-from mariner.factory import create_tariff_app
-from mariner.settings import Settings as TariffSettings
-from apscheduler.schedulers.background import BackgroundScheduler
 from auth import authenticate_user, init_db, register_user
+from automation_api import router as automation_router
+from automation_api import scheduler_loop
 from business_api import router as business_router
 from chat_api import router as chat_router
-from orders_api import router as orders_router
-from documents_api import router as documents_router
-from research_api import router as research_router
-from research_api import default_osint_runner
-from automation_api import router as automation_router, scheduler_loop
+from chat_store import recover_interrupted_chat_turns
 from database import connection
-from tenancy import TenantContext, require_tenant
+from documents_api import router as documents_router
+from mariner.factory import create_tariff_app
+from mariner.settings import Settings as TariffSettings
+from orders_api import router as orders_router
+from research_api import default_osint_runner
+from research_api import router as research_router
 from secret_store import SecretStore
 from skill_catalog import SkillCatalog
+from spa_files import mount_spa
+from stable_session import StableSessionMiddleware
+from tariff_bridge_api import router as tariff_bridge_router
+from tariff_runtime import TariffRegistry
+from tenancy import TenantContext, require_tenant
 
 APP_DIR = Path(__file__).resolve().parent
 ORIGINAL_STATIC_DIR = APP_DIR.parent / "static"
@@ -53,6 +55,7 @@ def create_app(
 ) -> FastAPI:
     resolved_db_path = Path(db_path) if db_path is not None else DEFAULT_DB_PATH
     init_db(resolved_db_path)
+    recover_interrupted_chat_turns(resolved_db_path)
     tariff_settings = tariff_settings or TariffSettings()
 
     @asynccontextmanager

@@ -257,7 +257,7 @@ function Workbench() {
                 <IconAlertTriangle />
                 {t("未配置模型：只能回答内置示例问题。")}
                 <span className="spacer" />
-                <Link href="/settings?tab=tariff">{t("去配置 →")}</Link>
+                <Link href="/settings?tab=chat">{t("去配置 →")}</Link>
               </div>
             )}
             {conversation.isPending && <LoadingPanel />}

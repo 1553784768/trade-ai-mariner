@@ -85,7 +85,7 @@ def test_hermes_default_timeout_allows_long_site_audits(monkeypatch, tmp_path):
     result = asyncio.run(run_hermes('检查 https://burrow.com/', tmp_path))
 
     assert result == '工具任务完成'
-    assert captured['timeout'] >= 300
+    assert captured['timeout'] >= 900
 
 
 def test_hermes_command_omits_gateway_unsupported_budget_option(monkeypatch, tmp_path):
@@ -106,7 +106,26 @@ def test_hermes_command_omits_gateway_unsupported_budget_option(monkeypatch, tmp
     max_turns = int(command[command.index('--max-turns') + 1])
     assert '--run-budget' not in command
     assert captured['timeout'] >= 300
-    assert 1 <= max_turns <= 30
+    assert 1 <= max_turns <= 60
+
+
+def test_hermes_long_prompt_uses_stdin_instead_of_command_line(monkeypatch, tmp_path):
+    captured = {}
+    prompt = "继续分析这段很长的历史对话。" * 2500
+
+    def fake_run(command, **kwargs):
+        captured["command"] = command
+        captured.update(kwargs)
+        return subprocess.CompletedProcess(command, 0, "长对话继续完成", "")
+
+    monkeypatch.setattr("hermes_bridge.shutil.which", lambda _name: "hermes")
+    monkeypatch.setattr("hermes_bridge.subprocess.run", fake_run)
+
+    result = asyncio.run(run_hermes(prompt, tmp_path))
+
+    assert result == "长对话继续完成"
+    assert prompt not in captured["command"]
+    assert captured["input"] == prompt
 
 
 @pytest.fixture
@@ -125,7 +144,11 @@ def app_and_clients(tmp_path):
     first,second=TestClient(app),TestClient(app)
     for client,email in [(first,'platform-a@example.com'),(second,'platform-b@example.com')]:
         assert client.post('/api/register',json={'email':email,'password':'correct-horse-1'}).status_code==201
-        client.put('/api/model-settings',json={'model':'deepseek-chat','api_key':'fake-key'})
+        client.put('/api/model-settings',json={
+            'base_url':'https://api.deepseek.com',
+            'model':'deepseek-chat',
+            'api_key':'fake-key',
+        })
     return app,first,second,path,captured
 
 
@@ -210,6 +233,7 @@ def test_hermes_tool_mode_uses_business_context_and_persists_reply(tmp_path):
     assert ('status', {'label': '正在理解任务并规划执行步骤'}) in sse_events(response.text)
     assert 'Hermes Company' in prompts[0][0]
     assert 'Hermes Buyer' in prompts[0][0]
+    assert '外部连接工具因网络或授权失败时最多重试一次' in prompts[0][0]
     assert '当前没有网页搜索' not in prompts[0][0]
     assert '必须实际调用' in prompts[0][0]
     assert str(prompts[0][1]).endswith('0') is False
@@ -248,7 +272,11 @@ def test_hermes_continuation_uses_normal_model_instead_of_tool_agent(tmp_path):
     app=create_app(path,'test-secret',model_transport=httpx.MockTransport(provider),hermes_runner=fake_hermes)
     client=TestClient(app)
     client.post('/api/register',json={'email':'continuation@example.com','password':'correct-horse-1'})
-    client.put('/api/model-settings',json={'model':'deepseek-chat','api_key':'fake-key'})
+    client.put('/api/model-settings',json={
+        'base_url':'https://api.deepseek.com',
+        'model':'deepseek-chat',
+        'api_key':'fake-key',
+    })
     cid=client.post('/api/conversations',json={'title':'继续测试'}).json()['id']
     seed_completed_turn(path,client,cid,'上一轮的完整回答')
 
@@ -273,7 +301,11 @@ def test_continuation_stream_skips_web_search_and_uses_conversation_history(tmp_
     app=create_app(path,'test-secret',model_transport=httpx.MockTransport(provider))
     client=TestClient(app)
     client.post('/api/register',json={'email':'continuation-stream@example.com','password':'correct-horse-1'})
-    client.put('/api/model-settings',json={'model':'deepseek-chat','api_key':'fake-key'})
+    client.put('/api/model-settings',json={
+        'base_url':'https://api.deepseek.com',
+        'model':'deepseek-chat',
+        'api_key':'fake-key',
+    })
     cid=client.post('/api/conversations',json={'title':'流式继续'}).json()['id']
     seed_completed_turn(path,client,cid,'上一轮的回答正文')
 
@@ -303,7 +335,11 @@ def test_customer_import_request_uses_native_tool_before_hermes(tmp_path):
     app=create_app(path,'test-secret',model_transport=httpx.MockTransport(provider),hermes_runner=fake_hermes)
     client=TestClient(app)
     client.post('/api/register',json={'email':'native-import@example.com','password':'correct-horse-1'})
-    client.put('/api/model-settings',json={'model':'deepseek-chat','api_key':'fake-key'})
+    client.put('/api/model-settings',json={
+        'base_url':'https://api.deepseek.com',
+        'model':'deepseek-chat',
+        'api_key':'fake-key',
+    })
     cid=client.post('/api/conversations',json={'title':'客户入库'}).json()['id']
     seed_completed_turn(path,client,cid,'1. ShopChiEm\n2. SMstore.vn')
 
@@ -323,6 +359,8 @@ def test_customer_import_request_uses_native_tool_before_hermes(tmp_path):
     assert captured[0]['thinking']=={'type':'disabled'}
     sent=json.dumps(captured[0],ensure_ascii=False)
     assert 'ShopChiEm' in sent and 'SMstore.vn' in sent
+    assert 'main_category 填写本次销售的产品或品类' in sent
+    assert 'buyer_type 填写客户实际经营类型' in sent
 
     repeated=client.post(f'/api/conversations/{cid}/hermes',json={
         'content':'将这2家写入我的客户库','skill_id':'b2b-lead-generation','web_search':False,
@@ -343,7 +381,11 @@ def test_customer_import_tool_is_atomic_when_any_record_is_invalid(tmp_path):
     )
     client=TestClient(app)
     client.post('/api/register',json={'email':'invalid-import@example.com','password':'correct-horse-1'})
-    client.put('/api/model-settings',json={'model':'deepseek-chat','api_key':'fake-key'})
+    client.put('/api/model-settings',json={
+        'base_url':'https://api.deepseek.com',
+        'model':'deepseek-chat',
+        'api_key':'fake-key',
+    })
     cid=client.post('/api/conversations',json={'title':'无效客户入库'}).json()['id']
 
     response=client.post(f'/api/conversations/{cid}/hermes',json={
@@ -364,7 +406,11 @@ def test_customer_import_direct_stream_uses_native_tool(tmp_path):
     )
     client=TestClient(app)
     client.post('/api/register',json={'email':'direct-import@example.com','password':'correct-horse-1'})
-    client.put('/api/model-settings',json={'model':'deepseek-chat','api_key':'fake-key'})
+    client.put('/api/model-settings',json={
+        'base_url':'https://api.deepseek.com',
+        'model':'deepseek-chat',
+        'api_key':'fake-key',
+    })
     cid=client.post('/api/conversations',json={'title':'直接入库'}).json()['id']
 
     response=client.post(f'/api/conversations/{cid}/stream',json={

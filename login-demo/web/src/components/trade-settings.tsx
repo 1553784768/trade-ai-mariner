@@ -5,7 +5,7 @@ import type { Company, ModelSettings } from "@/lib/trade-types";
 import { Shell } from "./shell";
 import { Tabs, Tag } from "./ui";
 import { Field, ListDetail, QueryState, useAction, useTradeQuery, useSelection } from "./trade-ui";
-import { TariffModelSettings } from "./tariff-model-settings";
+import { UnifiedModelSettings } from "./unified-model-settings";
 import { useMe } from "./auth";
 
 const companyFields: [keyof Company, string][] = [
@@ -21,7 +21,7 @@ const companyFields: [keyof Company, string][] = [
 ];
 export function SettingsPage() {
   const [tab, setTab] = useSelection("tab"),
-    current = tab || "chat",
+    current = tab === "tariff" ? "chat" : tab || "chat",
     action = useAction(),
     me = useMe();
   const model = useTradeQuery<ModelSettings>("/model-settings"),
@@ -29,8 +29,7 @@ export function SettingsPage() {
     search = useTradeQuery<{ has_key: boolean }>("/research/settings"),
     memory = useTradeQuery<{ content: string }>("/memory");
   const tabs = [
-    ["chat", "对话模型"],
-    ["tariff", "关税智能体模型"],
+    ["chat", "模型设置"],
     ["search", "联网搜索"],
     ["company", "公司资料"],
     ["memory", "业务记忆"],
@@ -48,14 +47,14 @@ export function SettingsPage() {
         />
       }
     >
-      {current === "tariff" ? (
-        <TariffModelSettings />
+      {current === "chat" ? (
+        <UnifiedModelSettings />
       ) : (
         <ListDetail
           list={
             <>
               <section className="metric-card static">
-                <div className="device-tag">{t("对话模型")}</div>
+                <div className="device-tag">{t("模型设置")}</div>
                 <div className="metric-value sm">{model.data?.model || "—"}</div>
                 <Tag>{t(model.data?.has_key ? "已接入" : "未接入")}</Tag>
               </section>
@@ -71,62 +70,6 @@ export function SettingsPage() {
           }
         >
           <h2>{t(tabs.find((v) => v[0] === current)?.[1] || "设置")}</h2>
-          {current === "chat" && (
-            <>
-              <QueryState query={model} />
-              {model.data && (
-                <form
-                  className="trade-form"
-                  key={model.data.model}
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    const form = e.currentTarget;
-                    const values = Object.fromEntries(new FormData(form));
-                    if (!values.api_key) delete values.api_key;
-                    void action.run(
-                      () => tradeApi("/model-settings", jsonBody("PUT", values)),
-                      "模型设置已保存",
-                      () => form.reset(),
-                    );
-                  }}
-                >
-                  <Field label="模型名称">
-                    <input className="input" name="model" defaultValue={model.data.model} required />
-                  </Field>
-                  <Field label="API Key">
-                    <input
-                      className="input"
-                      name="api_key"
-                      type="password"
-                      autoComplete="new-password"
-                      placeholder={t(model.data.has_key ? "已保存；留空保留" : "填写 API Key")}
-                    />
-                  </Field>
-                  <p className="detail-copy hint">
-                    {t("模型密钥只保存在本机并加密。对话会提交当前公司资料、所选客户和文档内容。")}
-                  </p>
-                  <div className="toolbar">
-                    <button className="btn btn-primary" disabled={action.busy}>
-                      {t("保存")}
-                    </button>
-                    <button
-                      type="button"
-                      className="btn"
-                      onClick={() => {
-                        if (confirm(t("确定清除密钥？")))
-                          void action.run(
-                            () => tradeApi("/model-settings", jsonBody("PUT", { clear_key: true })),
-                            "密钥已清除",
-                          );
-                      }}
-                    >
-                      {t("清除密钥")}
-                    </button>
-                  </div>
-                </form>
-              )}
-            </>
-          )}
           {current === "search" && (
             <form
               className="trade-form"
@@ -141,6 +84,13 @@ export function SettingsPage() {
                 );
               }}
             >
+              <QueryState query={model} />
+              <Field label="当前模型">
+                <input className="input" value={model.data?.model || t("未配置")} readOnly />
+              </Field>
+              <Field label="模型接口地址">
+                <input className="input" value={model.data?.base_url || t("未配置")} readOnly />
+              </Field>
               <Field label="Tavily API Key">
                 <input
                   className="input"

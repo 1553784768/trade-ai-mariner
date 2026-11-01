@@ -58,6 +58,10 @@ def context_messages(
 
 async def stream_model(settings, key, messages, transport=None, emit_events=False, tools=None, tool_choice=None, thinking=None):
     payload = {'model': settings['model'], 'messages': messages, 'stream': True, 'max_tokens': 4096}
+    base_url = settings.get('base_url') or ''
+    if not base_url:
+        raise ModelError('请先在“模型设置”填写模型接口地址和模型名称。')
+    endpoint = base_url.rstrip('/') + '/chat/completions'
     if tools:
         payload['tools'] = tools
     if tool_choice is not None:
@@ -66,7 +70,7 @@ async def stream_model(settings, key, messages, transport=None, emit_events=Fals
         payload['thinking'] = thinking
     try:
         async with httpx.AsyncClient(timeout=httpx.Timeout(60, connect=10), transport=transport, follow_redirects=False) as client:
-            async with client.stream('POST', 'https://api.deepseek.com/chat/completions', json=payload, headers={'Authorization': f'Bearer {key}', 'Accept': 'text/event-stream'}) as response:
+            async with client.stream('POST', endpoint, json=payload, headers={'Authorization': f'Bearer {key}', 'Accept': 'text/event-stream'}) as response:
                 if response.status_code in (401, 403):
                     raise ModelError('模型 API Key 无效或没有访问权限，请检查模型设置。')
                 if response.status_code == 429:

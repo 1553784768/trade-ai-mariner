@@ -9,20 +9,45 @@ from business import WorkspaceStore
 from database import connection
 
 
+def recover_interrupted_chat_turns(path) -> None:
+    with connection(path) as conn:
+        conn.execute("BEGIN IMMEDIATE")
+        conn.execute("UPDATE messages SET status='cancelled' WHERE status='streaming'")
+        conn.execute("UPDATE conversations SET busy_token='',busy_until=0 WHERE busy_token<>'' OR busy_until<>0")
+
+
 class ChatStore(WorkspaceStore):
     def model_settings(self):
         with connection(self.path) as conn:
             row = conn.execute("SELECT * FROM model_settings WHERE workspace_id = ?", (self.workspace_id,)).fetchone()
-        return dict(row) if row else {"provider": "deepseek", "model": "deepseek-chat", "api_key_encrypted": ""}
+        return dict(row) if row else {
+            "provider": "openai-compatible",
+            "model": "",
+            "base_url": "",
+            "api_key_encrypted": "",
+            "last_test": "null",
+        }
 
     def save_settings(self, values):
         current = self.model_settings()
         current.update(values)
         with connection(self.path) as conn:
             conn.execute("""
-                INSERT INTO model_settings(workspace_id,provider,model,api_key_encrypted) VALUES (?,?,?,?)
-                ON CONFLICT(workspace_id) DO UPDATE SET provider=excluded.provider,model=excluded.model,api_key_encrypted=excluded.api_key_encrypted
-            """, (self.workspace_id, current['provider'], current['model'], current['api_key_encrypted']))
+                INSERT INTO model_settings(workspace_id,provider,model,base_url,api_key_encrypted,last_test)
+                VALUES (?,?,?,?,?,'null')
+                ON CONFLICT(workspace_id) DO UPDATE SET
+                    provider=excluded.provider,
+                    model=excluded.model,
+                    base_url=excluded.base_url,
+                    api_key_encrypted=excluded.api_key_encrypted,
+                    last_test='null'
+            """, (
+                self.workspace_id,
+                current['provider'],
+                current['model'],
+                current['base_url'],
+                current['api_key_encrypted'],
+            ))
         return current
 
     def memory(self):
